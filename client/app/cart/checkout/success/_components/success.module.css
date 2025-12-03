@@ -1,0 +1,142 @@
+/* Success 頁面專用樣式 */
+
+/* 成功頁面主標題 */
+.successPageTitle {
+  font-family: 'Noto Sans TC', sans-serif;
+  font-weight: 400;
+}
+
+/* 成功頁面副標題 */
+.successPageSubtitle {
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: 1.25rem;
+}
+
+/* 訂單編號標籤 */
+.orderNumberLabel {
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: 1rem;
+}
+
+/* 操作按鈕字體 */
+.actionButtonFont {
+  font-family: 'Anek Malayalam', sans-serif;
+}
+
+/* 資訊卡片標題 */
+.infoCardTitle {
+  font-family: 'Noto Sans TC', sans-serif;
+  font-weight: 400;
+}
+
+/* 資訊卡片內容文字 */
+.infoCardText {
+  font-family: 'Noto Sans TC', sans-serif;
+}
+
+/* 可收合區域點擊區域 */
+.collapsibleHeader {
+  cursor: pointer;
+}
+
+/* 收合圖示基礎樣式 */
+.collapseToggleIcon {
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 1.2rem;
+  display: inline-block;
+}
+
+/* 收合圖示展開狀態 */
+.collapseToggleIconExpanded {
+  transform: rotate(0deg);
+}
+
+/* 收合圖示收合狀態 */
+.collapseToggleIconCollapsed {
+  transform: rotate(-180deg);
+}
+
+/* 收合內容區域動畫 */
+.collapsibleContent {
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    padding 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 收合內容展開狀態 */
+.collapsibleContentExpanded {
+  max-height: 1000px;
+  opacity: 1;
+  padding-top: 0;
+}
+
+/* 收合內容收合狀態 */
+.collapsibleContentCollapsed {
+  max-height: 0;
+  opacity: 0;
+  padding-top: 0;
+}
+
+/* 商品縮圖 */
+.productThumbnail {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+}
+
+/* 商品資訊文字 */
+.productInfoText {
+  font-family: 'Noto Sans TC', sans-serif;
+}
+
+/* 成功狀態圖示 */
+.successStatusIcon {
+  font-size: 3rem;
+}
+
+/* 成功頁面標題卡片 */
+.successHeaderCard {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+}
+
+/* 按鈕樣式 - 使用 globals.css 設計系統 */
+.btnHome {
+  background-color: var(--primary--600);
+  color: #ffffff;
+  border: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-md);
+  transition: var(--transition-normal);
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+.btnHome:hover,
+.btnHome:focus {
+  background-color: var(--primary--800);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.btnOrders {
+  background-color: var(--bg--dark);
+  color: #ffffff;
+  border: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-md);
+  transition: var(--transition-normal);
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+.btnOrders:hover,
+.btnOrders:focus {
+  background-color: #000000;
+  color: #ffffff;
+  text-decoration: none;
+}

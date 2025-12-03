@@ -1,0 +1,500 @@
+/* Modal Overlay */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: var(--spacing-lg);
+  animation: fadeIn var(--transition-normal);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Modal Content */
+.modalContent {
+  background: white;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  max-width: 600px;
+  width: 100%;
+  max-height: 80vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  animation: slideIn var(--transition-normal);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Modal Header */
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-lg) var(--spacing-xl);
+  border-bottom: 1px solid #e4e4e7;
+  background-color: var(--bg--light);
+}
+
+.modalTitle {
+  font-size: var(--tw--p);
+  font-weight: 600;
+  color: var(--bg--block);
+  margin: 0;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #6b7280;
+  cursor: pointer;
+  padding: var(--spacing-xs);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.closeButton:hover {
+  background-color: #f3f4f6;
+  color: #374151;
+}
+
+/* Modal Body */
+.modalBody {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--spacing-xl);
+}
+
+.section {
+  margin-bottom: var(--spacing-xl);
+}
+
+.section:last-child {
+  margin-bottom: 0;
+}
+
+.sectionTitle {
+  font-size: var(--tw--p);
+  font-weight: 600;
+  color: var(--bg--block);
+  margin: 0 0 var(--spacing-md) 0;
+  padding-bottom: var(--spacing-xs);
+  border-bottom: 2px solid var(--primary--200);
+}
+
+/* 付款方式 */
+.paymentMethod {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  background-color: #f9fafb;
+  border-radius: var(--radius-md);
+}
+
+.paymentMethodName {
+  font-size: var(--tw--p);
+  font-weight: 500;
+  color: var(--text-dark);
+}
+
+/* 配送資訊 */
+.deliveryInfo {
+  padding: var(--spacing-md);
+  background-color: #f9fafb;
+  border-radius: var(--radius-md);
+}
+
+.deliveryType {
+  font-size: var(--tw--p12);
+  font-weight: 500;
+  color: var(--primary--600);
+  margin-bottom: var(--spacing-xs);
+}
+
+.deliveryName {
+  font-size: var(--tw--p);
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: var(--spacing-xs);
+}
+
+.deliveryAddress {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.4;
+  margin-bottom: var(--spacing-xs);
+}
+
+.deliveryPhone {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* 商品清單 */
+.itemsList {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.itemRow {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-sm) 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.itemRow:last-child {
+  border-bottom: none;
+}
+
+.itemName {
+  flex: 1;
+  font-size: 14px;
+  color: var(--text-dark);
+}
+
+.itemQuantity {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin: 0 var(--spacing-sm);
+}
+
+.itemPrice {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-dark);
+  min-width: 80px;
+  text-align: right;
+}
+
+/* 金額明細 */
+.amountDetails {
+  padding: var(--spacing-md);
+  background-color: #f9fafb;
+  border-radius: var(--radius-md);
+}
+
+.amountRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-xs) 0;
+  font-size: 14px;
+}
+
+.amountRow:not(:last-child) {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.discount {
+  color: var(--danger--600);
+  font-weight: 500;
+}
+
+.totalRow {
+  font-size: var(--tw--p);
+  font-weight: 600;
+  color: var(--text-dark);
+  padding-top: var(--spacing-sm);
+  margin-top: var(--spacing-sm);
+  border-top: 2px solid var(--primary--200);
+}
+
+/* Modal Footer */
+.modalFooter {
+  padding: var(--spacing-md) var(--spacing-xl) var(--spacing-xl);
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing-sm);
+  border-top: 1px solid #e4e4e7;
+  background-color: var(--bg--light);
+}
+
+.cancelButton {
+  background-color: #f3f4f6;
+  color: #6b7280;
+  border: none;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--radius-sm);
+  font-size: var(--tw--p12);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.cancelButton:hover {
+  background-color: #e5e7eb;
+  color: #374151;
+}
+
+.confirmButton {
+  background-color: var(--primary--600);
+  color: white;
+  border: none;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--radius-sm);
+  font-size: var(--tw--p12);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.confirmButton:hover {
+  background-color: var(--primary--800);
+}
+
+/* Payment Confirmation Modal (統一使用 OrderPreviewModal 風格) */
+.paymentModalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: var(--spacing-lg);
+  animation: fadeIn var(--transition-normal);
+}
+
+.paymentModalContent {
+  background: white;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  max-width: 500px;
+  width: 100%;
+  max-height: 80vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  animation: slideIn var(--transition-normal);
+}
+
+.paymentModalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-lg) var(--spacing-xl);
+  border-bottom: 1px solid #e4e4e7;
+  background-color: var(--bg--light);
+}
+
+.paymentModalTitle {
+  font-size: var(--tw--p);
+  font-weight: 600;
+  color: var(--bg--block);
+  margin: 0;
+}
+
+.paymentModalCloseBtn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #6b7280;
+  cursor: pointer;
+  padding: var(--spacing-xs);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.paymentModalCloseBtn:hover {
+  background-color: #f3f4f6;
+  color: #374151;
+}
+
+.paymentModalBody {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--spacing-xl);
+}
+
+.paymentSection {
+  margin-bottom: var(--spacing-xl);
+}
+
+.paymentSection:last-child {
+  margin-bottom: 0;
+}
+
+.paymentSectionTitle {
+  font-size: var(--tw--p);
+  font-weight: 600;
+  color: var(--bg--block);
+  margin: 0 0 var(--spacing-md) 0;
+  padding-bottom: var(--spacing-xs);
+  border-bottom: 2px solid var(--primary--200);
+}
+
+.paymentInfo {
+  padding: var(--spacing-md);
+  background-color: #f9fafb;
+  border-radius: var(--radius-md);
+}
+
+.paymentInfo p {
+  margin: 0 0 var(--spacing-sm) 0;
+  font-size: var(--tw--p);
+  color: var(--text-dark);
+  line-height: 1.5;
+}
+
+.paymentInfo p:last-child {
+  margin-bottom: 0;
+}
+
+.orderInfo {
+  padding: var(--spacing-md);
+  background-color: #f9fafb;
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.orderInfo p {
+  margin: 0 0 var(--spacing-xs) 0;
+  font-size: 14px;
+  color: var(--text-dark);
+  line-height: 1.4;
+}
+
+.orderInfo p:last-child {
+  margin-bottom: 0;
+}
+
+.orderId {
+  font-weight: 600;
+  color: var(--primary--600);
+}
+
+.orderAmount {
+  font-weight: 600;
+  color: var(--text-dark);
+  font-size: var(--tw--p);
+}
+
+.debugInfo {
+  margin-top: var(--spacing-md);
+  padding: var(--spacing-sm);
+  background-color: #f3f4f6;
+  border-radius: var(--radius-sm);
+  font-size: var(--tw--p12);
+  color: #6b7280;
+}
+
+.debugInfo p {
+  margin: 0 0 var(--spacing-xs) 0;
+  font-size: var(--tw--p12);
+}
+
+.debugInfo p:last-child {
+  margin-bottom: 0;
+}
+
+.paymentModalFooter {
+  padding: var(--spacing-md) var(--spacing-xl) var(--spacing-xl);
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid #e4e4e7;
+  background-color: var(--bg--light);
+}
+
+.paymentConfirmBtn {
+  background-color: var(--primary--600);
+  color: white;
+  border: none;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--radius-sm);
+  font-size: var(--tw--p12);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  min-width: 120px;
+}
+
+.paymentConfirmBtn:hover {
+  background-color: var(--primary--800);
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .modalOverlay,
+  .paymentModalOverlay {
+    padding: var(--spacing-sm);
+  }
+
+  .modalContent,
+  .paymentModalContent {
+    max-height: 90vh;
+  }
+
+  .modalHeader,
+  .paymentModalHeader {
+    padding: var(--spacing-md) var(--spacing-lg);
+  }
+
+  .modalBody,
+  .paymentModalBody {
+    padding: var(--spacing-lg);
+  }
+
+  .modalFooter,
+  .paymentModalFooter {
+    flex-direction: column;
+  }
+
+  .cancelButton,
+  .confirmButton,
+  .paymentConfirmBtn {
+    width: 100%;
+  }
+}
+
+/* 小螢幕優化 */
+@media (max-width: 480px) {
+  .modalOverlay,
+  .paymentModalOverlay {
+    padding: var(--spacing-xs);
+  }
+
+  .modalContent,
+  .paymentModalContent {
+    border-radius: var(--radius-md);
+  }
+
+  .modalHeader,
+  .paymentModalHeader {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+
+  .modalBody,
+  .paymentModalBody {
+    padding: var(--spacing-md);
+  }
+}

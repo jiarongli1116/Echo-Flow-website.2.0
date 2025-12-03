@@ -1,0 +1,325 @@
+/* 側邊篩選主容器 */
+.filterSidebar {
+  padding: 1rem !important;
+  height: fit-content !important;
+  border: 2px solid #333333 !important;
+  font-size: var(--tw--p) !important;
+  margin-bottom: 15px;
+}
+
+/* 篩選標題樣式 */
+.filterTitle {
+  color: var(--primary--600) !important;
+  font-size: var(--tw---h6) !important;
+  margin-bottom: 1rem !important;
+}
+
+/* 分離式按鈕容器 */
+.splitButtonContainer {
+  display: flex !important;
+  width: 100% !important;
+  border-bottom: 1px solid #333333 !important;
+  margin-bottom: 5px;
+  border-radius: 0 !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+.splitButtonContainer.expanded {
+  z-index: 10 !important;
+  border-bottom: 1px solid transparent !important;
+}
+
+/* 主分類文字連結 */
+.mainCategoryLink {
+  flex: 1 !important;
+  height: 69px !important;
+  background-color: var(--bg--grey) !important;
+  color: var(--text-light) !important;
+  text-decoration: none !important;
+  display: flex !important;
+  align-items: center !important;
+  padding-left: 1rem !important;
+  font-size: 16px !important;
+  border: none !important;
+  border-radius: 0 !important;
+  transition: background-color 0.2s ease !important;
+}
+
+.mainCategoryLink:hover {
+  color: var(--primary--400) !important;
+  text-decoration: none !important;
+}
+
+/* 下拉箭頭按鈕 */
+.dropdownArrow {
+  width: 40px !important;
+  height: 69px !important;
+  background-color: var(--bg--grey) !important;
+  border: none !important;
+  color: var(--primary--400) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  border-radius: 0 !important;
+}
+
+.dropdownArrow:hover {
+  color: var(--bg--light) !important;
+}
+
+/* 箭頭圖標 */
+.dropdownArrow i {
+  font-size: 12px !important;
+  transition: transform 0.2s ease !important;
+}
+
+/* 展開時箭頭旋轉 */
+.dropdownArrow[aria-expanded="true"] i {
+  transform: rotate(180deg) !important;
+}
+
+.dropdownArrow.open i {
+  transform: rotate(180deg) !important;
+}
+
+/* 下拉選單容器 */
+.dropdown {
+  position: relative !important;
+  width: 100% !important;
+  border-radius: 0px !important;
+  padding: 0 !important;
+}
+
+/* 自定義下拉選單樣式 */
+.customDropdownMenu {
+   max-height: 200px;
+  overflow-y: auto;
+  position: absolute !important;
+  top: 100% !important;
+  left: 0 !important;
+  z-index: 10 !important;
+  width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  margin-top: -1px !important;
+  background-color: #fff !important;
+  border-radius: 0 !important;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2) !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  transition: max-height 0.3s ease !important;
+  list-style: none !important;
+    scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+.customDropdownMenu::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+.customDropdownMenu.show {
+  max-height: 300px !important;
+  overflow-y: auto !important;
+}
+
+.customDropdownMenu li {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.customDropdownItem {
+  display: block !important;
+  width: 100% !important;
+  padding: 0.75rem 1rem !important;
+  color: var(--bg--dark) !important;
+  text-decoration: none !important;
+  background-color:#d5cfd1 !important;
+  border: none !important;
+  text-align: left !important;
+  transition: background-color 0.2s ease !important;
+}
+
+.customDropdownItem:hover {
+  color: var(--bg--dark) !important;
+  text-decoration: none !important;
+  background-color: #f8f9fa !important;
+}
+
+/* 尺寸篩選區域 */
+.lpArea {
+  border-radius: 10px;
+  border: 2px solid #333333;
+  margin: 30px 0;
+  line-height: 16px;
+  padding: 16px;
+  vertical-align: bottom;
+}
+
+/* 全域樣式覆蓋 - form-check 元素 */
+.filterSidebar :global(.form-check) {
+  display: flex !important;
+  align-items: center !important;
+  margin-bottom: 12px !important;
+  padding-left: 0 !important;
+}
+
+.filterSidebar :global(.form-check-input) {
+  background-color: var(--bg--grey) !important;
+  border: 2px solid var(--primary--400) !important;
+  width: 20px !important;
+  height: 20px !important;
+  margin: 0 8px 0 0 !important;
+  flex-shrink: 0 !important;
+}
+
+.filterSidebar :global(.form-check-input:checked) {
+  background-color: var(--bg--dark) !important;
+  border-color: var(--primary--400) !important;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='%23FDD16C' d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+}
+
+.filterSidebar :global(.form-check-input:focus) {
+  border-color: var(--primary--400) !important;
+  box-shadow: 0 0 0 0.25rem rgba(253, 209, 108, 0.25) !important;
+  background-color: var(--bg--dark) !important;
+}
+
+.filterSidebar :global(.form-check-label) {
+  margin-bottom: 0 !important;
+  line-height: 1.2 !important;
+  color: var(--text-light) !important;
+  font-size: var(--tw--p) !important;
+}
+
+/* 價格篩選容器 */
+.priceFilterContainer {
+  border: 2px solid #333333;
+  border-radius: 10px;
+  margin: 30px 0;
+  padding: 16px;
+  background-color: var(--bg--grey, #2b2b2b);
+}
+
+.priceInputContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px;
+  gap: 10px;
+}
+
+.priceInput {
+  flex: 1;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  text-align: center;
+  height: 32px;
+  width: 85px;
+}
+
+.priceSeparator {
+  color: var(--text-light, #ffffff);
+  font-size: 16px;
+  margin: 0 5px;
+}
+
+.filterButton {
+  height: 38px;
+  background-color: var(--primary--400, #fdd16c);
+  color: #f6f6f6;
+  border: none;
+  border-radius: 8px;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  width: calc(50% - 32px);
+  transition: background-color 0.2s;
+  margin-left: 16px;
+}
+
+.filterButton:hover {
+  background-color: var(--primary--600, #e6c068);
+}
+.clearButton {
+    height: 38px;
+      font-size: 16px;
+        font-weight: bold;
+         width: calc(50% - 32px);
+    background-color: #6c757d;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+      justify-content: center;
+    cursor: pointer;
+    margin-right: 16px;
+}
+.clearButton:hover {
+  background-color: #5b6369;
+}
+/* 手機版響應式設計 */
+@media (max-width: 768px) {
+  .filterSidebar {
+    padding: 12px !important;
+  }
+
+  .filterTitle {
+    font-size: 20px !important;
+    margin-bottom: 0.8rem !important;
+  }
+
+  .mainCategoryLink {
+    height: 60px !important;
+    font-size: 14px !important;
+    padding-left: 0.8rem !important;
+  }
+
+  .dropdownArrow {
+    width: 36px !important;
+    height: 60px !important;
+  }
+
+  .lpArea {
+    margin: 20px 0;
+    padding: 12px;
+  }
+
+  .priceFilterContainer {
+    margin: 20px 0;
+    padding: 12px;
+  }
+
+  .priceInputContainer {
+    margin-bottom: 20px;
+    gap: 8px;
+  }
+
+  .priceInput {
+    padding: 6px 10px;
+    font-size: 12px;
+    height: 28px;
+    width: 70px;
+  }
+
+  .priceSeparator {
+    font-size: 14px;
+  }
+
+  .filterButton {
+    height: 34px;
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .filterSidebar :global(.form-check-input) {
+    width: 18px !important;
+    height: 18px !important;
+  }
+
+  .filterSidebar :global(.form-check-label) {
+    font-size: 14px !important;
+  }
+}

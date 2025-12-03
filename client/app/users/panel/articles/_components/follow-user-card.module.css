@@ -1,0 +1,120 @@
+/* 卡片本體 */
+.forusFollowCard {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 16px;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* 左側：頭像＋名稱 */
+.forusProfile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+}
+
+.forusUserAvatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex: 0 0 auto;
+    background: #f2f2f2;
+}
+
+/* 名稱樣式：可點，單行省略 */
+.forusUserName {
+    font-size: 18px;
+    font-weight: 700;
+    color: #222;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 220px;
+    text-decoration: none;
+}
+
+/* 右側按鈕群：允許換行避免擠壓（手機） */
+.forusActions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 0 0 auto;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+/* ===== 按鈕樣式（對齊 UserHeader 的膠囊按鈕） ===== */
+.forusActionBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    /* 同系統膠囊按鈕手感 */
+    border-radius: 999px;
+    border: 1px solid transparent;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color .15s ease, color .15s ease, border-color .15s ease, box-shadow .15s ease, transform .02s ease;
+}
+
+/* 追蹤中（實心金色，和 UserHeader 主按鈕一致） */
+.forusFollowBtn {
+    background-color: #E0BB62;
+    /* 金色主色 */
+    border-color: #E0BB62;
+    color: #fff;
+}
+
+.forusFollowBtn:hover {
+    background-color: #d5af57;
+    /* hover 稍微加深 */
+    border-color: #d5af57;
+    box-shadow: 0 2px 6px rgba(224, 187, 98, 0.35);
+}
+
+.forusFollowBtn:active {
+    transform: translateY(1px);
+}
+
+/* 聊天（白底金框） */
+.forusChatBtn {
+    background-color: #fff;
+    color: #333;
+    border-color: #E0BB62;
+}
+
+.forusChatBtn:hover {
+    background-color: #E0BB62;
+    color: #fff;
+    border-color: #E0BB62;
+    box-shadow: 0 2px 6px rgba(224, 187, 98, 0.35);
+}
+
+.forusChatBtn:active {
+    transform: translateY(1px);
+}
+
+/* RWD：手機 1 欄時空間更寬鬆，不會互蓋 */
+@media (max-width: 576px) {
+    .forusFollowCard {
+        padding: 12px 14px;
+    }
+
+    .forusUserName {
+        max-width: 70vw;
+    }
+
+    .forusActions {
+        gap: 10px;
+    }
+}

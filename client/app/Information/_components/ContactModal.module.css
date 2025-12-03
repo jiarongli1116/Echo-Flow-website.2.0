@@ -1,0 +1,292 @@
+/* 聯絡表單模態框樣式 - 基於管理後台風格 */
+
+/* 模態框遮罩層 - 模態框的背景遮罩 */
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 1rem;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+/* 模態框容器 - 模態框的主要容器 */
+.modalContainer {
+    background: white;
+    border-radius: 0;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    transform: scale(0.9);
+    transition: transform 0.2s ease;
+}
+
+/* 訊息模態框容器 - 訊息模態框的特殊樣式 */
+.messageModal {
+    max-width: 400px;
+}
+
+/* 模態框標題區域 - 模態框的標題部分 */
+.modalHeader {
+    padding: 1.5rem 1.5rem 0 1.5rem;
+    border-bottom: 1px solid #e9ecef;
+}
+
+/* 模態框標題 - 模態框的標題文字 */
+.modalTitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0 0 1rem 0;
+}
+
+/* 模態框內容區域 - 模態框的主要內容部分 */
+.modalBody {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    gap: 1rem;
+}
+
+/* 模態框訊息 - 模態框中的訊息文字 */
+.modalMessage {
+    font-size: 1rem;
+    color: #1a1a1a;
+    line-height: 1.5;
+    margin: 0;
+    text-align: left;
+    width: 100%;
+}
+
+/* 模態框按鈕區域 - 模態框的按鈕部分 */
+.modalFooter {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+}
+
+/* 模態框按鈕 - 模態框中的按鈕樣式 */
+.modalBtn {
+    padding: 0.75rem 1.5rem;
+    border: 1px solid #e9ecef;
+    border-radius: 0;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 80px;
+}
+
+/* 模態框主要按鈕 - 模態框中的主要按鈕樣式 */
+.modalBtnPrimary {
+    background: #e6c068;
+    color: #1a1a1a;
+    border-color: #e6c068;
+}
+
+.modalBtnPrimary:hover {
+    background: #cdab5b;
+    border-color: #cdab5b;
+}
+
+/* 訊息模態框標題區域 - 統一使用黑底 */
+.modalHeader.success {
+    background: #1a1a1a;
+    border-bottom-color: #1a1a1a;
+}
+
+.modalHeader.danger {
+    background: #1a1a1a;
+    border-bottom-color: #1a1a1a;
+}
+
+.modalHeader.warning {
+    background: #1a1a1a;
+    border-bottom-color: #1a1a1a;
+}
+
+.modalHeader.info {
+    background: #1a1a1a;
+    border-bottom-color: #1a1a1a;
+}
+
+/* 訊息模態框圖標容器 - 圖標的容器樣式 */
+.modalIconContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0.75rem;
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+}
+
+/* 訊息模態框標題區域 - 調整為水平排列 */
+.modalHeader.success,
+.modalHeader.danger,
+.modalHeader.warning,
+.modalHeader.info {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem 1.5rem 1rem 1.5rem;
+    min-height: 60px;
+}
+
+/* 訊息模態框標題 - 調整顏色為白色並移除底部邊距 */
+.modalHeader.success .modalTitle,
+.modalHeader.danger .modalTitle,
+.modalHeader.warning .modalTitle,
+.modalHeader.info .modalTitle {
+    color: white;
+    margin: 0;
+    line-height: 1.2;
+    font-size: 1.25rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+
+/* 訊息模態框按鈕樣式 - 統一使用金色主題 */
+.modalBtnPrimary.success {
+    background: #e6c068;
+    color: #1a1a1a;
+    border-color: #e6c068;
+}
+
+.modalBtnPrimary.success:hover {
+    background: #cdab5b;
+    border-color: #cdab5b;
+}
+
+.modalBtnPrimary.danger {
+    background: #e6c068;
+    color: #1a1a1a;
+    border-color: #e6c068;
+}
+
+.modalBtnPrimary.danger:hover {
+    background: #cdab5b;
+    border-color: #cdab5b;
+}
+
+.modalBtnPrimary.warning {
+    background: #e6c068;
+    color: #1a1a1a;
+    border-color: #e6c068;
+}
+
+.modalBtnPrimary.warning:hover {
+    background: #cdab5b;
+    border-color: #cdab5b;
+}
+
+.modalBtnPrimary.info {
+    background: #e6c068;
+    color: #1a1a1a;
+    border-color: #e6c068;
+}
+
+.modalBtnPrimary.info:hover {
+    background: #cdab5b;
+    border-color: #cdab5b;
+}
+
+/* 模態框動畫效果 */
+.modalVisible {
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+
+.modalSlideIn {
+    transform: scale(1);
+    transition: transform 0.2s ease;
+}
+
+.modalVisible .modalContainer {
+    transform: scale(1);
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    .modalOverlay {
+        padding: 0.5rem;
+    }
+
+    .modalContainer {
+        max-width: 95%;
+    }
+
+    .messageModal {
+        max-width: 95%;
+    }
+
+    .modalHeader {
+        padding: 1rem 1rem 0 1rem;
+    }
+
+    .modalBody {
+        padding: 1rem;
+    }
+
+    .modalFooter {
+        padding: 0 1rem 1rem 1rem;
+    }
+
+    .modalTitle {
+        font-size: 1.1rem;
+    }
+
+    .modalMessage {
+        font-size: 0.9rem;
+    }
+
+    .modalBtn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .modalOverlay {
+        padding: 0.25rem;
+    }
+
+    .modalHeader {
+        padding: 0.75rem 0.75rem 0 0.75rem;
+        min-height: 50px;
+    }
+
+    .modalBody {
+        padding: 0.75rem;
+    }
+
+    .modalFooter {
+        padding: 0 0.75rem 0.75rem 0.75rem;
+    }
+
+    .modalTitle {
+        font-size: 1rem;
+    }
+
+    .modalMessage {
+        font-size: 0.85rem;
+    }
+
+    .modalBtn {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+        min-width: 70px;
+    }
+}

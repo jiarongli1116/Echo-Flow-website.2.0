@@ -1,0 +1,273 @@
+/* Modal Overlay */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: var(--spacing-lg);
+  animation: fadeIn var(--transition-normal);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Modal Content */
+.modalContent {
+  background: white;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  max-width: 450px;
+  width: 100%;
+  max-height: 80vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  animation: slideIn var(--transition-normal);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Modal Header */
+.modalHeader {
+  padding: var(--spacing-lg) var(--spacing-xl);
+  border-bottom: 1px solid #e4e4e7;
+  background-color: var(--primary--600);
+}
+
+.headerContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.titleSection {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.typeIcon {
+  font-size: 20px;
+  line-height: 1;
+}
+
+.modalTitle {
+  font-size: var(--tw--p);
+  font-weight: 600;
+  color: var(--text-light);
+  margin: 0;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: var(--text-light);
+  cursor: pointer;
+  padding: var(--spacing-xs);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+  line-height: 1;
+}
+
+.closeButton:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: var(--text-light);
+}
+
+/* Type-specific header colors */
+.errorType {
+  background: var(--gradient-danger);
+  border-bottom-color: var(--danger--200);
+}
+
+.warningType {
+  background: var(--gradient-gold);
+  border-bottom-color: var(--primary--200);
+}
+
+.infoType {
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+  border-bottom-color: #bfdbfe;
+}
+
+.successType {
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  border-bottom-color: #bbf7d0;
+}
+
+/* Modal Body */
+.modalBody {
+  flex: 1;
+  padding: var(--spacing-xl);
+}
+
+.messageContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60px;
+}
+
+.messageText {
+  font-size: var(--tw--p);
+  color: var(--text-dark);
+  line-height: 1.6;
+  margin: 0;
+  text-align: center;
+  word-break: break-word;
+}
+
+/* Modal Footer */
+.modalFooter {
+  padding: var(--spacing-md) var(--spacing-xl) var(--spacing-xl);
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid #e4e4e7;
+  background-color: var(--bg--light);
+}
+
+.confirmButton {
+  background-color: var(--text-muted);
+  color: var(--text-light);
+  border: none;
+  padding: var(--spacing-sm) var(--spacing-xl);
+  border-radius: var(--radius-md);
+  font-size: var(--tw--p12);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  min-width: 80px;
+}
+
+.confirmButton:hover {
+  background-color: var(--grey--primary);
+  transform: translateY(-1px);
+}
+
+.confirmButton:active {
+  transform: translateY(0);
+}
+
+/* Type-specific button colors */
+.errorType .confirmButton {
+  background-color: var(--danger--600);
+}
+
+.errorType .confirmButton:hover {
+  background-color: var(--danger--800);
+}
+
+.warningType .confirmButton {
+  background-color: var(--primary--600);
+}
+
+.warningType .confirmButton:hover {
+  background-color: var(--primary--800);
+}
+
+.infoType .confirmButton {
+  background-color: #2563eb;
+}
+
+.infoType .confirmButton:hover {
+  background-color: #1d4ed8;
+}
+
+.successType .confirmButton {
+  background-color: #16a34a;
+}
+
+.successType .confirmButton:hover {
+  background-color: #15803d;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .modalOverlay {
+    padding: var(--spacing-sm);
+  }
+
+  .modalContent {
+    max-height: 90vh;
+    max-width: 100%;
+  }
+
+  .modalHeader {
+    padding: var(--spacing-md) var(--spacing-lg);
+  }
+
+  .modalTitle {
+    font-size: var(--tw--p);
+  }
+
+  .titleSection {
+    gap: var(--spacing-xs);
+  }
+
+  .typeIcon {
+    font-size: 18px;
+  }
+
+  .modalBody {
+    padding: var(--spacing-lg);
+  }
+
+  .messageText {
+    font-size: 15px;
+  }
+
+  .modalFooter {
+    padding: var(--spacing-sm) var(--spacing-lg) var(--spacing-lg);
+  }
+
+  .confirmButton {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    font-size: 15px;
+  }
+}
+
+/* 小螢幕優化 */
+@media (max-width: 480px) {
+  .modalOverlay {
+    padding: var(--spacing-xs);
+  }
+
+  .modalContent {
+    border-radius: var(--radius-md);
+  }
+
+  .modalHeader {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+
+  .modalBody {
+    padding: var(--spacing-md);
+  }
+
+  .modalFooter {
+    padding: var(--spacing-sm) var(--spacing-md) var(--spacing-md);
+  }
+}

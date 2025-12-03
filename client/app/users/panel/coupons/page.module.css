@@ -1,0 +1,576 @@
+.alc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.bgBlack1000 {
+    background-color: var(--bg--block);
+}
+.bgBlack900 {
+    background-color: var(--bg--dark);
+}
+.bgBlack800 {
+    background-color: var(--bg--grey);
+}
+.bgBlack600 {
+    background-color: var(--grey--primary);
+}
+.bgGrey {
+    background-color: #a8a8a8;
+}
+.bgGrey700 {
+    background-color: #bebebe;
+}
+.bgGrey600 {
+    background-color: #ddd;
+}
+.bgGrey100 {
+    background-color: #e4e4e4;
+}
+.bgGold600 {
+    background-color: var(--primary--600);
+}
+.bgDanger900 {
+    background-color: var(--danger--800);
+}
+.bgDanger700 {
+    background-color: var(--danger--600);
+}
+.bgDanger600 {
+    background-color: #c84040;
+}
+.black1000 {
+    color: var(--bg--block);
+}
+.black900 {
+    color: var(--bg--dark);
+}
+.grey100 {
+    color: #e4e4e4;
+}
+.grey200 {
+    color: #d4d4d4;
+}
+.grey400 {
+    color: #d0d0d0;
+}
+.grey900 {
+    color: #858585;
+}
+.grey {
+    color: #a8a8a8;
+}
+.grey800 {
+    color: var(--grey--primary);
+}
+.danger900 {
+    color: var(--danger--800);
+}
+.gold900 {
+    color: var(--primary--900);
+}
+.gold600 {
+    color: var(--primary--600);
+}
+.gold400 {
+    color: var(--primary--400);
+}
+.p20 {
+    padding: 20px;
+}
+.p30 {
+    padding: 30px;
+}
+.p60 {
+    padding: 60px;
+}
+.w100 {
+    width: 100%;
+}
+.titleBtn {
+    display: flex;
+    justify-content: space-between;
+    .titleListNum {
+        align-items: flex-end;
+    }
+    .couponPage {
+        background-color: var(--primary--600);
+        color: var(--bg--grey);
+        font-weight: 500;
+        padding: 5px 15px;
+        border: none;
+        text-decoration: none;
+        transition: all 0.2s;
+        letter-spacing: 0.25px;
+        &:hover {
+            background-color: var(--primary--900);
+            color: var(--primary--600);
+        }
+        &:active {
+            scale: 0.9;
+        }
+    }
+}
+
+.search {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    .searchBar {
+        display: flex;
+        gap: 12px;
+        height: 100px;
+        .searchTextarea {
+            width: 320px;
+            height: 40px;
+            padding: 8px;
+            border: none;
+        }
+        .searchBtn {
+            padding: 8px;
+            padding-left: 30px;
+            padding-right: 30px;
+            border: none;
+            transition: all 0.25s;
+            letter-spacing: 1px;
+            p {
+                margin: 0;
+            }
+            &:active {
+                scale: 0.9;
+            }
+            &:hover {
+                background-color: var(--primary--800);
+                color: var(--primary--400);
+            }
+        }
+    }
+}
+
+.typeList {
+    width: 100%;
+    transition: all 3s;
+    .type {
+        cursor: pointer;
+        padding: 12px;
+        flex: 1;
+        transition: all 0.2s;
+        box-sizing: content-box;
+        &:hover {
+            border-bottom: 3px solid var(--primary--400);
+        }
+        &.active {
+            border-bottom: 3px solid var(--primary--600);
+        }
+    }
+}
+
+.couponList {
+    .couponContent {
+        display: flex;
+        width: 100%;
+        &:hover {
+            .couponC {
+                transform: rotate(1deg);
+            }
+        }
+        .contentLeft {
+            width: 36%;
+            height: auto;
+            display: flex;
+            .couponC {
+                width: 309px;
+                transition: all 0.8s;
+
+                .couponShadow {
+                    width: fit-content;
+                    filter: drop-shadow(8px 8px 3px rgba(0, 0, 0, 0.6));
+                }
+                .coupon {
+                    position: relative;
+                    display: flex;
+                    align-items: center; /* 讓內容垂直置中，可依需求調整 */
+                    width: 260px; /* 根據您的圖片調整寬度 */
+                    height: 120px;
+                    background: #333; /* 調整為接近圖片的深灰色 */
+
+                    margin-right: 10px;
+                    margin-bottom: 10px;
+
+                    /* --- 遮罩設定 (最終修正版) --- */
+
+                    /* 1. 使用位置關鍵字 top 和 bottom */
+                    /* 1. 遮罩圖層 (不變) */
+                    -webkit-mask-image: linear-gradient(black, black),
+                        radial-gradient(
+                            circle 10px at 75% top,
+                            black 10px,
+                            transparent 10.5px
+                        ),
+                        radial-gradient(
+                            circle 10px at 75% bottom,
+                            black 10px,
+                            transparent 10.5px
+                        );
+
+                    mask-image: linear-gradient(black, black),
+                        radial-gradient(
+                            circle 10px at 75% top,
+                            black 10px,
+                            transparent 10.5px
+                        ),
+                        radial-gradient(
+                            circle 10px at 75% bottom,
+                            black 10px,
+                            transparent 10.5px
+                        );
+
+                    /* 2. 組合模式 (關鍵修正) */
+                    /* 舊的 -webkit- 語法不變，因為它本來就是對的 */
+                    -webkit-mask-composite: destination-out;
+                    /* 將 subtract 換成 exclude，繞開渲染 bug */
+                    mask-composite: exclude;
+
+                    /* 3. 重複設定 (不變) */
+                    -webkit-mask-repeat: no-repeat, no-repeat, no-repeat;
+                    mask-repeat: no-repeat, no-repeat, no-repeat;
+
+                    &.used {
+                        margin-left: 50px;
+                        clip-path: inset(0 25% 0 0);
+                    }
+
+                    &.free_shipping {
+                        background-color: #005647;
+                    }
+                    &.member {
+                        background-color: var(--primary--900);
+                    }
+                    .left {
+                        width: 75%;
+                        height: 100%;
+                        border-right: 3px dashed #fff;
+                        border-image: repeating-linear-gradient(
+                                to bottom,
+                                #fff 0,
+                                #fff 8px,
+                                /* 線段長度 */ transparent 10px,
+                                transparent 16px /* 空白間距 */
+                            )
+                            1;
+                        box-sizing: content-box;
+                        position: relative;
+                        .circle {
+                            position: absolute;
+                            width: 180px;
+                            height: 180px;
+                            border-radius: 50%;
+                            top: 50%;
+                            left: -20%;
+                            transform: translateY(-50%);
+                        }
+                        .img {
+                            position: relative;
+                            width: 80px;
+                            height: 80px;
+                            /* background-color: #228; */
+                            left: 8%;
+                            img {
+                                width: fit-content;
+                                height: 80px;
+                            }
+                        }
+                        .content {
+                            width: fit-content;
+                            color: #fff;
+                            position: relative;
+                            margin-left: auto;
+                            margin-right: 10px;
+                            text-align: right;
+                            display: flex;
+                            align-items: flex-end;
+                            flex-direction: column;
+
+                            .type {
+                                text-align: right;
+                                font-size: 16px;
+                                font-weight: bold;
+                                margin-bottom: -7px;
+                            }
+                            .discountNum {
+                                h3 {
+                                    margin-bottom: -3px;
+                                    font-size: 2.1rem;
+                                }
+                            }
+                            .title {
+                                white-space: nowrap;
+                                font-size: 7px;
+                                width: fit-content;
+                            }
+                            .date {
+                                .p6 {
+                                    font-size: 7px;
+                                }
+                            }
+                        }
+                    }
+
+                    .right {
+                        width: 25%;
+                        height: 100%;
+                        .state {
+                            writing-mode: vertical-rl; /* 直書，從右往左 */
+                            text-orientation: upright; /* 每個字直立 */
+                            line-height: 1.5;
+                            letter-spacing: 5px;
+                            margin-bottom: 0;
+                            font-size: 18px;
+                            color: #fff;
+                        }
+                    }
+                }
+            }
+        }
+        .contentRight {
+            width: 64%;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            gap: 3px;
+
+            .couponTags {
+                margin-bottom: 2px;
+                display: flex;
+                gap: 5px;
+                .tag {
+                    color: #fff;
+                    width: fit-content;
+                    padding: 5px 12px;
+                    font-size: 11px;
+                    letter-spacing: 1px;
+                    font-weight: 800;
+                    border: 1px solid var(--danger--800);
+                    &.tagNew {
+                        background-color: var(--primary--600);
+                        color: #000;
+                        font-weight: 700;
+                    }
+                    &.tagDiscount {
+                        background: #fff;
+                        border: 1px solid #005647;
+                        color: #005647;
+                    }
+                    &.tagType {
+                        background: #fff;
+                        border: 1px solid var(--primary--900);
+                        color: var(--primary--900);
+                    }
+                    &.tagUnlimited {
+                        background: #fff;
+                        border: 1px solid var(--grey--primary);
+                        color: var(--grey--primary);
+                    }
+                    &.tagExpires {
+                        font-weight: 700;
+                        background-color: var(--danger--800);
+                    }
+                }
+            }
+            .contentTitle {
+                .title {
+                    h6 {
+                        letter-spacing: 1px;
+                        margin-bottom: 0;
+                    }
+                }
+            }
+            .contentContent {
+                .content {
+                    font-weight: 500;
+                    font-size: 12px;
+                }
+            }
+            .contentList {
+                display: flex;
+                flex-direction: column;
+                gap: 1px;
+                .contentBtn {
+                    margin-top: 20px;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    .date {
+                        font-weight: 600;
+                    }
+                    .useBtn {
+                        text-decoration: none;
+                        color: #000;
+                        padding: 5px 12px;
+                        background-color: var(--primary--600);
+                        font-weight: 600;
+                        letter-spacing: 0.5px;
+                        transition: all 0.2s;
+                        &:active {
+                            scale: 0.9;
+                        }
+                        &:hover {
+                            background-color: var(--primary--900);
+                            color: var(--primary--600);
+                        }
+                    }
+                }
+                p {
+                    margin-bottom: 0;
+                    font-weight: 600;
+                }
+                .collapseContent {
+                    max-height: 0;
+                    overflow: hidden;
+                    transition: opacity 0.8s ease-in-out,
+                        max-height 0.8s ease-in-out 0s;
+                    opacity: 0;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
+                }
+                /* 展開時的樣式 */
+                .collapseContent.expanded {
+                    max-height: 500px; /* 設定一個足夠大的值 */
+                    opacity: 1;
+                    transition: max-height 1s ease-in-out,
+                        opacity 1s ease-in-out;
+                }
+            }
+        }
+    }
+    .more {
+        cursor: pointer;
+        color: var(--primary--600);
+        transition: all 0.2s;
+
+        h5 {
+            font-size: 1rem;
+        }
+        &:hover {
+            color: var(--primary--800);
+        }
+        &:active {
+            scale: 0.95;
+        }
+        .icon {
+            display: inline-block;
+            transition: transform 0.6s ease 0.2s;
+        }
+
+        .icon.open {
+            transform: rotate(-180deg);
+        }
+    }
+}
+
+.pages {
+    margin-top: 15px;
+    font-size: 15px;
+    color: var(--grey--primary);
+    gap: 5px;
+    .page {
+        transition: 0.3s all ease-in-out;
+        cursor: pointer;
+        padding: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
+        border-radius: 6px;
+        font-weight: 700;
+        &.active {
+            background-color: var(--primary--400);
+            color: #fff;
+        }
+        &:hover {
+            background-color: var(--primary--400);
+            color: #fff;
+        }
+        &.disabled {
+            background-color: none;
+            cursor: not-allowed;
+        }
+    }
+}
+
+@media (max-width: 1400px) {
+    .search {
+        /* margin: 5px; */
+        .searchBar {
+            input {
+                font-size: 15px;
+                width: 150px !important;
+            }
+            p {
+                white-space: nowrap;
+                font-size: 12px;
+            }
+        }
+    }
+    .couponContent {
+        .contentLeft {
+            .couponShadow {
+                .coupon {
+                    transform: scale(0.7);
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1000px) {
+    .couponContent {
+        flex-direction: column;
+        .contentLeft {
+            width: 100% !important;
+            .couponShadow {
+                margin: 0 auto;
+            }
+            .coupon {
+                transform: scale(0.9) !important;
+            }
+        }
+        .contentRight {
+            width: 100% !important;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .search {
+        /* margin: 5px; */
+        .searchBar {
+            input {
+                font-size: 12px;
+                width: 100px !important;
+            }
+            p {
+                white-space: nowrap;
+                font-size: 12px;
+            }
+        }
+    }
+    .couponList {
+        .contentRight {
+            .contentList {
+                .contentBtn {
+                    .useBtn {
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+    .pages {
+        .paginationBtn {
+            display: none;
+            &.active {
+                display: block; /* 或者 inline-block, flex 等 */
+            }
+        }
+    }
+}

@@ -1,0 +1,1470 @@
+/* ============================================================
+   Forums CSS Module (cleaned Stage-A)
+   - 只做分段與匯整，不改動原有設計值與命名
+   - 手機覆寫集中在「MOBILE OVERRIDES」區塊
+   - 舊版/備用樣式以 LEGACY 標示，後續可視情況移除
+   ============================================================ */
+
+/* ******************************************************************
+   TOKENS / VARS
+   ****************************************************************** */
+.forusVars {
+    --forus-accent: var(--primary--600, #e6c068);
+    --forus-gray-1: var(--grey--primary, #434343);
+    --forus-gray-2: var(--grey--secondary, #545454);
+    --forus-black: #111;
+    --forus-border: #e5e7eb;
+    --forus--bg--light: #f6f6f6;
+
+    /* 若你的全域 header 不是 80px，可在容器上覆寫 */
+    --forus-header-h: 80px;
+    --forus-footer-h: 48px;
+    --forus-sticky-gap: 8px;
+
+    /* Gutter */
+    --forus-gutter-d: 24px;
+    --forus-gutter-m: 12px;
+
+    /* Tabs（桌機） */
+    --forus-tab-item-w: 240px;
+}
+
+/* ******************************************************************
+   LAYOUT: Container / Page / Row
+   ****************************************************************** */
+.forusContainer {
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 60px;
+    padding-right: 60px;
+}
+
+.forusPage {
+    max-width: 1440px;
+    margin-inline: auto;
+    padding-inline: 60px;
+}
+
+/* 主內容區 */
+.forusMain {
+    padding-top: 0;
+    margin-top: 0;
+    min-height: 100vh;
+    padding-bottom: calc(var(--forus-footer-h) + var(--forus-sticky-gap));
+    background-color: var(--forus--bg--light);
+}
+
+/* Row 基本 reset */
+.forusRow {
+    --bs-gutter-x: 0;
+    margin: 0;
+}
+
+.forusRow>[class*="col-"] {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+/* 品牌/連結 */
+.forusBrand {
+    text-decoration: none;
+    color: var(--forus-black);
+    font-weight: 700;
+}
+
+.forusToplink {
+    text-decoration: none;
+    color: var(--forus-gray-1);
+}
+
+.forusToplink:hover {
+    color: var(--forus-accent);
+}
+
+/* ******************************************************************
+   COMPONENT: Aside (Left / Right)
+   ****************************************************************** */
+.forusAsideLeft,
+.forusAsideRight {
+    position: sticky;
+    top: var(--forus-header-h);
+    align-self: flex-start;
+    max-height: calc(100dvh - var(--forus-header-h) - var(--forus-footer-h) - var(--forus-sticky-gap));
+    overflow: hidden;
+}
+
+/* 左欄內容 */
+.forusAsideNav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-block: 12px;
+}
+
+.forusBtnAside {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 40px;
+    padding: 0 24px;
+    border-radius: 8px;
+    color: var(--forus-black);
+    text-decoration: none;
+}
+
+.forusBtnAside:hover {
+    background: rgba(0, 0, 0, 0.04);
+}
+
+.forusBtnAside.active {
+    color: var(--forus-accent);
+    font-weight: 700;
+    background: rgba(230, 192, 104, 0.12);
+}
+
+.forusBtnAsideActive {
+    /* 選中狀態（語意化 class） */
+    background-color: var(--forus-accent-weak, #ffc10726);
+    border-radius: 12px;
+    transition: background-color 120ms ease;
+}
+
+@media (hover:hover) {
+    .forusBtnAsideActive:hover {
+        background-color: var(--forus-accent-weak, #ffc10738);
+    }
+}
+
+.forusIcon {
+    width: 24px;
+    height: 24px;
+}
+
+/* 右欄面板與搜尋 */
+.forusAsidePanel {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    color: var(--forus-gray-2);
+    padding-top: 12px;
+}
+
+/* ******************************************************************
+   COMPONENT: Search (right rail + offcanvas 共用)
+   ****************************************************************** */
+.forusSearchForm {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border-bottom: 1px solid #333;
+}
+
+.forusSearchInput {
+    border: 0 !important;
+    box-shadow: none !important;
+    padding: 12px 0 !important;
+    background-color: #f6f6f600 !important;
+    color: var(--forus-black);
+}   
+
+.forusSearchInput:focus{
+    background-color: #f6f6f600;
+}   
+
+.forusSearchInput::placeholder {
+    color: var(--forus-gray-2);
+}
+
+.forusClearBtn {
+    background: transparent;
+    border: 0;
+    padding: 0;
+    color: var(--forus-gray-2);
+}
+
+.forusPanelSectionTitle {
+    /* padding: 8px 0; */
+    font-size: 14px;
+    color: var(--forus-gray-2);
+}
+
+.forusPanelLink {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 0;
+    border-radius: 8px;
+    color: inherit;
+    text-decoration: none;
+}
+
+.forusPanelLink:hover {
+    color: var(--forus-accent);
+}
+
+
+/* ******************************************************************
+   COMPONENT: Tabsbar (LEGACY)
+   ****************************************************************** */
+.forusTabsbar {
+    /* 舊版本，保留相容 */
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    padding: 0 var(--forus-gutter-d);
+    margin-top: 8px;
+}
+
+.forusRailBtn {
+    display: none;
+    width: 44px;
+    height: 44px;
+    border: 0;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--forus-gray-1);
+}
+
+.forusRailBtn i {
+    font-size: 22px;
+    line-height: 1;
+}
+
+.forusTabs {
+    display: flex;
+    flex: 0 0 auto;
+    width: calc(var(--forus-tab-item-w) * 2);
+    gap: 0;
+    border-bottom: 3px solid var(--forus-gray-1);
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 10px;
+}
+
+.forusTabs .nav-item {
+    flex: 0 0 var(--forus-tab-item-w);
+    width: var(--forus-tab-item-w);
+    text-align: center;
+}
+
+.forusTabs .nav-link {
+    border: 0;
+    border-radius: 0;
+    margin: 0;
+    padding: 0 8px 8px;
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--forus-gray-1);
+}
+
+.forusTabs .nav-link.active {
+    color: var(--forus-accent);
+    position: relative;
+}
+
+.forusTabs .nav-link.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -3px;
+    height: 3px;
+    background: var(--forus-accent);
+}
+
+/* ******************************************************************
+   COMPONENT: TabsBar（現行）
+   ****************************************************************** */
+.forusTabsBar {
+    position: sticky;
+    top: var(--forus-header-h);
+    z-index: 999;
+    background: #f6f6f6;
+    margin-bottom: 10px;
+    border-bottom: none;
+}
+
+.forusTabsWrap {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.forusTabsBar .forusTabs {
+    /* 現行條的底線版本 */
+    display: flex;
+    position: relative;
+    align-items: center;
+    gap: 0;
+    border-bottom: 2px solid #000;
+}
+
+.forusTabItem {
+    flex: 1 1 0;
+    display: flex;
+    justify-content: center;
+}
+
+.forusTabLink {
+    appearance: none;
+    -webkit-appearance: none;
+    background: none;
+    border: none;
+    padding: 8px 0;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.forusTabLinkActive,
+.forusTabLink.active {
+    color: #e0b84e;
+}
+
+.forusTabsUnderline {
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.forusTabsThumb {
+    height: 2px;
+    background: #e0b84e;
+    width: calc(100% / var(--count, 2));
+    transform: translateX(calc(var(--active-index, 0) * 100%));
+    transition: transform 0.3s ease;
+}
+
+.forusTabBtn {
+    font-size: 20px;
+}
+
+.forusTabBtn:hover {
+    background: #efefef;
+}
+
+.forusTabsIconBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    outline: none;
+    box-shadow: none;
+    border-radius: 8px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.forusTabsIconBtn:focus,
+.forusTabsIconBtn:active {
+    outline: none;
+    box-shadow: none;
+}
+
+/* ******************************************************************
+   COMPONENT: Post List + PostCard
+   ****************************************************************** */
+.forusContentWrap {
+    display: flex;
+    flex-direction: column;
+}
+
+.forusContentStack {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.forusPostCard {
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.forusPostHeader {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.forusAvatar {
+    position: relative;
+    width: 35px;
+    height: 35px;
+    flex: 0 0 35px;
+}
+
+.forusAvatarBg {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    background: #d9d9d9;
+}
+
+.forusAvatarBadge {
+    position: absolute;
+    right: -4px;
+    bottom: -8px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fff;
+    background: #000;
+}
+
+.forusPostMeta {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.forusMetaBoard {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 600;
+    color: var(--forus-black) !important;
+}
+
+.forusMetaSub {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    line-height: 18px;
+    color: var(--forus-black) !important;
+    opacity: .9;
+}
+
+.forusMetaAuthor {
+    font-weight: 500;
+}
+
+/* Author link: default no underline; hover/focus shows underline */
+.forusAuthorLink {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+  outline: none;
+}
+
+.forusAuthorLink:hover,
+.forusAuthorLink:focus-visible {
+  text-decoration: underline;
+}
+
+.forusMetaTime {
+    color: var(--forus-gray-2);
+    opacity: .75;
+}
+
+.forusDot {
+    opacity: .6;
+}
+
+.forusPostBody {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    padding-left: 47px;
+}
+
+.forusPostTitleText {
+    font-size: 20px;
+    line-height: 32px;
+    font-weight: 700;
+    margin: 0;
+    color: var(--forus-black) !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.forusPostExcerpt {
+    font-size: 16px;
+    line-height: 28px;
+    margin: 0;
+    color: var(--forus-black) !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* 圖片橫條 */
+.forusPhotoStrip {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 12px;
+    padding-bottom: 6px;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+    touch-action: pan-x;
+    white-space: nowrap;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.25) transparent;
+}
+
+.forusPhotoThumb {
+    width: 180px;
+    height: 150px;
+    object-fit: cover;
+    flex: 0 0 auto;
+    border-radius: .5rem;
+    scroll-snap-align: start;
+    display: block;
+}
+
+.forusPhotoStrip::-webkit-scrollbar {
+    height: 8px;
+}
+
+.forusPhotoStrip::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+}
+
+/* 動作列 */
+.forusPostActions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-left: 47px;
+}
+
+.forusActionItem {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--forus-black);
+    cursor: pointer;
+    padding: 6px 8px;
+    border-radius: 8px;
+    transition: background-color .15s ease, transform .05s ease;
+    user-select: none;
+}
+
+.forusActionItem i {
+    font-size: 18px;
+    line-height: 1;
+}
+
+button.forusActionItem,
+a.forusActionItem {
+    background: transparent;
+    border: 0;
+    padding: 0;
+}
+
+.forusActionItem:hover {
+    background: rgba(0, 0, 0, 0.06);
+}
+
+.forusActionItem:active {
+    transform: translateY(1px);
+}
+
+.forusActionItem:focus-visible {
+    outline: 2px solid var(--forus-accent);
+    outline-offset: 2px;
+}
+
+.forusActionItem small {
+    font-size: 14px;
+    color: var(--forus-gray-2);
+    font-weight: 600;
+    line-height: 1;
+}
+
+.forusActionItem i.bi-link-45deg+small {
+    display: none;
+}
+
+.forusActionItem.is-active,
+.forusActionItem.is-active i {
+    color: var(--forus-accent);
+}
+
+/* ==== FAB（手機板顯示）==== */
+.forusFab {
+  /* 桌機不顯示 */
+  display: none;
+}
+
+@media (max-width: 991.98px) {
+  .forusFab {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    /* 位置（含 iOS safe-area） */
+    position: fixed;
+    right: clamp(12px, 3vw, 16px);
+    bottom: calc(clamp(12px, 3vw, 16px) + env(safe-area-inset-bottom, 0px));
+    z-index: 1080;
+
+    /* 外觀尺寸 */
+    width: 56px;
+    height: 56px;
+    border-radius: 9999px;
+
+    /* 顏色：--forus-accent 黃底、灰字、黃邊框 */
+    background-color: var(--forus-accent, #ffc107);
+    color: var(--forus-gray-900, #212529);
+    border: 1px solid var(--forus-accent, #ffc107);
+
+    /* 動效與陰影 */
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+    transition: transform 0.12s ease, box-shadow 0.12s ease, opacity 0.12s ease;
+  }
+
+  .forusFab i {
+    color: inherit;           /* icon 跟著文字顏色 */
+    font-size: 1.25rem;
+    line-height: 1;
+  }
+
+  .forusFab:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.28);
+  }
+
+  .forusFab:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.22);
+    opacity: 0.95;
+  }
+
+  .forusFab:focus-visible {
+    outline: none;
+    /* 黃色外圈提示（與 --forus-accent 相近） */
+    box-shadow:
+      0 6px 16px rgba(0, 0, 0, 0.25),
+      0 0 0 3px rgba(255, 193, 7, 0.35);
+  }
+
+  .forusFab:disabled {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+}
+
+/* ******************************************************************
+   COMPONENT: Offcanvas
+   ****************************************************************** */
+.forusOffcanvas .offcanvas-header {
+    border-bottom: 1px solid var(--forus-border);
+}
+
+.forusOffcanvas .offcanvas-title {
+    color: var(--forus-black) !important;
+    font-weight: 700;
+}
+
+/* 不蓋住 header */
+.forusOffcanvas {
+    top: calc(var(--forus-header-h, 68px) + env(safe-area-inset-top)) !important;
+    height: calc(100dvh - var(--forus-header-h, 68px) - env(safe-area-inset-top)) !important;
+    max-height: calc(100dvh - var(--forus-header-h, 68px) - env(safe-area-inset-top)) !important;
+}
+
+.forusOffcanvas :global(.offcanvas-body) {
+    overflow-y: auto;
+}
+
+.forusVars :global(.offcanvas-backdrop) {
+    top: calc(var(--forus-header-h, 68px) + env(safe-area-inset-top)) !important;
+    height: calc(100dvh - var(--forus-header-h, 68px) - env(safe-area-inset-top)) !important;
+}
+
+/* ******************************************************************
+   COMPONENT: Simple Bar（mobile top title）
+   ****************************************************************** */
+.forusBar {
+    position: sticky;
+    top: var(--forus-header-h);
+    z-index: 999;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 10px;
+}
+
+.forusBarInner {
+    height: 44px;
+    display: grid !important;
+    grid-template-columns: 36px 1fr 36px;
+    align-items: center;
+    padding: 0 8px;
+}
+
+.forusBarTitleWrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.forusBarTitle {
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 0.06em;
+    color: #000;
+}
+
+/* ******************************************************************
+   COMPONENT: UsersHeader（Info page）
+   ****************************************************************** */
+.forusUserCard {
+    position: relative;
+    background: #fff;
+    border-radius: 0 0 5px 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    padding: 16px 20px 20px;
+    border-top: 4px solid var(--forus-accent, #e6c068);
+    margin-bottom: 10px;
+    /* 與列表拉開 */
+}
+
+.forusUserHead {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.forusUserAvatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    background: #d9d9d9;
+}
+
+.forusUserName {
+    margin: 0;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.2;
+    color: #000;
+}
+
+.forusUserId {
+    margin: 0;
+    font-size: 12px;
+    color: #000;
+    opacity: .8;
+}
+
+.forusUserStats {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    gap: 20px;
+    width: 100%;
+    max-width: 560px;
+    margin: 8px auto 10px;
+}
+
+.forusUserStat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    min-width: 80px;
+}
+
+.forusUserStatNum {
+    font-weight: 700;
+    color: var(--forus-accent, #e6c068);
+    font-size: 18px;
+    line-height: 1;
+}
+
+.forusUserStatLabel {
+    font-size: 12px;
+    color: #000;
+}
+
+.forusUserDivider {
+    width: 2px;
+    height: 40px;
+    background: #000;
+    border-radius: 2px;
+    align-self: center;
+}
+
+/* 行為列：左「追隨/已追隨」吃滿，右「發訊息」定寬；兩顆同高對齊 */
+.forusUserFollowRow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+}
+
+.forusBtnFollow,
+.forusBtnFollowed,
+.forusBtnChat {
+    height: 44px;
+    line-height: 44px;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+}
+
+.forusBtnFollow,
+.forusBtnFollowed {
+    flex: 1 1 auto;
+}
+
+.forusBtnChat {
+    flex: 0 0 auto;
+    padding: 0 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+}
+
+.forusBtnChat i {
+    display: inline-block;
+    line-height: 1;
+}
+
+/* 未追隨：黃底白字 */
+.forusBtnFollow {
+    background: var(--forus-accent, var(--primary--600, #c79d3c));
+    color: #fff;
+    border: 1px solid var(--forus-accent, var(--primary--600, #c79d3c));
+    font-weight: 700;
+}
+
+.forusBtnFollow:hover {
+    filter: brightness(0.96);
+}
+
+/* 已追隨：保留原本 Ghost 風格 */
+.forusBtnFollowed {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--forus-accent, #e6c068);
+    border-radius: 8px;
+    background: #fff;
+    color: var(--forus-accent, #e6c068);
+    font-weight: 600;
+}
+
+.forusBtnFollowed:hover {
+    background: rgba(230, 192, 104, 0.08);
+}
+
+.forusBtnFollowed:focus {
+    outline: 2px solid rgba(230, 192, 104, 0.45);
+    outline-offset: 2px;
+}
+
+.forusBtnChat {
+    padding: 0 16px;
+    border: 0;
+    border-radius: 8px;
+    background: var(--forus-accent, #e6c068);
+    color: #111;
+    font-weight: 600;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.forusBtnChat:hover {
+    filter: brightness(0.98);
+}
+
+.forusBtnChat:focus {
+    outline: 2px solid rgba(230, 192, 104, 0.45);
+    outline-offset: 2px;
+}
+
+/* Avatar/數字縮小：手機 */
+@media (max-width: 575.98px) {
+    .forusUserAvatar {
+        width: 64px;
+        height: 64px;
+    }
+
+    .forusUserStats {
+        gap: 12px;
+    }
+
+    .forusUserStatNum {
+        font-size: 16px;
+    }
+
+    .forusUserCard {
+        margin-left: 12px;
+        margin-right: 12px;
+    }
+
+    /* 與清單左右 12px 對齊 */
+}
+
+/* ******************************************************************
+   COMPONENT: Write Page（Card / Inputs / Upload / Actions）
+   ****************************************************************** */
+.forusWriteCard {
+    gap: 12px;
+    border-top: 4px solid var(--forus-accent, #e6c068) !important;
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+}
+
+.forusWriteHeader {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.forusWriteHeaderRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.forusWriteBoard {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.forusWriteLabel {
+    font-size: 14px;
+    color: var(--forus-gray-2);
+}
+
+.forusAuthorRow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 0;
+}
+
+.forusAuthorAvatar {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #d9d9d9;
+    flex: 0 0 40px;
+}
+
+.forusAuthorMeta {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.forusAuthorName {
+    font-weight: 700;
+    color: #000;
+}
+
+.forusAuthorTime {
+    font-size: 12px;
+    color: var(--forus-gray-2);
+}
+
+.forusWriteTitleInput {
+    width: 100%;
+    border: 1px solid var(--forus-accent, #e6c068);
+    border-radius: 10px;
+    outline: none;
+    background: #fff;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.4;
+    padding: 10px 12px;
+}
+
+.forusWriteTitleInput:focus {
+    box-shadow: 0 0 0 2px rgba(230, 192, 104, 0.25);
+}
+
+.forusWriteCounterRow {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.forusWriteCounter {
+    font-size: 12px;
+    color: var(--forus-gray-2);
+}
+
+.forusSelect,
+.forusTagInputFramed {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: 1px solid var(--forus-accent, #e6c068) !important;
+    border-radius: 10px;
+    background: #fff !important;
+    padding: 8px 12px !important;
+    font-size: 14px;
+    color: var(--forus-black);
+}
+
+.forusSelect:focus,
+.forusTagInputFramed:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(230, 192, 104, 0.25);
+}
+
+.forusWriteToolbar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 4px;
+}
+
+.forusToolBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 0;
+    background: transparent;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.forusToolBtn:hover {
+    background: rgba(0, 0, 0, 0.06);
+}
+
+.forusToolDivider {
+    width: 1px;
+    height: 20px;
+    background: #ddd;
+    margin: 0 2px;
+}
+
+.forusTextareaFramed {
+    border: 1px solid var(--forus-accent, #e6c068) !important;
+    border-radius: 10px;
+    background: #fff !important;
+    padding: 12px !important;
+}
+
+.forusEditorBox {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.forusEditorArea {
+    min-height: 220px;
+    outline: none;
+    border: 0;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--forus-black);
+    white-space: pre-wrap;
+}
+
+/* Tag 區 */
+.forusWriteTags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+
+.forusTag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border: 1px solid var(--forus-accent);
+    border-radius: 999px;
+    color: var(--forus-gray-2);
+    background: #fdfdfd;
+    font-weight: 500;
+}
+
+.forusTagRemove {
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1;
+}
+
+.forusTagInput {
+    border: 0;
+    outline: none;
+    background: transparent;
+    padding: 6px 0;
+    min-width: 120px;
+}
+
+/* 上傳網格 */
+.forusUpload {
+    margin-top: 6px;
+}
+
+.forusUploadGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+@media (min-width: 768px) {
+    .forusUploadGrid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.forusUploadGrid6 {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+}
+
+.forusUploadItem,
+.forusUploadAdd {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #f3f3f3;
+    border: 1px solid #e5e7eb;
+}
+
+.forusUploadImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.forusUploadRemove {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.65);
+    color: #fff;
+    cursor: pointer;
+}
+
+.forusUploadAdd {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed var(--forus-accent, #e6c068);
+    background: rgba(230, 192, 104, 0.06);
+    color: var(--forus-accent, #e6c068);
+    cursor: pointer;
+}
+
+.forusUploadAdd:hover {
+    background: rgba(230, 192, 104, 0.12);
+}
+
+.forusUploadAdd i {
+    font-size: 20px;
+}
+
+.forusUploadHint {
+    margin-top: 4px;
+    font-size: 12px;
+    color: var(--forus-gray-2, #545454);
+}
+
+/* 動作列（左：上傳；右：發佈/取消） */
+.forusWriteActions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.forusActionUpload {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid var(--forus-accent, #e6c068);
+    background: #fff;
+    color: var(--forus-accent, #e6c068);
+    cursor: pointer;
+}
+
+.forusActionUpload:hover {
+    background: rgba(230, 192, 104, 0.08);
+}
+
+.forusActionUpload i {
+    font-size: 20px;
+    line-height: 1;
+}
+
+.forusActionsRight {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.forusBtnPrimary {
+    appearance: none;
+    border: 0;
+    border-radius: 8px;
+    padding: 10px 16px;
+    background: var(--forus-accent);
+    color: #111;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.forusBtnPrimary:active {
+    transform: translateY(1px);
+}
+
+.forusBtnGhost {
+    appearance: none;
+    border: 1px solid var(--forus-accent);
+    border-radius: 8px;
+    padding: 10px 16px;
+    background: #fff;
+    color: var(--forus-accent);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* ******************************************************************
+   COMPONENT: Tiptap（Write Page Editor）— FIXED SCOPE
+   ****************************************************************** */
+
+/* 外框（你原本的框線/白底/內距） */
+.forusTextareaFramed {
+    border: 1px solid var(--forus-accent, #e6c068) !important;
+    border-radius: 10px;
+    background: #fff !important;
+    padding: 12px !important;
+}
+
+/* ProseMirror 根節點：任何包裹容器都套用 */
+:where(.forusEditorArea, .forusTextareaFramed, .forusEditorBox) :global(.ProseMirror) {
+    min-height: 220px;
+    outline: none;
+    border: 0;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #000 !important;
+    /* 文字一定是黑色，避免被全域覆蓋 */
+    white-space: pre-wrap;
+}
+
+/* 段落間距 */
+:where(.forusEditorArea, .forusTextareaFramed, .forusEditorBox) :global(.ProseMirror p) {
+    margin: 0 0 10px;
+}
+
+:where(.forusEditorArea, .forusTextareaFramed, .forusEditorBox) :global(.ProseMirror p:last-child) {
+    margin-bottom: 0;
+}
+
+/* Placeholder（is-editor-empty） */
+:where(.forusEditorArea, .forusTextareaFramed, .forusEditorBox) :global(.ProseMirror p.is-editor-empty:first-child::before) {
+    content: attr(data-placeholder);
+    color: #888;
+    float: left;
+    height: 0;
+    pointer-events: none;
+}
+
+/* 連結顏色（避免被主題覆寫） */
+:where(.forusEditorArea, .forusTextareaFramed, .forusEditorBox) :global(.ProseMirror a) {
+    color: #0a58ca !important;
+    text-decoration: underline;
+}
+
+/* 圖片：等比例顯示（Dcard 風格），確保可見 */
+/* === Tiptap: Image sizing (desktop portrait ≤520px center; landscape full) === */
+/* 作用範圍：不論 ProseMirror 放在 .forusEditorArea / .forusTextareaFramed / .forusEditorBox 都吃得到 */
+:where(.forusEditorArea, .forusTextareaFramed, .forusEditorBox) {
+    --editor-img-max-w: 520px;
+    --editor-img-max-h: 376px;
+}
+
+/* 基本：不要強制撐滿，預設以原尺寸顯示但不超過 520px，置中 */
+:where(.forusEditorArea, .forusTextareaFramed, .forusEditorBox) :global(.ProseMirror img) {
+    display: block !important;
+    width: auto;
+    /* 不強制滿版 */
+    max-width: var(--editor-img-max-w);
+    /* 直圖等預設 ≤ 520px */
+    height: auto;
+    max-height: var(--editor-img-max-h);
+    /* 安全上限，避免過高 */
+    margin: 8px auto;
+    /* 預設置中 */
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    object-fit: contain;
+    filter: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* 橫圖：滿寬（不超出容器） */
+:where(.forusEditorArea, .forusTextareaFramed, .forusEditorBox) :global(.ProseMirror img[data-orient="landscape"]) {
+    width: 100%;
+    max-width: 100%;
+    margin: 8px 0;
+    /* 橫圖貼左右 */
+}
+
+/* 直圖：維持 ≤520px 並置中（上面的基本規則即是） */
+:where(.forusEditorArea, .forusTextareaFramed, .forusEditorBox) :global(.ProseMirror img[data-orient="portrait"]) {
+    width: auto;
+    max-width: var(--editor-img-max-w);
+    margin: 8px auto;
+}
+
+/* 若尚未標上 data-orient，先走「直圖邏輯」以免被撐滿 */
+:where(.forusEditorArea, .forusTextareaFramed, .forusEditorBox) :global(.ProseMirror img:not([data-orient])) {
+    width: auto;
+    max-width: var(--editor-img-max-w);
+    margin: 8px auto;
+}
+
+/* 手機：兩種都滿版，跟版面走；高度不再限制 */
+@media (max-width: 576px) {
+    :where(.forusEditorArea, .forusTextareaFramed, .forusEditorBox) :global(.ProseMirror img) {
+        width: 100% !important;
+        max-width: 100% !important;
+        max-height: none;
+        /* 讓比例自然縮放 */
+        margin: 8px 0;
+    }
+}
+
+
+/* 橫圖滿寬；直圖略窄置中 */
+:where(.forusEditorArea, .forusTextareaFramed, .forusEditorBox) :global(.ProseMirror img[data-orient="landscape"]) {
+    width: 100%;
+    margin: 8px 0;
+}
+
+:where(.forusEditorArea, .forusTextareaFramed, .forusEditorBox) :global(.ProseMirror img[data-orient="portrait"]) {
+    width: min(520px, 92%);
+    margin: 8px auto;
+}
+
+/* 選取高亮（不影響排版，用 outline 疊色） */
+:where(.forusEditorArea, .forusTextareaFramed, .forusEditorBox) :global(.ProseMirror .ProseMirror-selectednode) {
+    outline: 3px solid var(--forus-accent, #e6c068);
+    outline-offset: 0;
+    box-shadow: none;
+}
+
+/* 手機：直圖再縮一點 */
+@media (max-width: 576px) {
+    :where(.forusEditorArea, .forusTextareaFramed, .forusEditorBox) :global(.ProseMirror img[data-orient="portrait"]) {
+        width: 96%;
+    }
+}
+
+
+/* ******************************************************************
+   HELPERS: Desktop 固定寬度
+   ****************************************************************** */
+@media (min-width: 768px) {
+
+    .forusAsideLeft,
+    .forusAsideRight {
+        display: block;
+    }
+}
+
+.forusSideNavCol,
+.forusRightRailCol {
+    width: 256px;
+    min-width: 256px;
+}
+
+/* ******************************************************************
+   MOBILE OVERRIDES（Collected）
+   ****************************************************************** */
+/* TabsBar 白底 + 置頂 */
+@media (max-width: 576px) {
+    .forusTabsBar {
+        position: sticky !important;
+        top: var(--forus-header-h);
+        z-index: 999 !important;
+        background: #fff !important;
+        border-bottom: 1px solid #eee !important;
+        margin-bottom: 10px;
+    }
+}
+
+/* TabsBar 項目自動大小 */
+@media (max-width: 576px) {
+    .forusTabs {
+        width: auto !important;
+    }
+
+    .forusTabItem {
+        flex: 1 1 auto !important;
+        width: auto !important;
+        min-width: 0 !important;
+    }
+}
+
+/* 外側容器去 padding（中欄滿版） */
+@media (max-width: 576px) {
+    .forusContainer {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+}
+
+/* 貼文列表左右 12px */
+@media (max-width: 576px) {
+    .forusContentStack {
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+    }
+}

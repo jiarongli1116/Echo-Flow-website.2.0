@@ -1,0 +1,196 @@
+/* 結帳進度條樣式 */
+.checkoutProgress {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.progressContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 20px 0;
+}
+
+.progressStep {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.stepIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--grey--secondary);
+  border: 2px solid var(--grey--secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  transition: all 0.3s ease;
+}
+
+.stepLabel {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--grey--secondary);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+/* 當前步驟樣式 - 根據不同步驟使用不同顏色 */
+.progressStep.active .stepIcon {
+  color: #fff;
+}
+
+.progressStep.active .stepLabel {
+  font-weight: 600;
+}
+
+/* 步驟類別定義 */
+.step1 {
+  /* Step 1 特定樣式 */
+}
+
+.step2 {
+  /* Step 2 特定樣式 */
+}
+
+.step3 {
+  /* Step 3 特定樣式 */
+}
+
+.active {
+  /* 當前步驟樣式 */
+}
+
+.completed {
+  /* 已完成步驟樣式 */
+}
+
+/* Step 1 - 確認購物車 (金色) */
+.step1.active .stepIcon {
+  background-color: var(--primary--600);
+  border-color: var(--primary--600);
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+/* Step 2 - 付款及運送 (藍色) */
+.step2.active .stepIcon {
+  background-color: var(--primary--600);
+  border-color: var(--primary--600);
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+}
+
+/* Step 3 - 訂單完成 (綠色) */
+.step3.active .stepIcon {
+  background-color: var(--primary--600);
+  border-color: var(--primary--600);
+  box-shadow: 0 0 10px rgba(40, 167, 69, 0.3);
+}
+
+/* 已完成步驟樣式 - 根據不同步驟使用不同顏色 */
+.completed .stepIcon {
+  color: var(--text-light);
+}
+
+/* Step 1 已完成 (金色) */
+.step1.completed .stepIcon {
+  background-color: var(--primary--600);
+  border-color: var(--primary--600);
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.2);
+}
+
+/* Step 2 已完成 (藍色) */
+.step2.completed .stepIcon {
+  background-color: var(--primary--600);
+  border-color: var(--primary--600);
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+}
+
+/* Step 3 已完成 (綠色) */
+.step3.completed .stepIcon {
+  background-color: var(--primary--600);
+  border-color: var(--primary--600);
+  box-shadow: 0 0 8px rgba(40, 167, 69, 0.2);
+}
+
+/* 進度線樣式 */
+.progressLine {
+  flex: 1;
+  height: 2px;
+  background-color: var(--grey--primary);
+  margin: 0 20px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* 進度線顏色 - 根據當前步驟變化 */
+.step1Completed {
+  background: linear-gradient(
+    to right,
+    var(--primary--400) 0%,
+    var(--primary--800) 100%
+  );
+}
+
+.step2Completed {
+  background: linear-gradient(
+    to left,
+    var(--primary--800) 100%,
+    var(--primary--400) 0%
+  );
+}
+
+/* 通用已完成樣式 */
+.progressLineCompleted {
+  background: linear-gradient(
+    to left,
+    var(--primary--800) 100%,
+    var(--primary--400) 0%
+  );
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .progressContainer {
+    padding: 15px 0;
+  }
+
+  .stepIcon {
+    width: 35px;
+    height: 35px;
+  }
+
+  .stepLabel {
+    font-size: 12px;
+  }
+
+  .progressLine {
+    margin: 0 15px;
+  }
+}
+
+@media (max-width: 576px) {
+  .progressContainer {
+    padding: 10px 0;
+  }
+
+  .stepIcon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .stepLabel {
+    font-size: 11px;
+  }
+
+  .progressLine {
+    margin: 0 10px;
+  }
+}

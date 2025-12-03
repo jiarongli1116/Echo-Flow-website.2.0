@@ -1,0 +1,333 @@
+/* ========== 顧客回饋容器 ========== */
+.customerFeedback {
+  width: 100%;
+  margin: 0 auto;
+  padding: 16px;
+  font-family: 'Noto Sans TC', 'Inter', sans-serif;
+}
+
+/* ========== 標題區域 ========== */
+.feedbackHeader {
+  margin-bottom: 70px;
+}
+
+.feedbackTitle {
+  color: var(--primary--600);
+  font-weight: 600;
+  line-height: 42px;
+  margin: 0;
+  font-size: 28px;
+}
+
+/* ========== 內容區域 ========== */
+.feedbackContent {
+  display: flex;
+  gap: 48px;
+  align-items: flex-start;
+}
+
+/* ========== 左側評分統計 ========== */
+.customerFeedbackRatingSummary {
+  flex: 0 0 auto;
+  width: 500px;
+  padding: 20px;
+}
+
+.averageRating {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.customerFeedbackRatingNumber {
+  font-size: var(--tw---h5);
+  font-weight: 600;
+  color: var(--bg--light);
+  line-height: 1;
+}
+
+.ratingStar {
+  font-size: 26px;
+  color: #FFF177;
+}
+
+.totalReviews {
+  font-size: 16px;
+  color: var(--bg--light);
+  margin-bottom: 32px;
+}
+
+/* 評分分布圖 */
+.ratingDistribution {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ratingBar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.ratingLabel {
+  font-size: 15px;
+  color: var(--bg--light);
+  width: 15px;
+  text-align: center;
+}
+
+.barContainer {
+  flex: 1;
+  height: 15px;
+  background-color: #E5E5E5;
+  border-radius: 9px;
+  overflow: hidden;
+  max-width: 428px;
+}
+
+.barFill {
+  height: 100%;
+  background-color: #FFD233;
+  border-radius: 9px;
+  transition: width 0.3s ease;
+}
+
+/* ========== 右側評論區域 ========== */
+.reviewsContainer {
+  flex: 1;
+  max-width: 700px;
+}
+
+/* 操作欄 */
+.reviewsToolbar {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-bottom: 24px;
+}
+
+.writeReviewBtn {
+  background-color: #851931;
+  color: white;
+  border: none;
+  border-radius: 44px;
+  padding: 10px 32px;
+  font-size: 12px;
+  letter-spacing: 1.2px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.writeReviewBtn:hover {
+  background-color: #a5203d;
+}
+
+/* 排序下拉選單樣式 */
+.filterDropdown {
+  width: auto;
+}
+
+.sortSelect {
+  background-color: transparent;
+  color: var(--primary--600);
+  border: 1px solid var(--primary--600);
+  border-radius: 44px;
+  padding: 8px 24px;
+  font-size: 12px;
+  letter-spacing: 1.2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  /* 自訂下拉箭頭 */
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23e6c068' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m1 6 7 7 7-7'/%3e%3c/svg%3e") !important;
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 12px;
+  padding-right: 35px;
+}
+
+/* Focus 時（點擊/選擇時）變成黃底白字 */
+.sortSelect:focus {
+  color: var(--bg--light) !important;
+  border-color: var(--primary--600) !important;
+
+  /* 更新箭頭顏色為白色 */
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e") !important;
+}
+
+/* 選項下拉時的樣式 */
+.sortSelect option {
+  background-color: var(--bg--grey);
+  color: var(--primary--600);
+}
+
+.sortSelect option:hover {
+  color: white;
+}
+
+.dropdownIcon {
+  font-size: 10px;
+}
+
+/* ========== 評論列表 ========== */
+.reviewsList {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+/* 單個評論卡片 */
+.reviewCard {
+  background-color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 5px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(10px);
+}
+
+.reviewHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.reviewerInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.reviewerName {
+  font-size: 16px;
+  color: #373737;
+  margin: 0;
+  font-weight: 400;
+  line-height: 19px;
+}
+
+.reviewRating {
+  display: flex;
+  gap: 5px;
+}
+
+.star {
+  font-size: 16px;
+  transition: color 0.2s ease;
+}
+
+.starFilled {
+  color: #FD7061;
+}
+
+.starEmpty {
+  color: #BEBEBE;
+}
+
+.reviewDate {
+  font-size: 12px;
+  color: #373737;
+  font-weight: 200;
+}
+
+/* 評論內容 */
+.reviewContent {
+  margin-bottom: 16px;
+}
+
+.reviewText {
+  font-size: 16px;
+  line-height: 28px;
+  color: #373737;
+  font-weight: 300;
+  margin: 0 0 16px 0;
+}
+
+/* 評論操作 */
+.reviewActions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+
+
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+
+
+/* ========== 查看更多 ========== */
+.viewMore {
+  text-align: center;
+}
+
+.viewMoreBtn {
+  background-color: transparent;
+  color: #DDDDDD;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50px;
+  padding: 8px 22px;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.viewMoreBtn:hover {
+  color: var(--primary--600);
+  border-color: var(--primary--600);
+  background-color: rgba(253, 112, 97, 0.05);
+}
+
+@media (max-width: 768px) {
+  .feedbackHeader {
+    margin-bottom: 10px !important;
+  }
+  
+  .feedbackContent {
+    flex-direction: column;
+  }
+
+  .customerFeedbackRatingSummary {
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .reviewsContainer {
+    width: 100%;
+  }
+  
+  .customerFeedback {
+    padding: 12px;
+  }
+
+  .reviewsToolbar {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    display: flex;
+    padding: 0px !important;
+  }
+
+  .writeReviewBtn,
+  .filterDropdown {
+    width: 150px;
+  }
+
+  .reviewHeader {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .barContainer {
+    max-width: 100%;
+  }
+}

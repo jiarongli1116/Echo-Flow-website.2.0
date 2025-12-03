@@ -1,0 +1,189 @@
+/* 分類標籤容器 */
+.categoryTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* 標籤大小變體 */
+.categoryTag.x-small {
+  font-size: 0.6rem;
+}
+
+.categoryTag.small {
+  font-size: 0.75rem;
+}
+
+.categoryTag.medium {
+  font-size: 0.875rem;
+}
+
+.categoryTag.large {
+  font-size: 1rem;
+}
+
+/* 主分類標籤 */
+.categoryBadge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-weight: 500;
+  font-size: inherit;
+  line-height: 1.2;
+  text-align: center;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+/* 次分類標籤 */
+.subCategoryBadge {
+  display: inline-block;
+  padding: 1px 6px;
+  border-radius: 8px;
+  font-weight: 400;
+  font-size: 0.8em;
+  line-height: 1.2;
+  text-align: center;
+  white-space: nowrap;
+  opacity: 0.8;
+  border: 1px solid transparent;
+}
+
+/* 古典音樂 - 灰底白字半透明設計 */
+.categoryBadge.classical {
+  background-color: rgba(67, 67, 67, 0.8) !important;
+  color: var(--text-light) !important;
+  border-color: rgba(84, 84, 84, 0.6) !important;
+}
+
+.subCategoryBadge.classical {
+  background-color: rgba(67, 67, 67, 0.6) !important;
+  color: var(--text-light) !important;
+  border-color: rgba(84, 84, 84, 0.4) !important;
+}
+
+/* 爵士音樂 - 灰底白字半透明設計 */
+.categoryBadge.jazz {
+  background-color: rgba(67, 67, 67, 0.8) !important;
+  color: var(--text-light) !important;
+  border-color: rgba(84, 84, 84, 0.6) !important;
+}
+
+.subCategoryBadge.jazz {
+  background-color: rgba(67, 67, 67, 0.6) !important;
+  color: var(--text-light) !important;
+  border-color: rgba(84, 84, 84, 0.4) !important;
+}
+
+/* 西洋音樂 - 灰底白字半透明設計 */
+.categoryBadge.western {
+  background-color: rgba(67, 67, 67, 0.8) !important;
+  color: var(--text-light) !important;
+  border-color: rgba(84, 84, 84, 0.6) !important;
+}
+
+.subCategoryBadge.western {
+  background-color: rgba(67, 67, 67, 0.6) !important;
+  color: var(--text-light) !important;
+  border-color: rgba(84, 84, 84, 0.4) !important;
+}
+
+/* 華語音樂 - 灰底白字半透明設計 */
+.categoryBadge.chinese {
+  background-color: rgba(67, 67, 67, 0.8) !important;
+  color: var(--text-light) !important;
+  border-color: rgba(84, 84, 84, 0.6) !important;
+}
+
+.subCategoryBadge.chinese {
+  background-color: rgba(67, 67, 67, 0.6) !important;
+  color: var(--text-light) !important;
+  border-color: rgba(84, 84, 84, 0.4) !important;
+}
+
+/* 日韓音樂 - 灰底白字半透明設計 */
+.categoryBadge.japanese {
+  background-color: rgba(67, 67, 67, 0.8) !important;
+  color: var(--text-light) !important;
+  border-color: rgba(84, 84, 84, 0.6) !important;
+}
+
+.subCategoryBadge.japanese {
+  background-color: rgba(67, 67, 67, 0.6) !important;
+  color: var(--text-light) !important;
+  border-color: rgba(84, 84, 84, 0.4) !important;
+}
+
+/* 原聲帶 - 灰底白字半透明設計 */
+.categoryBadge.soundtrack {
+  background-color: rgba(67, 67, 67, 0.8) !important;
+  color: var(--text-light) !important;
+  border-color: rgba(84, 84, 84, 0.6) !important;
+}
+
+.subCategoryBadge.soundtrack {
+  background-color: rgba(67, 67, 67, 0.6) !important;
+  color: var(--text-light) !important;
+  border-color: rgba(84, 84, 84, 0.4) !important;
+}
+
+/* 懸停效果 */
+.categoryBadge:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .categoryTag.small {
+    font-size: 0.7rem;
+  }
+
+  .categoryBadge {
+    padding: 1px 6px;
+  }
+
+  .subCategoryBadge {
+    padding: 1px 4px;
+  }
+}
+
+/* 暗色模式支援 - 灰底白字半透明設計 */
+@media (prefers-color-scheme: dark) {
+  .categoryBadge.classical {
+    background-color: rgba(43, 43, 43, 0.9);
+    color: var(--text-light);
+    border-color: rgba(67, 67, 67, 0.7);
+  }
+
+  .categoryBadge.jazz {
+    background-color: rgba(43, 43, 43, 0.9);
+    color: var(--text-light);
+    border-color: rgba(67, 67, 67, 0.7);
+  }
+
+  .categoryBadge.western {
+    background-color: rgba(43, 43, 43, 0.9);
+    color: var(--text-light);
+    border-color: rgba(67, 67, 67, 0.7);
+  }
+
+  .categoryBadge.chinese {
+    background-color: rgba(43, 43, 43, 0.9);
+    color: var(--text-light);
+    border-color: rgba(67, 67, 67, 0.7);
+  }
+
+  .categoryBadge.japanese {
+    background-color: rgba(43, 43, 43, 0.9);
+    color: var(--text-light);
+    border-color: rgba(67, 67, 67, 0.7);
+  }
+
+  .categoryBadge.soundtrack {
+    background-color: rgba(43, 43, 43, 0.9);
+    color: var(--text-light);
+    border-color: rgba(67, 67, 67, 0.7);
+  }
+}

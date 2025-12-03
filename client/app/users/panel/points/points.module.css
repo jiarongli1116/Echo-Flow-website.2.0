@@ -1,0 +1,191 @@
+/* 紅利點數記錄頁面樣式 */
+.pointsContainer {
+    background-color: #ffffff;
+    padding: 2rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.pointsSummary {
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+    margin-bottom: 2rem;
+    align-items: center;
+}
+
+.pointsSummaryItem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.pointsSummaryLabel {
+    font-size: 1rem;
+    color: #6c757d;
+    font-weight: 500;
+}
+
+.pointsSummaryLabelExpiring {
+    font-size: 1rem;
+    color: #dc2626;
+    font-weight: 500;
+}
+
+.pointsSummaryValue {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #000000;
+}
+
+.pointsSummaryValueExpiring {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #dc2626;
+}
+
+.pointsTableContainer {
+    overflow-x: auto;
+}
+
+.pointsTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1rem;
+}
+
+.pointsTable th {
+    background-color: #e5e7eb;
+    padding: 1rem;
+    text-align: center;
+    font-weight: 600;
+    color: #000000;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.pointsTable td {
+    padding: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+    color: #374151;
+    text-align: center;
+}
+
+.pointsTable tbody tr:hover {
+    background-color: #f9fafb;
+}
+
+.pointsTable tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* 載入狀態樣式 */
+.loadingContainer {
+    text-align: center;
+    padding: 2rem;
+}
+
+/* 錯誤狀態樣式 */
+.errorContainer {
+    text-align: center;
+    padding: 2rem;
+    color: #dc2626;
+}
+
+.retryButton {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.retryButton:hover {
+    background-color: #2563eb;
+}
+
+/* 空狀態樣式 */
+.emptyContainer {
+    text-align: center;
+    padding: 2rem;
+    color: #6b7280;
+}
+
+/* 點數類型顏色 - 使用最強優先級的選擇器來覆蓋 UserPanel 樣式 */
+.pointsContainer .pointsTable td.pointsGain {
+    color: #059669 !important;
+    font-weight: 600 !important;
+}
+
+.pointsContainer .pointsTable td.pointsUse {
+    color: #dc2626 !important;
+    font-weight: 600 !important;
+}
+
+.pointsContainer .pointsContainer .pointsTable td.pointsDefault {
+    color: #6b7280 !important;
+    font-weight: 600 !important;
+}
+
+/* 390px 手機板響應式設計 */
+@media (max-width: 390px) {
+    .pointsContainer {
+        padding: 1rem;
+    }
+
+    .pointsSummary {
+        flex-direction: column;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+        align-items: flex-start;
+    }
+
+    .pointsSummaryItem {
+        flex-direction: row;
+        align-items: center;
+        gap: 0.5rem;
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .pointsSummaryLabel,
+    .pointsSummaryLabelExpiring {
+        font-size: 0.8rem;
+    }
+
+    .pointsSummaryValue,
+    .pointsSummaryValueExpiring {
+        font-size: 1rem;
+    }
+
+    .pointsTable {
+        font-size: 0.75rem;
+    }
+
+    .pointsTable th,
+    .pointsTable td {
+        padding: 0.5rem 0.25rem;
+    }
+
+    .pointsTable th {
+        font-size: 0.7rem;
+    }
+
+    .pointsTable td {
+        font-size: 0.7rem;
+    }
+
+    .loadingContainer,
+    .errorContainer,
+    .emptyContainer {
+        padding: 1rem;
+        font-size: 0.8rem;
+    }
+
+    .retryButton {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+    }
+}

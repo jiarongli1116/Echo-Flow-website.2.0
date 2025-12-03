@@ -1,0 +1,702 @@
+.alc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.bgBlack1000 {
+    background-color: var(--bg--block);
+}
+.bgBlack900 {
+    background-color: var(--bg--dark);
+}
+.bgBlack800 {
+    background-color: var(--bg--grey);
+}
+.bgBlack600 {
+    background-color: var(--grey--primary);
+}
+.bgGrey {
+    background-color: #a8a8a8;
+}
+.bgGrey700 {
+    background-color: #bebebe;
+}
+.bgGrey600 {
+    background-color: #ddd;
+}
+.bgGrey100 {
+    background-color: #e4e4e4;
+}
+.bgGold600 {
+    background-color: var(--primary--600);
+}
+.bgDanger900 {
+    background-color: var(--danger--800);
+}
+.bgDanger700 {
+    background-color: var(--danger--600);
+}
+.bgDanger600 {
+    background-color: #c84040;
+}
+.black1000 {
+    color: var(--bg--block);
+}
+.black900 {
+    color: var(--bg--dark);
+}
+.grey100 {
+    color: #e4e4e4;
+}
+.grey200 {
+    color: #d4d4d4;
+}
+.grey400 {
+    color: #d0d0d0;
+}
+.grey900 {
+    color: #858585;
+}
+.grey {
+    color: #a8a8a8;
+}
+.grey800 {
+    color: var(--grey--primary);
+}
+.danger900 {
+    color: var(--danger--800);
+}
+.gold900 {
+    color: var(--primary--900);
+}
+.gold600 {
+    color: var(--primary--600);
+}
+.gold400 {
+    color: var(--primary--400);
+}
+.p30 {
+    padding: 30px;
+}
+.p60 {
+    padding: 60px;
+}
+.w100 {
+    width: 100%;
+}
+
+.headerPAD {
+    width: 100%;
+    height: calc(100vh - 80px);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center; /* 垂直置中 */
+    justify-content: center; /* 水平置中，如果需要的話 */
+
+    .carousel_inner {
+        height: 100%; /* 確保輪播內容也佔滿高度 */
+        display: flex;
+        align-items: flex-end;
+        .carousel_item {
+            height: 100%; /* 確保每個項目都佔滿高度 */
+            img {
+                height: auto; /* 讓圖片高度根據寬度自動調整 */
+                width: auto; /* 讓圖片寬度根據高度自動調整 */
+                max-width: 100%; /* 確保圖片不超出容器 */
+                max-height: 100%; /* 確保圖片不超出容器 */
+                object-fit: contain; /* 讓圖片縮放以適應容器，但不會被裁切 */
+            }
+        }
+    }
+    .carousel_control_prev,
+    .carousel_control_next {
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
+.broadcast {
+    width: 100%;
+    height: 80px;
+    color: #fff;
+    padding-left: 30px;
+    padding-right: 30px;
+    overflow: hidden;
+
+    h3 {
+        display: flex;
+        letter-spacing: 5px;
+        font-size: 39px;
+        white-space: nowrap;
+        overflow: hidden;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-weight: bold;
+    }
+}
+
+.container {
+    color: #fff;
+    overflow: hidden;
+    padding: 0;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    .container2 {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+    .couponTitle {
+        display: flex;
+        justify-content: space-between;
+        align-content: center;
+    }
+    .vinylTurntable {
+        height: 900px;
+        .content {
+            margin-top: 30px;
+        }
+        .turntable {
+            width: 848px;
+            height: 730px;
+            border-radius: 15px;
+            position: relative;
+
+            .circle {
+                position: relative;
+                margin-left: 10%;
+                margin-top: 10%;
+                width: 500px;
+                height: 500px;
+                border-radius: 50%;
+                overflow: hidden;
+            }
+
+            .slice {
+                position: absolute;
+                inset: 0;
+                border-radius: 50%;
+                --deg: 15deg;
+                background: conic-gradient(
+                    from -90deg,
+                    hsl(var(--hue) 80% 60%) 0 var(--deg),
+                    transparent var(--deg) 360deg
+                );
+                border: 5px solid #333;
+            }
+
+            /* 24 個角度 */
+            .slice1 {
+                --hue: 0;
+                transform: rotate(0deg);
+            }
+            .slice2 {
+                --hue: 15;
+                transform: rotate(15deg);
+            }
+            .slice3 {
+                --hue: 30;
+                transform: rotate(30deg);
+            }
+            .slice4 {
+                --hue: 45;
+                transform: rotate(45deg);
+            }
+            .slice5 {
+                --hue: 60;
+                transform: rotate(60deg);
+            }
+            .slice6 {
+                --hue: 75;
+                transform: rotate(75deg);
+            }
+            .slice7 {
+                --hue: 90;
+                transform: rotate(90deg);
+            }
+            .slice8 {
+                --hue: 105;
+                transform: rotate(105deg);
+            }
+            .slice9 {
+                --hue: 120;
+                transform: rotate(120deg);
+            }
+            .slice10 {
+                --hue: 135;
+                transform: rotate(135deg);
+            }
+            .slice11 {
+                --hue: 150;
+                transform: rotate(150deg);
+            }
+            .slice12 {
+                --hue: 165;
+                transform: rotate(165deg);
+            }
+            .slice13 {
+                --hue: 180;
+                transform: rotate(180deg);
+            }
+            .slice14 {
+                --hue: 195;
+                transform: rotate(195deg);
+            }
+            .slice15 {
+                --hue: 210;
+                transform: rotate(210deg);
+            }
+            .slice16 {
+                --hue: 225;
+                transform: rotate(225deg);
+            }
+            .slice17 {
+                --hue: 240;
+                transform: rotate(240deg);
+            }
+            .slice18 {
+                --hue: 255;
+                transform: rotate(255deg);
+            }
+            .slice19 {
+                --hue: 270;
+                transform: rotate(270deg);
+            }
+            .slice20 {
+                --hue: 285;
+                transform: rotate(285deg);
+            }
+            .slice21 {
+                --hue: 300;
+                transform: rotate(300deg);
+            }
+            .slice22 {
+                --hue: 315;
+                transform: rotate(315deg);
+            }
+            .slice23 {
+                --hue: 330;
+                transform: rotate(330deg);
+            }
+            .slice24 {
+                --hue: 345;
+                transform: rotate(345deg);
+            }
+        }
+    }
+    .search {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        .searchBar {
+            display: flex;
+            gap: 12px;
+            height: 100px;
+            .searchTextarea {
+                width: 320px;
+                height: 40px;
+                padding: 8px;
+                border: none;
+            }
+            .searchBtn {
+                padding: 8px;
+                padding-left: 30px;
+                padding-right: 30px;
+                border: none;
+                transition: all 0.3s;
+                color: var(--bg--grey);
+                background-color: var(--primary--600);
+                p {
+                    margin: 0;
+                }
+                &:active {
+                    scale: 0.9;
+                }
+                &:hover {
+                    background-color: var(--primary--400);
+                    color: var(--bg--block);
+                }
+            }
+        }
+    }
+
+    .hr {
+        border: none; /* 先移除預設邊框 */
+        border-top: 8px dashed #ffffff; /* 確保是純白且不透明 */
+        background: transparent;
+        margin-right: 60px;
+        margin-left: 60px;
+        margin-top: 25px;
+        margin-bottom: 25px;
+    }
+
+    .couponsContent {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+
+        .couponsAll {
+            padding: 8px;
+            padding-left: 20px;
+            padding-right: 20px;
+            &:hover {
+                background-color: var(--primary--400);
+            }
+            h6 {
+                color: var(--grey--primary);
+                font-size: 20px;
+                white-space: nowrap;
+            }
+        }
+
+        .couponTag {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            .type {
+                display: flex;
+                align-content: center;
+                color: #fff;
+                h6 {
+                    white-space: nowrap;
+                }
+            }
+            .tags {
+                margin-left: 15px;
+                ul {
+                    display: flex;
+                    gap: 12px;
+                    padding: 0;
+                    .tag {
+                        padding-left: 25px;
+                        padding-right: 25px;
+
+                        &:hover {
+                            background-color: var(--primary--400);
+                        }
+
+                        &.active {
+                            background-color: var(--primary--800) !important;
+                            p {
+                                color: var(--primary--400);
+                            }
+                        }
+
+                        p {
+                            white-space: nowrap;
+                            color: var(--grey--primary);
+                            margin: 0;
+                            /* font-size: 21px; */
+                            letter-spacing: 1px;
+                            font-weight: 600;
+                        }
+                    }
+                }
+            }
+        }
+
+        .coupons {
+            gap: 28px;
+            margin: 0;
+
+            .couponContent {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                width: 309px;
+                height: 265px;
+                padding: 25px;
+                &:hover {
+                    .couponShadow {
+                        transform: rotate(1deg);
+                    }
+                }
+                .couponShadow {
+                    transition: all 0.8s;
+                    filter: drop-shadow(8px 8px 3px rgba(0, 0, 0, 0.6));
+                }
+                .coupon {
+                    position: relative;
+                    display: flex;
+                    align-items: center; /* 讓內容垂直置中，可依需求調整 */
+                    width: 260px; /* 根據您的圖片調整寬度 */
+                    height: 120px;
+                    background: #333; /* 調整為接近圖片的深灰色 */
+
+                    transform: translateZ(0);
+                    margin-right: 10px;
+                    margin-bottom: 10px;
+
+                    /* --- 遮罩設定 (最終修正版) --- */
+
+                    /* 1. 使用位置關鍵字 top 和 bottom */
+                    /* 1. 遮罩圖層 (不變) */
+                    -webkit-mask-image: linear-gradient(black, black),
+                        radial-gradient(
+                            circle 10px at 75% top,
+                            black 10px,
+                            transparent 10.5px
+                        ),
+                        radial-gradient(
+                            circle 10px at 75% bottom,
+                            black 10px,
+                            transparent 10.5px
+                        );
+
+                    mask-image: linear-gradient(black, black),
+                        radial-gradient(
+                            circle 10px at 75% top,
+                            black 10px,
+                            transparent 10.5px
+                        ),
+                        radial-gradient(
+                            circle 10px at 75% bottom,
+                            black 10px,
+                            transparent 10.5px
+                        );
+
+                    /* 2. 組合模式 (關鍵修正) */
+                    /* 舊的 -webkit- 語法不變，因為它本來就是對的 */
+                    -webkit-mask-composite: destination-out;
+                    /* 將 subtract 換成 exclude，繞開渲染 bug */
+                    mask-composite: exclude;
+
+                    /* 3. 重複設定 (不變) */
+                    -webkit-mask-repeat: no-repeat, no-repeat, no-repeat;
+                    mask-repeat: no-repeat, no-repeat, no-repeat;
+
+                    &.free_shipping {
+                        background-color: #005647;
+                    }
+
+                    .left {
+                        width: 75%;
+                        height: 100%;
+                        border-right: 3px dashed #fff;
+                        border-image: repeating-linear-gradient(
+                                to bottom,
+                                #fff 0,
+                                #fff 8px,
+                                /* 線段長度 */ transparent 10px,
+                                transparent 16px /* 空白間距 */
+                            )
+                            1;
+                        box-sizing: content-box;
+                        position: relative;
+                        .circle {
+                            position: absolute;
+                            width: 180px;
+                            height: 180px;
+                            border-radius: 50%;
+                            top: 50%;
+                            left: -20%;
+                            transform: translateY(-50%);
+                        }
+                        .img {
+                            position: relative;
+                            width: 80px;
+                            height: 80px;
+                            /* background-color: #228; */
+                            left: 8%;
+                            img {
+                                width: fit-content;
+                                height: 80px;
+                            }
+                        }
+                        .content {
+                            width: fit-content;
+                            color: #fff;
+                            position: relative;
+                            margin-left: auto;
+                            margin-right: 10px;
+                            text-align: right;
+                            display: flex;
+                            align-items: flex-end;
+                            flex-direction: column;
+
+                            .type {
+                                text-align: right;
+                                font-size: 16px;
+                                font-weight: bold;
+                                margin-bottom: -7px;
+                            }
+                            .discountNum {
+                                h3 {
+                                    margin-bottom: -3px;
+                                    font-size: 2.1rem;
+                                }
+                            }
+                            .title {
+                                white-space: nowrap;
+                                font-size: 7px;
+                                width: fit-content;
+                            }
+                            .date {
+                                .p6 {
+                                    font-size: 7px;
+                                }
+                            }
+                        }
+                    }
+
+                    .right {
+                        width: 25%;
+                        height: 100%;
+                        .state {
+                            writing-mode: vertical-rl; /* 直書，從右往左 */
+                            text-orientation: upright; /* 每個字直立 */
+                            line-height: 1.5;
+                            letter-spacing: 5px;
+                            margin-bottom: 0;
+                            font-size: 18px;
+                        }
+                    }
+                }
+
+                .title {
+                    h6 {
+                        font-size: 16px;
+                        color: var(--bg--block);
+                        margin-bottom: 0;
+                    }
+                }
+                .content {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    .endData {
+                        p {
+                            color: var(--grey--primary);
+                            margin-bottom: 0;
+                        }
+                    }
+                    .couponBtn {
+                        padding-left: 8px;
+                        padding-right: 8px;
+                        width: 30%;
+                        font-weight: 600;
+                        letter-spacing: 2px;
+                        transition: all 0.2s;
+                        &.couponActive {
+                            &:hover {
+                                background-color: var(--primary--900);
+                                color: var(--primary--600);
+                            }
+                            &:active {
+                                scale: 0.9;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .pages {
+            margin-top: 12px;
+            font-size: 15px;
+            color: #fff;
+            gap: 5px;
+            .page {
+                transition: 0.3s all ease-in-out;
+                cursor: pointer;
+                padding: 10px;
+                padding-left: 15px;
+                padding-right: 15px;
+                border-radius: 6px;
+                font-weight: 700;
+                &.active {
+                    background-color: var(--primary--400);
+                    color: #fff;
+                }
+                &:hover {
+                    background-color: var(--primary--400);
+                    color: #fff;
+                }
+                &.disabled {
+                    background-color: none;
+                    color: var(--primary--900);
+                    cursor: not-allowed;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1400px) {
+    .headerPAD {
+        height: fit-content;
+    }
+    .container {
+        padding-bottom: 30px;
+        .couponsContent {
+            .couponTitle {
+                padding: 12px;
+            }
+            .couponTag {
+                padding-left: 12px;
+            }
+            .coupons {
+                /* justify-content: flex-start; */
+                margin-left: auto;
+                margin-right: auto;
+                justify-content: center;
+                /* justify-content: space-evenly !important; */
+                .coupon {
+                    .right {
+                        h6 {
+                            font-size: 18px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .container2 {
+        padding: 12px;
+        padding-bottom: 30px;
+    }
+    .hr {
+        margin-right: 30px !important;
+        margin-left: 30px !important;
+    }
+    .search {
+        /* margin: 5px; */
+        .searchBar {
+            input {
+                font-size: 12px;
+                width: 160px !important;
+            }
+            p {
+                white-space: nowrap;
+                font-size: 12px;
+            }
+        }
+    }
+    .couponTag {
+        .tags {
+            overflow-x: scroll;
+            /* scrollbar-width: none; */
+            /* -ms-overflow-style: none; */
+            &::-webkit-scrollbar {
+                height: 12px;
+            }
+            &::-webkit-scrollbar-track {
+                background: #222; /* 滾動軌道顏色 */
+                border-radius: 4px;
+            }
+        }
+    }
+    .pages {
+        gap: 0px;
+        .paginationBtn {
+            display: none;
+            &.active {
+                display: block; /* 或者 inline-block, flex 等 */
+            }
+        }
+    }
+}

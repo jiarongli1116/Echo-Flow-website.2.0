@@ -1,0 +1,3500 @@
+/* ================================
+   Cart CSS Modules - 精簡版本
+
+   特點:
+   - ✅ 作用域收斂到 .cartPage
+   - ✅ 移除 !important 聲明
+   - ✅ 合併重複選擇器與屬性
+   - ✅ 精簡 Grid 佈局系統
+   - ✅ 統一按鈕與卡片變體
+   - ✅ 合併媒體查詢
+   - ✅ 只使用已定義的 CSS 變數
+   ================================ */
+
+/* ================================
+   1. 購物車頁面容器
+   ================================ */
+
+.cartPage {
+  background-color: var(--bg--light);
+  width: 100%;
+  position: relative;
+  min-height: auto;
+  padding-bottom: 2rem;
+}
+
+/* ================================
+   2. 標題與包裝器
+   ================================ */
+
+/* 統一的標題區塊樣式 */
+.sectionTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+}
+
+.sectionTitleText {
+  color: var(--grey--primary);
+  font-weight: 600;
+  margin: 0;
+}
+
+/* ================================
+   3. 購物車畫面容器
+   ================================ */
+
+.cartScreen {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  /* gap: var(--spacing-sm); */
+  min-width: 540px;
+  padding: 12px 8px;
+  position: relative;
+  border: 1.5px solid #e4e4e7;
+  border-radius: var(--radius-xs);
+}
+
+/* 全選區域樣式 */
+.selectAllSection {
+  align-items: center;
+  align-self: stretch;
+  display: flex;
+  gap: 16px;
+  height: 52px;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-bottom: 16px;
+  position: relative;
+  width: 100%;
+}
+
+/* 分隔線樣式 */
+.sectionDivider {
+  border: none;
+  height: 2px;
+  background: #e4e4e7;
+  margin: var(--spacing-md) 0;
+  /* 平滑的出現動畫 */
+  /* animation: fadeIn 0.3s ease-out; */
+  /* 防止重排 */
+  contain: layout;
+}
+
+/* 🚀 新增：分隔線 loading 狀態 */
+.sectionDivider.loading {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* 右側區域容器優化 */
+.frameWrapper {
+  /* 防止重排和重繪 */
+  contain: layout style paint;
+  /* 平滑過渡 */
+  transition: all 0.3s ease;
+  /* 硬體加速 */
+  transform: translateZ(0);
+  /* 防止閃爍 */
+  will-change: transform, opacity;
+  /* 確保容器穩定 */
+  position: relative;
+}
+
+/* 右側區域主容器 - 額外的穩定性 */
+.rightSideContainer {
+  /* 防止重排和重繪 */
+  contain: layout style paint;
+  /* 移除 transition，避免載入時的動畫效果 */
+  /* 硬體加速 */
+  transform: translateZ(0);
+  /* 防止閃爍 */
+  will-change: transform, opacity;
+  /* 確保容器穩定 */
+  position: relative;
+  overflow: hidden;
+  /* 確保容器有固定高度，避免載入時跳動 */
+  min-height: 400px;
+  /* 🚀 新增：確保邊框穩定，避免視差錯覺 */
+  border: none;
+  /* 確保內層面板的邊框是唯一的邊框 */
+}
+
+/* 🚀 修改：載入狀態的右側區域 - 移除閃爍動畫 */
+.rightSideContainer.loading {
+  /* 移除 shimmer 動畫，使用穩定的背景色 */
+  background-color: var(--bg--light);
+  /* 禁用所有動畫 */
+  animation: none !important;
+  transition: none !important;
+  /* 保持穩定狀態 */
+  opacity: 0.9;
+  /* 防止重排 */
+  contain: layout style paint;
+  will-change: auto;
+  /* 🚀 新增：確保邊框穩定 */
+  border: none;
+}
+
+/* 🚀 修改：選中商品更新時的專用 loading 狀態 - 移除邊框避免視差錯覺 */
+.rightSideContainer.updating {
+  /* 使用更微妙的視覺效果 */
+  background-color: var(--bg--light);
+  /* 禁用所有動畫 */
+  animation: none !important;
+  transition: none !important;
+  /* 保持穩定狀態 */
+  opacity: 1;
+  /* 防止重排 */
+  contain: layout style paint;
+  will-change: auto;
+  /* 🚀 新增：確保邊框穩定 */
+  border: none;
+}
+
+@keyframes loading-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* 優惠券區域動畫 */
+.couponSection {
+  /* 防止重排 */
+  contain: layout style paint;
+  /* 統一的平滑過渡 */
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  /* 進入動畫 - 統一動畫 */
+  animation: slideInFromBottom 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  /* 防止閃爍 */
+  will-change: transform, opacity;
+}
+
+/* 點數區域動畫 */
+.pointsSection {
+  /* 防止重排 */
+  contain: layout style paint;
+  /* 統一的平滑過渡 */
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  /* 進入動畫 - 統一動畫 */
+  animation: slideInFromBottom 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.15s
+    both;
+  /* 防止閃爍 */
+  will-change: transform, opacity;
+}
+
+/* 價格區域動畫 */
+.priceRow {
+  /* 防止重排 */
+  contain: layout style paint;
+  /* 統一的平滑過渡 */
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  /* 進入動畫 - 統一動畫 */
+  animation: slideInFromBottom 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s
+    both;
+  /* 防止閃爍 */
+  will-change: transform, opacity;
+}
+
+/* 總計區域動畫 */
+.totalAmount {
+  /* 防止重排 */
+  contain: layout style paint;
+  /* 統一的平滑過渡 */
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  /* 進入動畫 - 統一動畫 */
+  animation: slideInFromBottom 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.45s
+    both;
+  /* 防止閃爍 */
+  will-change: transform, opacity;
+}
+
+/* 結帳按鈕區域動畫 */
+.buttonLoginWrapper {
+  /* 防止重排 */
+  contain: layout style paint;
+  /* 統一的平滑過渡 */
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  /* 進入動畫 - 統一動畫 */
+  animation: slideInFromBottom 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s
+    both;
+  /* 防止閃爍 */
+  will-change: transform, opacity;
+}
+
+/* 從下方滑入動畫 - 統一動畫 */
+@keyframes slideInFromBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) translateZ(0);
+  }
+  30% {
+    opacity: 0.3;
+    transform: translateY(15px) translateZ(0);
+  }
+  70% {
+    opacity: 0.8;
+    transform: translateY(5px) translateZ(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) translateZ(0);
+  }
+}
+
+/* 價格變化動畫 - 統一動畫 */
+.priceValue {
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  /* 防止閃爍 */
+  contain: layout style;
+  will-change: transform, color;
+}
+
+.priceValue.changing {
+  animation: priceChange 0.5s ease-in-out;
+}
+
+@keyframes priceChange {
+  0% {
+    transform: scale(1);
+    color: inherit;
+  }
+  50% {
+    transform: scale(1.05);
+    color: #e74c3c;
+  }
+  100% {
+    transform: scale(1);
+    color: inherit;
+  }
+}
+
+/* ================================
+   4. 購物車項目樣式
+   ================================ */
+
+.wishlistItemCard {
+  margin-bottom: 12px;
+  border: 1px solid #e9ecef;
+  border-radius: var(--radius-md);
+  transition: all 0.2s ease-in-out;
+  background-color: #ffffff;
+  box-shadow: var(--shadow-sm);
+}
+
+.wishlistItemCard:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.wishlistItems {
+  align-self: stretch;
+  width: 100%;
+}
+
+/* 商品圖片樣式 */
+.itemImage {
+  border-radius: 8px;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+}
+
+.itemImage:hover {
+  transform: scale(1.05);
+}
+
+/* 商品名稱樣式 */
+.itemName {
+  /* 使用 globals.css 的 h6 標籤樣式，只定義顏色 */
+  color: var(--text-dark);
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+/* 商品藝術家樣式 */
+.itemArtist {
+  /* 使用 globals.css 的 p 標籤樣式，只定義顏色和字體大小 */
+  font-size: 14px;
+  color: var(--grey--primary);
+  margin-bottom: var(--spacing-sm);
+  text-decoration: underline;
+  text-decoration-color: rgba(0, 0, 0, 0.1);
+}
+
+/* 商品價格樣式 */
+.itemPrice {
+  /* 使用 globals.css 的 p 標籤樣式，只定義顏色和字體粗細 */
+  font-weight: 700;
+  color: var(--primary--800);
+}
+
+/* 標籤和單價容器樣式 */
+.itemTagPriceContainer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+/* 商品單價樣式 */
+.itemUnitPrice {
+  font-size: 12px;
+  color: var(--grey--secondary);
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+/* 數量控制器樣式 */
+.quantityControl {
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  min-width: 100px;
+}
+
+.quantityControl .btn {
+  border: none;
+  background: transparent;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.quantityControl .btn:hover {
+  background-color: var(--primary--600);
+  color: white;
+}
+
+/* 商品操作按鈕樣式 */
+.itemActions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.itemActions .btn {
+  font-size: 12px;
+  padding: 8px;
+  transition: all 0.2s ease;
+  border-radius: 4px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 完全自定義的刪除按鈕樣式 */
+.deleteBtn {
+  /* 尺寸和布局 */
+  width: 32px;
+  height: 32px;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+
+  /* 外觀樣式 */
+  border: 1px solid #dc3545;
+  border-radius: 4px;
+  background-color: transparent;
+  color: #dc3545;
+
+  /* 字體和文字 */
+  font-size: 12px;
+  line-height: 1;
+  font-family: inherit;
+
+  /* 交互效果 */
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  /* 移除預設樣式 */
+  outline: none;
+  text-decoration: none;
+}
+
+.deleteBtn:hover {
+  background-color: #dc3545;
+  border-color: #dc3545;
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(220, 53, 69, 0.3);
+}
+
+.deleteBtn:active {
+  transform: translateY(0);
+}
+
+.deleteBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* 數量控制按鈕樣式 - 與垃圾桶相同設計但使用主色調 */
+.quantityBtn {
+  /* 尺寸和布局 */
+  width: 30px;
+  height: 30px;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+
+  /* 外觀樣式 */
+  border: none;
+  border-radius: 4px;
+  background-color: transparent;
+  color: var(--text-dark);
+
+  /* 字體和文字 */
+  font-size: 16px;
+  font-weight: 400;
+
+  /* 交互效果 */
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  /* 移除預設樣式 */
+  outline: none;
+  text-decoration: none;
+  box-shadow: none;
+}
+
+.quantityBtn:hover {
+  border: 1px solid var(--primary--600);
+  background-color: transparent;
+  color: var(--text-dark);
+  transform: none;
+  box-shadow: none;
+}
+
+.quantityBtn:active {
+  transform: translateY(0);
+}
+
+.quantityBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+  background-color: transparent;
+  border-color: var(--primary--600);
+  color: #999999;
+}
+
+.itemActions .btn i {
+  font-size: 12px;
+}
+
+/* ================================
+   5. 空購物車狀態
+   ================================ */
+
+.emptyCartState {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.emptyCartState .bi-heart {
+  color: #fdd16c;
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* ================================
+   6. 推薦商品系統
+   ================================ */
+
+.recommendationItem {
+  padding: 8px;
+  transition: transform 0.2s ease;
+}
+
+.recommendationItem:hover {
+  transform: translateY(-2px);
+}
+
+.recommendationImageWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.recommendationImage {
+  transition: border-color 0.2s ease;
+}
+
+.recommendationItem:hover .recommendationImage {
+  border-color: var(--primary--400);
+}
+
+.recommendationAddBtn {
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1.5px solid #ffffff;
+  background-color: var(--primary--400);
+  color: var(--text-dark);
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.recommendationAddBtn:hover {
+  background-color: var(--primary--600);
+  transform: scale(1.1);
+}
+
+.recommendationInfo h6 {
+  /* 使用 globals.css 的 h6 標籤樣式，只定義字體大小和間距 */
+  font-size: 14px;
+  line-height: 1.2;
+  margin-bottom: 2px;
+}
+
+.recommendationInfo p {
+  /* 使用 globals.css 的 p 標籤樣式，只定義間距 */
+  margin-bottom: 4px;
+  line-height: 1.1;
+}
+
+.recommendationInfo span {
+  /* 使用 globals.css 的 span 標籤樣式，只定義字體大小 */
+  font-size: 14px;
+}
+
+/* ================================
+   7. 購物車摘要面板
+   ================================ */
+
+.cartSummaryPanel {
+  align-items: stretch;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  padding: 12px 8px;
+  position: relative;
+  border: 1px solid #e4e4e7;
+  border-radius: var(--radius-xs);
+  box-shadow: var(--shadow-sm);
+  width: 100%;
+  min-height: 100%;
+}
+
+/* 🚀 新增：購物車摘要面板的 loading 狀態 */
+.cartSummaryPanel.loading {
+  /* 保持原有的邊框和樣式 */
+  border: 1px solid #e4e4e7;
+  /* 禁用所有動畫 */
+  /* animation: none !important;
+  transition: none !important; */
+  /* 防止重排 */
+  contain: layout style paint;
+  will-change: auto;
+}
+
+/* 🚀 新增：購物車摘要面板的 updating 狀態 */
+.cartSummaryPanel.updating {
+  /* 保持原有的邊框和樣式 */
+  border: 1px solid #e4e4e7;
+  /* 禁用所有動畫 */
+  /* animation: none !important;
+  transition: none !important; */
+  /* 防止重排 */
+  contain: layout style paint;
+  will-change: auto;
+}
+
+/* 摘要標題區域 */
+.summaryTitleSection {
+  align-self: stretch;
+  display: flex;
+  height: 52px;
+  justify-content: unset;
+  padding: 15px 20px 5px;
+  width: 100%;
+}
+
+/* 選中商品列表 */
+.selectedItemsView {
+  align-self: stretch;
+  width: 100%;
+  /* 防止閃爍的關鍵樣式 */
+  contain: layout style paint;
+  will-change: contents;
+  /* 容器高度變化動畫 - 用於空間拉深/縮小，更慢的速度 */
+  transition: min-height 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  /* 硬體加速 */
+  transform: translateZ(0);
+  /* 確保容器穩定 */
+  overflow: hidden;
+}
+
+/* 🚀 新增：選中商品列表容器 loading 狀態 */
+.selectedItemsView.loading {
+  /* 禁用容器動畫 */
+  transition: none !important;
+
+  /* 保持穩定 */
+  contain: layout style paint;
+  will-change: auto;
+}
+
+/* 🚀 新增：容器空間拉深動畫 - 商品加入時 */
+.selectedItemsView.expanding {
+  /* 拉深空間動畫 - 立即開始，更快的速度 */
+  animation: expandContainer 0.6s ease-out forwards;
+  /* 確保動畫完成後保持狀態 */
+  min-height: 60px;
+}
+
+/* 🚀 新增：容器空間縮小動畫 - 商品移除時 */
+.selectedItemsView.contracting {
+  /* 延遲縮小動畫，讓商品先滑出，更慢的速度 */
+  animation: contractContainer 0.5s ease-in 0.4s forwards;
+}
+
+.selectedItemFrame {
+  padding: 8px;
+  /* 防止重排和重繪 */
+  contain: layout style paint;
+  /* 硬體加速 */
+  transform: translateZ(0);
+  /* 更慢的平滑過渡效果，與整體動畫速度一致 */
+  /* transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); */
+  /* 防止閃爍 */
+  /* will-change: transform, opacity; */
+  /* 正常狀態 - 完全可見 */
+  opacity: 1;
+  /* transform: translateX(0) translateZ(0); */
+  /* 確保商品項目有穩定的最小高度 */
+  min-height: 60px;
+  /* 防止內容溢出 */
+  box-sizing: border-box;
+}
+
+/* 🚀 新增：Loading 狀態樣式 - 禁用動畫 */
+.selectedItemFrame.loading {
+  /* 禁用所有動畫 */
+  /* animation: none !important;
+  transition: none !important; */
+
+  /* 保持穩定狀態 */
+  opacity: 0.7;
+  pointer-events: none;
+
+  /* 防止重排 */
+  contain: layout style paint;
+  will-change: auto;
+}
+
+/* 商品項目進入動畫 - 流暢滑入 */
+@keyframes slideInFromRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100px) translateZ(0);
+  }
+  15% {
+    opacity: 0.2;
+    transform: translateX(85px) translateZ(0);
+  }
+  30% {
+    opacity: 0.4;
+    transform: translateX(70px) translateZ(0);
+  }
+  45% {
+    opacity: 0.6;
+    transform: translateX(50px) translateZ(0);
+  }
+  60% {
+    opacity: 0.7;
+    transform: translateX(35px) translateZ(0);
+  }
+  75% {
+    opacity: 0.8;
+    transform: translateX(20px) translateZ(0);
+  }
+  85% {
+    opacity: 0.9;
+    transform: translateX(10px) translateZ(0);
+  }
+  95% {
+    opacity: 0.95;
+    transform: translateX(3px) translateZ(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) translateZ(0);
+  }
+}
+
+@keyframes slideOutToRight {
+  0% {
+    opacity: 1;
+    transform: translateX(0) translateZ(0);
+    max-height: 100px;
+    margin-bottom: 8px;
+    padding: 8px;
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateX(15px) translateZ(0);
+    max-height: 50px;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(30px) translateZ(0);
+    max-height: 0;
+    margin-bottom: 0;
+    padding: 0;
+  }
+}
+
+/* 容器空間拉深動畫 */
+@keyframes expandContainer {
+  0% {
+    min-height: 0;
+  }
+  20% {
+    min-height: 10px;
+  }
+  40% {
+    min-height: 25px;
+  }
+  60% {
+    min-height: 40px;
+  }
+  80% {
+    min-height: 50px;
+  }
+  100% {
+    min-height: 60px; /* 為新商品預留空間 */
+  }
+}
+
+/* 容器空間縮小動畫 */
+@keyframes contractContainer {
+  0% {
+    min-height: 60px;
+  }
+  100% {
+    min-height: 0;
+  }
+}
+
+/* 🚀 新增：空狀態提示文字樣式 */
+.emptyStateMessage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.5;
+  /* 平滑的淡入動畫 */
+  animation: fadeInMessage 0.5s ease-out;
+  /* 與商品項目保持相同的邊距和間距 */
+  margin: 0;
+  border-radius: 6px;
+  /* 添加微妙的背景色以區分空狀態 */
+  background-color: rgba(248, 249, 250, 0.5);
+  border: 1px dashed rgba(108, 117, 125, 0.3);
+  min-height: 60px;
+  /* 防止內容溢出 */
+  box-sizing: border-box;
+}
+
+@keyframes fadeInMessage {
+  0% {
+    opacity: 0;
+    /* transform: translateY(10px); */
+  }
+  100% {
+    opacity: 1;
+    /* transform: translateY(0); */
+  }
+}
+
+.selectedItemFrame .item-name-small {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--primary--600);
+  /* 防止文字重排 */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* 平滑過渡 */
+  transition: color 0.2s ease;
+}
+
+.selectedItemFrame .item-quantity-small {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    sans-serif;
+  font-size: 12px;
+  /* 防止文字重排 */
+  white-space: nowrap;
+  /* 平滑過渡 */
+  transition: color 0.2s ease;
+}
+
+.selectedItemFrame .item-price-small {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    sans-serif;
+  font-size: 14px;
+  /* 防止文字重排 */
+  white-space: nowrap;
+  /* 平滑過渡 */
+  transition: color 0.2s ease;
+}
+
+/* 付款方式圖標 */
+.paymentMethodsSection {
+  align-items: center;
+  align-self: stretch;
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+}
+
+.paymentIconsContainer {
+  align-self: stretch;
+  height: 67px;
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: var(--grey--secondary);
+}
+
+.paymentMethodsDescription {
+  align-items: center;
+  align-self: stretch;
+  display: flex;
+  flex: 0 0 auto;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+}
+
+.paymentSupportText {
+  align-self: stretch;
+  color: var(--text-muted);
+  flex: 1;
+  font-size: var(--tw--p12);
+  /* 使用 globals.css 的 p 標籤樣式，只定義位置和對齊 */
+  margin-top: -1px;
+  position: relative;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* ================================
+   8. 優惠券與點數系統
+   ================================ */
+
+.couponSection {
+  margin-bottom: 12px;
+}
+
+.couponLabel {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--grey--primary);
+  margin-bottom: 8px;
+}
+
+.couponSelectContainer {
+  margin-bottom: 8px;
+}
+
+.couponSelect {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1.5px solid #e4e4e7;
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: var(--text-dark);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    sans-serif;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.couponSelect:focus {
+  border-color: var(--primary--400);
+  box-shadow: 0 0 0 2px rgba(253, 209, 108, 0.2);
+  outline: none;
+}
+
+/* 🚀 新增：優惠券選擇按鈕樣式 */
+.couponSelectButton {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1.5px solid #e4e4e7;
+  border-radius: 6px;
+  background-color: #ffffff;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    sans-serif;
+  font-size: 14px;
+  color: #374151;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.couponSelectButton:hover:not(:disabled) {
+  border-color: var(--primary--400);
+  background-color: #fef3c7;
+  color: var(--primary--800);
+}
+
+.couponSelectButton:focus {
+  border-color: var(--primary--400);
+  box-shadow: 0 0 0 2px rgba(253, 209, 108, 0.2);
+  outline: none;
+}
+
+.couponSelectButton:disabled {
+  background-color: #f9fafb;
+  color: #9ca3af;
+  cursor: not-allowed;
+  border-color: #e5e7eb;
+}
+
+.couponSelectButton::after {
+  content: '▼';
+  font-size: 12px;
+  color: #6b7280;
+  transition: transform 0.2s ease;
+}
+
+.couponSelectButton:hover::after {
+  color: var(--primary--600);
+}
+
+.couponInputRow {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.couponApplyButton {
+  padding: 8px 16px;
+  background-color: #6b7280;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.couponApplyButton:hover:not(:disabled) {
+  background-color: #4b5563;
+  transform: translateY(-1px);
+}
+
+.couponApplyButton:disabled {
+  background-color: #d1d5db;
+  color: #9ca3af;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.couponSelectLinkContainer {
+  margin-top: 8px;
+}
+
+.couponSelectLink {
+  background: none;
+  border: none;
+  color: var(--primary--600);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 0;
+  transition: color 0.2s ease;
+}
+
+.couponSelectLink:hover:not(:disabled) {
+  color: var(--primary--800);
+  text-decoration: underline;
+}
+
+.couponSelectLink:disabled {
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.couponInput {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1.5px solid #e4e4e7;
+  border-radius: 6px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    sans-serif;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.couponInput:focus {
+  border-color: var(--primary--400);
+  box-shadow: 0 0 0 2px rgba(253, 209, 108, 0.2);
+  outline: none;
+}
+
+/* 點數系統樣式 */
+.pointsSection {
+  margin-top: 8px;
+}
+
+.pointsLabel {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--grey--primary);
+  margin-bottom: 8px;
+}
+
+.pointsInputRow {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.pointsInput {
+  flex: 1;
+  border: 1.5px solid #e4e4e7;
+  border-radius: 6px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  padding: 10px 12px;
+  background-color: #ffffff;
+  color: var(--text-dark);
+  width: 100%;
+  height: 100%;
+}
+
+.pointsInput:focus {
+  border-color: var(--primary--400);
+  box-shadow: 0 0 0 2px rgba(253, 209, 108, 0.2);
+}
+
+.pointsInput.hasValue {
+  background-color: rgba(253, 209, 108, 0.1);
+  border-color: var(--primary--400);
+  padding-left: 36px;
+}
+
+.pointsButton {
+  height: 43px;
+  max-width: 150px;
+  flex: 1 0 0;
+  background: var(--bg--grey);
+  border: 1.5px solid var(--bg--grey);
+  color: #ffffff;
+  border-radius: 6px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pointsButton:hover {
+  background: var(--bg--grey);
+  opacity: 0.8;
+}
+
+.pointsButton:disabled {
+  background-color: #e4e4e7;
+  color: var(--grey--secondary);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.pointsApplyButton {
+  padding: 8px 16px;
+  background-color: #6b7280;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.pointsApplyButton:hover:not(:disabled) {
+  background-color: #4b5563;
+  transform: translateY(-1px);
+}
+
+.pointsApplyButton:disabled {
+  background-color: #d1d5db;
+  color: #9ca3af;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* 點數輸入框包裝器 */
+.pointsInputWrapper {
+  position: relative;
+  flex: 1;
+  display: flex;
+}
+
+.pointsClearBtn {
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--grey--secondary);
+  font-size: 12px;
+  transition: all 0.2s ease;
+  z-index: 1;
+}
+
+.pointsClearBtn:hover {
+  background-color: #e4e4e7;
+  color: var(--text-dark);
+}
+
+/* 快速設定按鈕區域 */
+.pointsQuickSet {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0;
+  padding: 8px 0;
+  border-top: 1px solid #e4e4e7;
+}
+
+.quickSetLabel {
+  font-size: 12px;
+  color: var(--grey--secondary);
+  margin-right: 4px;
+}
+
+.quickSetBtn {
+  padding: 4px 8px;
+  font-size: 11px;
+  border: 1px solid #e4e4e7;
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: var(--grey--primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.quickSetBtn:hover:not(:disabled) {
+  background-color: var(--primary--400);
+  color: var(--text-dark);
+  border-color: var(--primary--400);
+}
+
+.quickSetBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: #e4e4e7;
+}
+
+.pointsMaxInfo {
+  font-size: 11px;
+  color: var(--grey--secondary);
+  margin-left: 8px;
+}
+
+.pointsInfoContainer {
+  margin-top: 8px;
+}
+
+.pointsInfo {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--grey--secondary);
+  margin-top: 4px;
+}
+
+.pointsNumber {
+  font-weight: 700;
+  color: var(--primary--400);
+  transition: all 0.3s ease;
+}
+
+.pointsChanging {
+  animation: pointsChange 0.5s ease-in-out;
+  color: #e74c3c;
+}
+
+@keyframes pointsChange {
+  0% {
+    transform: scale(1);
+    color: var(--primary--400);
+  }
+  50% {
+    transform: scale(1.1);
+    color: #e74c3c;
+  }
+  100% {
+    transform: scale(1);
+    color: #e74c3c;
+  }
+}
+
+.pointsDiscountPreview {
+  font-size: 14px;
+  color: #198754;
+  margin-top: 4px;
+  padding: 4px 8px;
+  background-color: rgba(40, 167, 69, 0.1);
+  border-radius: 6px;
+  border-left: 3px solid #198754;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* fadeIn 動畫已移至下方統一管理 */
+
+/* ================================
+   9. 價格摘要樣式
+   ================================ */
+
+.cartPriceSummary {
+  width: 100%;
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 8px 8px;
+  position: relative;
+}
+
+.priceRow {
+  align-items: flex-start;
+  align-self: stretch;
+  display: flex;
+  flex: 0 0 auto;
+  position: relative;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  transition: all 0.3s ease;
+}
+
+.priceLabel {
+  color: var(--grey--primary);
+  flex: 1;
+  /* 使用 globals.css 的 p 標籤樣式，只定義字體大小和間距 */
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 1.25;
+  position: relative;
+}
+
+.priceValue {
+  color: var(--grey--primary);
+  flex: 1;
+  /* 使用 globals.css 的 p 標籤樣式，只定義字體大小和對齊 */
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 1.25;
+  position: relative;
+  text-align: right;
+}
+
+.discountWrapper {
+  align-items: center;
+  display: flex;
+  flex: 1;
+  flex-grow: 1;
+  gap: 8px;
+  justify-content: center;
+  position: relative;
+}
+
+.discountDescription {
+  color: var(--grey--primary);
+  flex: 1;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.25;
+  position: relative;
+  text-align: right;
+  font-size: 13px;
+  color: #198754;
+  line-height: 1.4;
+  animation: couponApplied 0.5s ease-in-out;
+}
+
+@keyframes couponApplied {
+  0% {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.totalLabel {
+  color: var(--bg--grey);
+  flex: 1;
+  font-size: var(--tw---h3);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.25;
+  position: relative;
+  white-space: nowrap;
+}
+
+.totalAmount {
+  color: var(--bg--grey);
+  flex: 1;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: 1.25;
+  position: relative;
+  text-align: right;
+  margin: 0;
+}
+
+.currencySymbol {
+  color: var(--bg--grey);
+  /* 使用 globals.css 的 span 標籤樣式，只定義字體大小和粗細 */
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.totalPrice {
+  color: var(--bg--grey);
+  /* 使用 globals.css 的 span 標籤樣式，只定義字體大小和粗細 */
+  font-size: var(--tw---h3);
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.taxNotice {
+  align-self: stretch;
+  color: var(--text-muted);
+  /* 使用 globals.css 的 p 標籤樣式，只定義字體大小和間距 */
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 1.25;
+  position: relative;
+  margin-top: 8px;
+}
+
+/* ================================
+   點數回饋顯示樣式
+   ================================ */
+
+.pointsRewardRow {
+  align-items: center;
+  align-self: stretch;
+  display: flex;
+  flex: 0 0 auto;
+  position: relative;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  padding: 8px 12px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.pointsRewardRow:hover {
+  background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pointsRewardLabel {
+  color: var(--grey--primary);
+  flex: 1;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.25;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pointsIcon {
+  font-size: 16px;
+  color: #ffc107;
+  filter: drop-shadow(0 1px 2px rgba(255, 193, 7, 0.3));
+}
+
+.pointsRewardValue {
+  color: #28a745;
+  flex: 1;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.25;
+  position: relative;
+  text-align: right;
+}
+
+/* ================================
+   10. 結帳按鈕
+   ================================ */
+
+.checkoutBtn {
+  min-width: 100%;
+  line-height: 1.4;
+  background-color: var(--bg--dark);
+  color: var(--text-light);
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 48px;
+}
+
+.checkoutBtn:hover:not(:disabled) {
+  background-color: var(--primary--400);
+  color: var(--text-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.checkoutBtn:disabled {
+  background-color: #0000001f;
+  border-color: #0000001f;
+  color: var(--text-muted);
+  cursor: not-allowed;
+  opacity: 0.6;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ================================
+   10. 商品卡片布局容器
+   ================================ */
+
+/* 商品信息區域 - 包含圖片、名稱、藝術家、標籤、單價 */
+.itemInfoSection {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+/* 操作區域 - 包含數量控制器、總價、刪除按鈕 */
+.itemActionSection {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+/* ================================
+   11. 響應式設計
+   ================================ */
+
+/* 小屏幕手機版樣式 (最大 390px) */
+@media (max-width: 767px) {
+  /* 商品卡片在小屏幕上的優化 */
+
+  /* 商品信息區域在小屏幕上 - 垂直布局 */
+  .itemInfoSection {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 2px !important;
+    flex: 1 !important;
+    min-width: 0 !important;
+  }
+
+  /* 商品圖片在小屏幕上 */
+  .itemImage {
+    border-radius: 3px !important;
+    flex-shrink: 0 !important;
+    margin-bottom: 4px;
+    margin-right: 0 !important;
+    align-self: flex-start !important;
+  }
+
+  /* 商品信息在小屏幕上 */
+  .itemDetails {
+    gap: 1px !important;
+    min-width: 0 !important;
+    flex: 1 !important;
+    width: 100% !important;
+    text-align: left !important;
+    align-items: flex-start !important;
+    margin-top: 4px !important;
+  }
+
+  .itemName {
+    font-size: 14px !important;
+    line-height: 1.1 !important;
+    margin-bottom: 0px !important;
+    font-weight: 600 !important;
+    text-align: left !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .itemArtist {
+    font-size: 10px !important;
+    padding-bottom: 4px !important;
+    line-height: 1 !important;
+    text-align: left !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    margin-bottom: 0px !important;
+  }
+
+  /* 標籤和單價容器在小屏幕上 */
+  .itemTagPriceContainer {
+    gap: 4px !important;
+    margin-top: 0px !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .itemUnitPrice {
+    font-size: 12px !important;
+    white-space: nowrap !important;
+    margin-top: 0px !important;
+    color: #666 !important;
+    font-weight: 500 !important;
+  }
+
+  /* 操作區域在小屏幕上 - 垂直布局 */
+  .itemActionSection {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-end !important;
+    gap: 8px !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* 數量控制器在小屏幕上 */
+  .itemQuantity {
+    margin-right: 0;
+    margin-top: 0;
+    text-align: center;
+  }
+
+  .quantityControl {
+    min-width: 60px;
+    padding: 4px;
+    gap: 8px;
+    justify-content: center;
+    border: none;
+    border-radius: 4px;
+    background-color: transparent;
+  }
+
+  .quantityControl .quantityBtn {
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+  }
+
+  .quantityControl .quantityBtn:hover {
+    border: 1px solid var(--primary--600);
+    background-color: transparent;
+    color: var(--text-dark);
+    transform: none;
+    box-shadow: none;
+  }
+
+  .quantityControl .quantityBtn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+    background-color: transparent;
+    border-color: var(--primary--600);
+    color: #999999;
+  }
+
+  .quantityControl span {
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    min-width: 12px !important;
+    text-align: center !important;
+  }
+
+  /* 總價在小屏幕上 */
+  .itemTotal {
+    margin-right: 0 !important;
+    min-width: 0 !important;
+    text-align: center !important;
+    flex: none !important;
+    align-self: center !important;
+    flex-shrink: 0 !important;
+    font-size: var(--en---h6) !important;
+  }
+
+  /* 刪除按鈕在小屏幕上 */
+  .itemActions {
+    gap: 0px !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    align-self: flex-end !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* 小屏幕垃圾桶按鈕樣式 - 照比例縮小 */
+  .deleteBtn {
+    width: 24px;
+    height: 24px;
+    padding: 4px;
+    font-size: 10px;
+    border: 1px solid #dc3545;
+    border-radius: 3px;
+    background-color: transparent;
+    color: #dc3545;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    outline: none;
+    text-decoration: none;
+    box-shadow: none;
+  }
+
+  .deleteBtn:hover {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: #ffffff;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(220, 53, 69, 0.3);
+  }
+
+  .deleteBtn:active {
+    transform: translateY(0);
+  }
+
+  .deleteBtn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+
+  /* 購物車摘要面板在小屏幕上 */
+  .cartSummaryPanel {
+    padding: 4px !important;
+    border-radius: 4px !important;
+  }
+
+  .summaryTitleSection {
+    padding: 6px 8px 2px !important;
+    height: 30px !important;
+  }
+
+  /* 選中商品列表在小屏幕上 */
+  .selectedItemsView {
+    min-height: 100px !important;
+  }
+
+  .selectedItemFrame {
+    padding: 3px !important;
+    margin-bottom: 3px !important;
+    min-height: 35px !important;
+  }
+
+  .selectedItemFrame .item-name-small {
+    font-size: 9px !important;
+  }
+
+  .selectedItemFrame .item-quantity-small {
+    font-size: 7px !important;
+  }
+
+  .selectedItemFrame .item-price-small {
+    font-size: 9px !important;
+  }
+
+  /* 優惠券和點數區域在小屏幕上 */
+  .couponSection,
+  .pointsSection {
+    margin-bottom: 4px !important;
+  }
+
+  .couponLabel,
+  .pointsLabel {
+    font-size: 9px !important;
+    margin-bottom: 3px !important;
+  }
+
+  /* 價格摘要在小屏幕上 */
+  .priceRow {
+    margin-bottom: 3px !important;
+  }
+
+  .totalLabel,
+  .totalAmount {
+    font-size: 20px;
+  }
+
+  .currencySymbol,
+  .totalPrice {
+    font-size: 28px;
+  }
+
+  /* 地址操作按鈕樣式 */
+  .addressActionButtons {
+    display: flex;
+    margin-top: var(--spacing-sm);
+    align-items: center;
+  }
+
+  /* 結帳按鈕在小屏幕上 */
+  .checkoutBtn {
+    font-size: 14px;
+    min-height: 28px;
+    border-radius: 3px;
+  }
+
+  /* 推薦商品在小屏幕上 */
+  .recommendationItem {
+    padding: 1px;
+  }
+
+  .recommendationImage {
+    width: 35px !important;
+    height: 35px !important;
+  }
+
+  .recommendationAddBtn {
+    width: 12px !important;
+    height: 12px !important;
+    font-size: 6px !important;
+  }
+
+  .recommendationInfo h6 {
+    font-size: 9px !important;
+  }
+
+  .recommendationInfo p,
+  .recommendationInfo span {
+    font-size: 7px !important;
+  }
+}
+
+/* 手機版樣式 (最大 768px) */
+@media (max-width: 768px) {
+  .cartScreen {
+    min-width: auto;
+    width: 100%;
+    padding: 8px;
+  }
+
+  .cartScreen .titleWrapper {
+    padding: 8px;
+  }
+
+  .cartScreen .selectAllSection {
+    padding: 0px 16px;
+  }
+
+  .itemImage {
+    width: 60px;
+    height: 60px;
+  }
+
+  .quantityControl .btn {
+    width: 30px;
+    height: 30px;
+  }
+
+  .recommendationItem {
+    padding: 4px;
+  }
+
+  .recommendationImage {
+    width: 60px;
+    height: 60px;
+  }
+
+  .recommendationAddBtn {
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+  }
+
+  .couponInputRow {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .pointsInputRow {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .pointsButton {
+    max-width: 100%;
+    height: 40px;
+  }
+
+  .pointsQuickSet {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .quickSetBtn {
+    font-size: 10px;
+    padding: 3px 6px;
+  }
+
+  .checkoutBtn {
+    min-width: 100%;
+  }
+}
+
+/* 平板版樣式 (768px 以上) */
+@media (min-width: 768px) {
+  .cartScreen {
+    min-width: 540px;
+    padding: 12px 8px;
+  }
+
+  .cartSummaryPanel {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+/* 收合式商品明細樣式 - 992px 以下 */
+@media (max-width: 991.98px) {
+  .collapsibleSummaryContainer {
+    width: 100%;
+    margin-bottom: 0;
+  }
+
+  .collapsibleSummaryHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    margin-bottom: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
+    width: 100%;
+  }
+
+  .collapsibleSummaryHeader:hover {
+    background-color: var(--bg--light);
+  }
+
+  .collapsibleSummaryTitle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    font-weight: 600;
+    color: var(--grey--primary);
+  }
+
+  .totalAmountDisplay {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--grey--primary);
+    margin-left: auto;
+  }
+
+  .collapseIcon {
+    padding: 16px;
+    font-size: 16px;
+    transition: transform 0.3s ease;
+    color: #6c757d;
+  }
+
+  .collapseIcon.rotated {
+    transform: rotate(180deg);
+  }
+
+  .collapsibleSummaryContent {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    /* border: 1px solid #e9ecef; */
+    border-top: none;
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    background-color: transparent;
+    width: 100%;
+    margin-top: 0;
+    flex: 1;
+    padding: 0;
+  }
+
+  .collapsibleSummaryContent.expanded {
+    max-height: 2000px; /* 足夠大的值來容納內容 */
+    background-color: white;
+    flex: 1;
+    padding: 16px;
+  }
+
+  /* 隱藏桌面版的商品明細標題 */
+  .desktopSummaryTitle {
+    display: none;
+  }
+}
+
+/* 桌面版樣式 - 992px 以上 */
+@media (min-width: 992px) {
+  .collapsibleSummaryHeader {
+    display: none;
+  }
+
+  .collapsibleSummaryContent {
+    display: block !important;
+    max-height: none !important;
+    border: none;
+    background-color: transparent;
+  }
+
+  .tabContent {
+    display: block !important;
+  }
+
+  .desktopSummaryTitle {
+    display: block;
+  }
+}
+
+/* ================================
+   12. 工具類別
+   ================================ */
+
+/* 購物車專用文字大小 */
+.cartTextSm {
+  font-size: var(--tw--p12);
+}
+
+.cartTextMd {
+  font-size: var(--tw--p);
+}
+
+.cartTextLg {
+  font-size: var(--tw---h6);
+}
+
+/* 移除重複的字體定義，使用 globals.css 的 h1-h6 和 p 標籤 */
+
+/* 結帳頁面專用樣式 - 只定義顏色，使用 globals.css 的字體設定 */
+
+.toastTitle {
+  color: #111827;
+}
+
+/* 購物車專用背景色彩 */
+.cartBgLight {
+  background-color: var(--bg--light);
+}
+
+.cartBgDark {
+  background-color: var(--bg--dark);
+}
+
+/* 購物車專用文字色彩 */
+.cartTextPrimary {
+  color: var(--primary--600);
+}
+
+.cartTextSecondary {
+  color: var(--text-muted);
+}
+
+/* 購物車專用邊框 */
+.cartBorderGrey {
+  border-color: #e4e4e7;
+}
+
+/* 購物車專用陰影 */
+.cartShadowPrimary {
+  box-shadow: 0 4px 12px rgba(253, 209, 108, 0.2);
+}
+
+/* ================================
+   13. 動畫效果
+   ================================ */
+
+/* 空購物車動畫 */
+.emptyCartIcon {
+  animation: float 2s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Badge 動畫 */
+.badge {
+  transition: all 0.2s ease;
+}
+
+.badge:hover {
+  transform: scale(1.05);
+}
+
+/* 商品卡片動畫 */
+.wishlistItemCard {
+  transition: all 0.2s ease-in-out;
+}
+
+.wishlistItemCard:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+/* 推薦商品動畫 */
+.recommendationItem {
+  transition: all 0.2s ease-in-out;
+}
+
+.recommendationItem:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* ================================
+   14. 狀態類別
+   ================================ */
+
+/* 選中狀態 */
+.selected {
+  background-color: rgba(253, 209, 108, 0.1);
+  border-color: var(--primary--400);
+}
+
+/* 禁用狀態 */
+.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* 載入狀態 */
+.loading {
+  position: relative;
+  overflow: hidden;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  animation: loading 1.5s infinite;
+}
+
+/* loading 動畫已移至下方統一管理 */
+
+/* ================================
+   15. 輔助類別
+   ================================ */
+
+/* 隱藏元素 */
+.hidden {
+  display: none !important;
+}
+
+/* 顯示元素 */
+.visible {
+  display: block !important;
+}
+
+/* 文字對齊 */
+.textLeft {
+  text-align: left;
+}
+
+.textCenter {
+  text-align: center;
+}
+
+.textRight {
+  text-align: right;
+}
+
+/* 邊距工具 */
+.marginTop {
+  margin-top: 1rem;
+}
+
+.marginBottom {
+  margin-bottom: 1rem;
+}
+
+.marginLeft {
+  margin-left: 1rem;
+}
+
+.marginRight {
+  margin-right: 1rem;
+}
+
+/* 內距工具 */
+.paddingTop {
+  padding-top: 1rem;
+}
+
+.paddingBottom {
+  padding-bottom: 1rem;
+}
+
+.paddingLeft {
+  padding-left: 1rem;
+}
+
+.paddingRight {
+  padding-right: 1rem;
+}
+
+/* ================================
+   16. 結帳進度條樣式
+   ================================ */
+
+.checkoutProgress {
+  margin-bottom: 1rem;
+  max-width: 100%;
+}
+
+.progressContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.progressStep {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.progressStep .stepIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--bg--light);
+  border: 2px solid #e4e4e7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.25rem;
+  transition: all 0.3s ease;
+}
+
+.progressStep.active .stepIcon {
+  background-color: var(--primary--600);
+  color: var(--text-dark);
+}
+
+.progressStep .stepLabel {
+  /* 使用 globals.css 的 p 標籤樣式，只定義字體大小和顏色 */
+  font-size: 14px;
+  color: var(--grey--primary);
+}
+
+.progressStep.active .stepLabel {
+  color: var(--primary--600);
+  font-weight: 700;
+}
+
+.progressLine {
+  flex: 1;
+  height: 2px;
+  background-color: #e4e4e7;
+  margin: 0 0.5rem;
+  max-width: 100px;
+}
+
+/* ================================
+   17. Figma 設計相關樣式
+   ================================ */
+
+.textWrapper14 {
+  align-self: center;
+  color: var(--text-dark);
+  flex: 1;
+  /* 使用 globals.css 的 p 標籤樣式，只定義位置 */
+  margin-top: -1px;
+  position: relative;
+}
+
+.property1Default {
+  align-self: stretch;
+  flex: 0 0 auto;
+  width: 100%;
+}
+
+.propertyDefaultInstance {
+  align-self: stretch;
+  flex: 0 0 auto;
+  width: 100%;
+  /* 防止重排和重繪 */
+  contain: layout style;
+  /* 平滑過渡 */
+  /* transition: all 0.2s ease; */
+}
+
+.frameWrapper {
+  align-self: stretch;
+  width: 100%;
+}
+
+.buttonLoginWrapper {
+  align-items: center;
+  align-self: stretch;
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+}
+
+/* ================================
+   18. 商品相關樣式
+   ================================ */
+
+.itemDetails {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.itemQuantity {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.itemTotal {
+  margin-right: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 70px;
+  gap: 4px;
+}
+
+.itemNameSmall {
+  /* 使用 globals.css 的 p 標籤樣式，只定義字體大小和顏色 */
+  font-size: var(--tw--p12);
+  color: var(--text-dark);
+}
+
+.itemArtistSmall {
+  /* 使用 globals.css 的 p 標籤樣式，只定義字體大小和顏色 */
+  font-size: var(--tw--p12);
+  color: var(--text-muted);
+}
+
+.itemQuantitySmall {
+  /* 使用 globals.css 的 p 標籤樣式，只定義字體大小和顏色 */
+  font-size: var(--tw--p12);
+  color: var(--text-muted);
+}
+
+.itemPriceSmall {
+  /* 使用 globals.css 的 p 標籤樣式，只定義字體大小和顏色 */
+  font-size: var(--tw--p12);
+  color: var(--text-dark);
+}
+
+/* ================================
+   19. 付款圖標樣式
+   ================================ */
+
+.paymentIconImg {
+  height: 20px;
+  width: auto;
+  object-fit: contain;
+  vertical-align: middle;
+}
+
+/* ================================
+   20. 側邊欄樣式
+   ================================ */
+
+.stickySidebar {
+  position: sticky;
+  top: 20px;
+  z-index: 10;
+  /* 防止重排 */
+  contain: layout style;
+}
+
+/* 🚀 新增：stickySidebar loading 狀態 */
+.stickySidebar.loading {
+  /* 禁用所有動畫和過渡 */
+  animation: none !important;
+  transition: none !important;
+  /* 保持穩定狀態 */
+  opacity: 0.9;
+  /* 防止重排 */
+  contain: layout style paint;
+  will-change: auto;
+}
+
+/* ================================
+   21. 按鈕樣式
+   ================================ */
+
+.cartBtnGold {
+  background-color: var(--primary--600);
+  border-color: var(--primary--600);
+  color: var(--text-dark);
+  /* 使用 globals.css 的按鈕樣式，只定義字體粗細和過渡 */
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+
+.cartBtnGold:hover:not(:disabled) {
+  background-color: var(--primary--800);
+  border-color: var(--primary--800);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.cartBtnGold:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ================================
+   22. Checkout 頁面專用樣式
+   ================================ */
+
+/* 移除重複的標題包裝器定義 - 已統一為 .sectionTitle */
+
+/* 表單欄位容器 */
+.formFieldContainer {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  flex-wrap: wrap;
+  padding: 0 12px 0 0;
+}
+
+.formFieldLabel {
+  width: 96px;
+  text-align: right;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--text-dark);
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.requiredAsterisk {
+  color: var(--danger--600);
+  margin-left: 2px;
+}
+
+.formFieldInput {
+  flex: 1;
+  padding: 12px 16px;
+  width: 100%;
+  border: 1px solid #d0d0d0;
+  border-radius: 6px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--text-dark);
+  background-color: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.formFieldInput:focus {
+  outline: none;
+  border-color: var(--primary--400);
+  box-shadow: 0 0 0 0.2rem rgba(253, 209, 108, 0.25);
+}
+
+.formFieldInput::placeholder {
+  color: #999999;
+  font-weight: 400;
+}
+
+.formNotice {
+  color: #666666;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.4;
+  margin-top: 8px;
+  margin-left: 8px;
+}
+
+/* 配送區域 */
+.deliverySection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  width: 100%;
+}
+
+.deliveryOptionContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  padding: 0 var(--spacing-sm);
+}
+
+.deliveryOptionCard {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin-bottom: var(--spacing-md);
+  background-color: #ffffff;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.deliveryOptionCard:hover {
+  border-color: var(--primary--400);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.deliveryOptionCard.selected {
+  border-color: var(--primary--400);
+  background-color: rgba(253, 209, 108, 0.1);
+}
+
+.deliveryRadio {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #d1d5db;
+  border-radius: 50%;
+  background-color: white;
+  cursor: pointer;
+  position: relative;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+/* 選中時的Radio樣式 */
+
+.deliveryRadio:checked {
+  border-color: #e6c068;
+  background-color: white;
+}
+
+.deliveryRadio:checked::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #e6c068;
+}
+
+.deliveryOptionLabel {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 16px;
+}
+
+.deliveryTimeBadge {
+  padding: 4px 8px;
+  background-color: #fff3cd;
+  color: #856404;
+  font-size: 12px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+/* 地址選項區域 */
+.addressOptionSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin-left: var(--spacing-lg);
+}
+
+.addressCheckboxRow {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.addressCheckboxLabel {
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.defaultBadge {
+  padding: 4px 8px;
+  background-color: var(--primary--400);
+  color: var(--grey--primary);
+  font-size: 11px;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+.addressInfoCard {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: var(--radius-md);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding: var(--spacing-md);
+}
+
+.addressInfoContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.addressInfoRow {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  min-height: 32px;
+}
+
+.addressLabel {
+  min-width: 60px;
+  text-align: left;
+  font-size: var(--tw--p);
+  line-height: 1.6;
+  color: var(--grey--primary);
+  flex-shrink: 0;
+  font-weight: 500;
+}
+
+.addressValue {
+  flex: 1;
+  font-size: var(--tw--p);
+  color: var(--text-muted);
+  line-height: 1.6;
+  word-break: break-word;
+}
+
+/* 地址表單 */
+.addressFormContainer {
+  padding: 0 var(--spacing-lg);
+  margin-bottom: 24px;
+}
+
+.addressFormRow {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  flex-wrap: nowrap;
+  min-width: 0;
+}
+
+.addressFormLabel {
+  width: 80px;
+  text-align: right;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--text-dark);
+  line-height: 1.5;
+  padding-top: 8px;
+  flex-shrink: 0;
+}
+
+.addressFormInputGroup {
+  flex: 1;
+  display: flex;
+  gap: var(--spacing-sm);
+  align-items: center;
+  min-width: 0;
+}
+
+.addressFormSelect {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: #ffffff;
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 8px center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+  cursor: pointer;
+  min-width: 0;
+}
+
+.addressFormSelect:focus {
+  outline: none;
+  border-color: var(--primary--400);
+  box-shadow: 0 0 0 2px rgba(253, 209, 108, 0.2);
+}
+
+.addressFormSelect:disabled {
+  background-color: #f5f5f5;
+  color: #666666;
+  cursor: not-allowed;
+  border-color: #d0d0d0;
+}
+
+.addressFormInput {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  font-size: 16px;
+  color: var(--grey--primary);
+  background-color: #ffffff;
+  min-width: 0;
+}
+
+/* 郵遞區號輸入框特殊樣式 */
+.addressFormInput[name='zipcode'] {
+  flex: 0 0 100px;
+  text-align: center;
+}
+
+.addressFormInput:focus {
+  outline: none;
+  border-color: var(--primary--400);
+  box-shadow: 0 0 0 2px rgba(253, 209, 108, 0.2);
+}
+
+.addressFormInput::placeholder {
+  color: #999999;
+  font-weight: 400;
+}
+
+/* 超商操作按鈕 */
+.storeActionRow {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--spacing-sm);
+}
+
+.addStoreButton {
+  padding: 8px 16px;
+  background-color: var(--primary--400);
+  color: var(--text-dark);
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.addStoreButton:hover {
+  background-color: var(--primary--600);
+  transform: translateY(-1px);
+}
+
+.storeActionButtons {
+  display: flex;
+  flex-direction: row;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-lg) var(--spacing-sm) 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.storeActionBtn {
+  padding: 6px 12px;
+  background-color: var(--primary--400);
+  color: var(--text-dark);
+  font-size: var(--tw--p12);
+  font-weight: 500;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 68px;
+  text-align: center;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+.storeActionBtn:hover {
+  background-color: #d1d5db;
+}
+
+.storeActionBtnOutline {
+  padding: 3px 8px;
+  background-color: transparent;
+  color: #6b7280;
+  font-size: var(--tw--p12);
+  font-weight: 400;
+  border: 1px solid #d1d5db;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 68px;
+  text-align: center;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+.storeActionBtnOutline:hover {
+  background-color: #f9fafb;
+  border-color: #9ca3af;
+}
+
+/* 付款方式區域 */
+.paymentMethodSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  padding: 0 var(--spacing-lg);
+  width: 100%;
+}
+
+.quickPaymentLabel {
+  color: var(--text-muted);
+  margin-bottom: var(--spacing-md);
+  font-size: 14px;
+  text-align: center;
+}
+
+.quickCheckoutContainer {
+  margin-bottom: var(--spacing-lg);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.quickPaymentButtons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-sm) 0;
+}
+
+.linepayButton {
+  display: flex;
+  width: 200px;
+  height: 60px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 37/15;
+  background-color: #1111555;
+  border-radius: 15px;
+  padding: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.linepayButton:hover:not(:disabled) {
+  background-color: rgb(6, 160, 76);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.linepayButton:disabled {
+  background-color: #e4e4e7;
+  color: var(--grey--secondary);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.ecpayButton {
+  display: flex;
+  width: 200px;
+  height: 60px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 37/15;
+  background-color: #1111555;
+  border-radius: 15px;
+  padding: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.ecpayButton:hover:not(:disabled) {
+  background-color: rgb(135, 206, 235);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.ecpayButton:disabled {
+  background-color: #e4e4e7;
+  color: var(--grey--secondary);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* 信用卡表單 */
+.creditCardForm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+}
+
+.creditCardRow {
+  display: flex;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+}
+
+.creditCardField {
+  flex: 1;
+  min-width: 200px;
+}
+
+/* 同意條款區域 */
+.termsAgreement {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  width: 100%;
+  padding: 0 var(--spacing-lg);
+}
+
+.termsLabel {
+  font-size: 16px;
+  color: var(--primary--600);
+  line-height: 1.5;
+}
+
+.termsNotice {
+  font-size: 12px;
+  color: #666666;
+  line-height: 1.4;
+  margin-top: 8px;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+  .formFieldContainer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-xs);
+    padding: 0 var(--spacing-sm);
+  }
+
+  .formFieldLabel {
+    width: 100%;
+    text-align: left;
+    justify-content: flex-start;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .formFieldInput {
+    width: 100%;
+    min-width: 100%;
+  }
+
+  .addressInfoCard {
+    position: static;
+    flex-direction: column;
+    align-items: stretch;
+    padding: var(--spacing-sm);
+  }
+
+  .addressInfoContent {
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .addressInfoRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-xs);
+    min-height: auto;
+  }
+
+  .addressInfoRow .addressLabel {
+    width: 100%;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .addressInfoRow .addressValue {
+    width: 100%;
+  }
+
+  .addressActionButtons {
+    justify-content: center;
+  }
+
+  .addressFormRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+  }
+
+  .addressFormLabel {
+    width: 100%;
+    text-align: left;
+    padding-top: 0;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .addressFormInputGroup {
+    width: 100%;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+
+  .addressFormSelect,
+  .addressFormInput {
+    width: 100%;
+    min-width: 100%;
+  }
+
+  /* 郵遞區號輸入框特殊樣式 */
+  .addressFormInput[name='zipcode'] {
+    flex: 0 0 40px;
+    text-align: center;
+  }
+
+  .deliverySection {
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .deliveryOptionCard {
+    padding: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+    flex-wrap: wrap;
+  }
+
+  .deliveryOptionLabel {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--spacing-xs);
+    width: 100%;
+  }
+
+  .creditCardRow {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .creditCardField {
+    min-width: 100%;
+  }
+
+  .storeActionButtons {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: var(--spacing-sm) 0;
+    margin-top: var(--spacing-sm);
+    width: 100%;
+    gap: var(--spacing-sm);
+  }
+
+  .storeActionBtn,
+  .storeActionBtnOutline {
+    flex: 1;
+    max-width: 80px;
+    min-width: auto;
+  }
+
+  .paymentMethodSection {
+    padding: 0 var(--spacing-sm);
+    gap: var(--spacing-sm);
+  }
+
+  .quickPaymentButtons {
+    justify-content: center;
+    padding: var(--spacing-xs) 0;
+  }
+
+  .linepayButton,
+  .ecpayButton {
+    width: 160px;
+    height: 48px;
+  }
+}
+
+/* ================================
+   🚀 錯誤訊息彈出框樣式已移至 ErrorModal.module.css
+   ================================ */
+
+/* ================================
+   18. 結帳成功頁面樣式
+   ================================ */
+
+.successMaxWidth {
+  max-width: 960px;
+}
+
+/* 按鈕主題（使用 Bootstrap .btn 搭配） */
+.btnOrderYellow {
+  background-color: var(--primary--600);
+  color: #ffffff;
+  border: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0;
+}
+
+.btnOrderYellow:hover,
+.btnOrderYellow:focus {
+  background-color: var(--primary--800);
+  color: #ffffff;
+}
+
+.btnOrderDark {
+  background-color: var(--bg--dark);
+  color: #ffffff;
+  border: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0;
+}
+
+.btnOrderDark:hover,
+.btnOrderDark:focus {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+/* 自動填入會員資料按鈕 */
+.autoFillButton {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #6c757d;
+  background-color: transparent;
+  border: 1px solid #6c757d;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  user-select: none;
+}
+
+.autoFillButton:hover {
+  color: #495057;
+  background-color: #e9ecef;
+  border-color: #adb5bd;
+}
+
+.autoFillButton:focus {
+  color: #495057;
+  background-color: #e9ecef;
+  border-color: #adb5bd;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.25);
+}
+
+.autoFillButton:active {
+  color: #495057;
+  background-color: #e9ecef;
+  border-color: #adb5bd;
+}
+
+/* 卡片通用樣式 */
+.infoCard {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+/* 標籤/值排列（收件人資訊） */
+.labelCol {
+  min-width: 98px;
+  text-align: right;
+  font-size: var(--tw--p);
+  color: var(--grey--primary);
+}
+
+.valueCol {
+  color: #6b7280; /* 接近設計中的淡文字 */
+  font-size: var(--tw--p);
+}
+
+/* 狀態色彩 */
+.orderGreen {
+  color: #198754; /* Bootstrap success 綠 */
+}
+
+.orderOrange {
+  color: #d97706; /* 接近設計中的橙色 */
+}
+
+/* 錯誤訊息彈出框相關樣式已移至 ErrorModal.module.css */
+
+/* ================================
+   地址選擇器彈出視窗樣式已移至 AddressSelector.module.css
+   ================================ */
+
+/* 地址操作按鈕樣式 */
+.addressActionButtons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.selectAddressBtn {
+  padding: 6px 12px;
+  background-color: var(--primary--400);
+  color: var(--text-dark);
+  border: none;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.selectAddressBtn:hover {
+  background-color: var(--primary--600);
+  transform: translateY(-1px);
+}
+
+/* 地址表單說明文字樣式 */
+.addressFormNote {
+  margin-bottom: 16px;
+  padding: 12px;
+  background-color: #f0f9ff;
+  border: 1px solid #bae6fd;
+  border-radius: 6px;
+}
+
+.addressFormNoteText {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #0369a1;
+}
+
+/* 新增的地址表單樣式 */
+.addressFormGroup {
+  margin-bottom: var(--spacing-md);
+}
+
+.addressFormTextarea {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    sans-serif;
+  font-size: 16px;
+  color: var(--primary--600);
+  background-color: #ffffff;
+  resize: vertical;
+  min-height: 80px;
+}
+
+.addressFormTextarea:focus {
+  outline: none;
+  border-color: var(--primary--400);
+  box-shadow: 0 0 0 2px rgba(253, 209, 108, 0.2);
+}
+
+.addressFormTextarea:disabled {
+  background-color: #f5f5f5;
+  color: #666666;
+  cursor: not-allowed;
+  border-color: #d0d0d0;
+}
+
+.required {
+  color: #dc2626;
+  font-weight: 600;
+}
+
+/* ECPay 跳轉確認吐司頁面樣式 */
+.toastOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+}
+
+.toastContainer {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  max-width: 500px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: toastSlideIn 0.3s ease-out;
+}
+
+@keyframes toastSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.toastHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.toastTitle {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.toastCloseBtn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.toastCloseBtn:hover {
+  background-color: #f3f4f6;
+  color: #374151;
+}
+
+.toastContent {
+  padding: 20px 24px 24px;
+}
+
+.toastMessage {
+  margin-bottom: 24px;
+}
+
+.toastMessage p {
+  margin: 0 0 12px 0;
+  color: #374151;
+  line-height: 1.5;
+}
+
+.toastMessage p:first-child {
+  font-weight: 600;
+  color: #059669;
+  font-size: 16px;
+}
+
+.toastMessage p:nth-child(2) {
+  font-weight: 500;
+  color: #111827;
+}
+
+.toastMessage p:nth-child(3) {
+  font-weight: 500;
+  color: #dc2626;
+  font-size: 16px;
+}
+
+.toastMessage p:last-child {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.toastActions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+.toastBtn {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 14px;
+  min-width: 80px;
+  transition: all 0.2s;
+}
+
+.toastBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* ================================
+   🚀 統一動畫定義區域
+   ================================ */
+
+/* 統一的 fadeIn 動畫 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 統一的 loading 動畫 */
+@keyframes loading {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}

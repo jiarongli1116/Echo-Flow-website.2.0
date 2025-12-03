@@ -1,0 +1,1450 @@
+/* 管理頁面通用樣式 */
+
+/* 主容器 - 管理後台的主要容器，設定最大寬度和背景 */
+.adminContainer {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0;
+    background: var(--bg--light);
+    min-height: 100vh;
+}
+
+/* 頁面標題區域 - 包含頁面標題和操作按鈕的頂部區域 */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e9ecef;
+}
+
+/* 標題左側區域 - 包含標題和副標題的容器 */
+.headerLeft {
+    flex: 1;
+}
+
+/* 頁面主標題 - 顯示頁面名稱的大標題 */
+.title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 0.5rem 0;
+}
+
+/* 頁面副標題 - 顯示頁面描述或說明文字 */
+.subtitle {
+    color: var(--grey--secondary);
+    font-size: 1rem;
+    margin: 0;
+}
+
+/* 標題右側區域 - 包含操作按鈕的容器 */
+.headerRight {
+    display: flex;
+    gap: 1rem;
+}
+
+/* 新增按鈕 - 用於新增資料的主要操作按鈕 */
+.addBtn {
+    background: linear-gradient(
+        135deg,
+        var(--primary--400),
+        var(--primary--800)
+    );
+    color: #1a1a1a;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+}
+
+.addBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(230, 192, 104, 0.3);
+}
+
+/* 搜尋和篩選區域 - 包含搜尋框和篩選選項的容器 */
+.filters {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* 搜尋框容器 - 搜尋輸入框的外層容器 */
+.searchBox {
+    position: relative;
+    flex: 1;
+    max-width: 400px;
+    min-width: 250px;
+}
+
+/* 搜尋輸入框 - 用於輸入搜尋關鍵字的文字框 */
+.searchInput {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid #e9ecef;
+    border-radius: 0;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    background: white;
+}
+
+.searchInput:focus {
+    outline: none;
+    border-color: var(--primary--600);
+    box-shadow: 0 0 0 3px rgba(230, 192, 104, 0.1);
+}
+
+/* 篩選下拉選單 - 用於選擇篩選條件的下拉選單 */
+.filterSelect {
+    padding: 0.75rem 1rem;
+    border: 2px solid #e9ecef;
+    border-radius: 0;
+    font-size: 1rem;
+    background: white;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+    min-width: 150px;
+}
+
+.filterSelect:focus {
+    outline: none;
+    border-color: var(--primary--600);
+}
+
+/* 批量操作區域 - 當選中多個項目時顯示的批量操作工具列 */
+.bulkActions {
+    background: var(--primary--200);
+    padding: 1rem 1.5rem;
+    border-radius: 0;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* 已選中項目數量 - 顯示已選中項目的數量文字 */
+.selectedCount {
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+/* 批量操作按鈕容器 - 包含批量操作按鈕的容器 */
+.bulkButtons {
+    display: flex;
+    gap: 0.75rem;
+}
+
+/* 批量操作按鈕 - 用於批量操作的按鈕樣式 */
+.bulkBtn {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--primary--600);
+    background: white;
+    color: var(--primary--800);
+    border-radius: 0;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.bulkBtn:hover {
+    background: var(--primary--600);
+    color: #1a1a1a;
+}
+
+.bulkBtn.danger {
+    color: #dc2626;
+    border-color: #fecaca;
+}
+
+.bulkBtn.danger:hover {
+    background: #fef2f2;
+    border-color: #fca5a5;
+}
+
+/* 表格容器 - 包含資料表格的外層容器 */
+.tableContainer {
+    background: white;
+    border-radius: 0;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+}
+
+/* 資料表格 - 主要的資料顯示表格 */
+.dataTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* 表格標題列 - 表格的標題行樣式 */
+.dataTable th {
+    background: #f8f9fa;
+    padding: 1rem 0.75rem;
+    text-align: left;
+    font-weight: 600;
+    color: #1a1a1a;
+    border-bottom: 2px solid #e9ecef;
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+/* 表格資料格 - 表格的資料儲存格樣式 */
+.dataTable td {
+    padding: 1rem 0.75rem;
+    border-bottom: 1px solid #e9ecef;
+    vertical-align: middle;
+}
+
+/* 表格行懸停效果 - 滑鼠懸停在表格行上的樣式 */
+.dataRow:hover {
+    background-color: #f8f9fa;
+}
+
+/* 複選框 - 用於選擇項目的複選框樣式 */
+.checkbox {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+/* 狀態標籤 - 顯示項目狀態的標籤樣式 */
+.status {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    border-radius: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.status.active {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.status.inactive {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.status.pending {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.status.shipped {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.status.delivered {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.status.cancelled {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.status.outOfStock {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.status.lowStock {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.status.expired {
+    background: #f3f4f6;
+    color: #6b7280;
+}
+
+/* 操作按鈕容器 - 包含編輯、刪除等操作按鈕的容器 */
+.actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+/* 操作按鈕 - 編輯、刪除等單項操作的按鈕樣式 */
+.actionBtn {
+    padding: 0.4rem 0.8rem;
+    border: 1px solid #e9ecef;
+    background: white;
+    color: #1a1a1a;
+    border-radius: 0;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.actionBtn:hover {
+    background: #f8f9fa;
+    border-color: var(--primary--600);
+}
+
+.actionBtn.danger {
+    color: #dc2626;
+    border-color: #fecaca;
+}
+
+.actionBtn.danger:hover {
+    background: #fef2f2;
+    border-color: #fca5a5;
+}
+
+.actionBtn.success {
+    color: #059669;
+    border-color: #a7f3d0;
+    background: transparent;
+}
+
+.actionBtn.success:hover {
+    background: transparent;
+    border-color: #86efac;
+}
+
+/* 分頁容器 - 包含分頁按鈕和頁面資訊的容器 */
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+/* 分頁按鈕 - 用於切換頁面的按鈕樣式 */
+.pageBtn {
+    padding: 0.5rem 1rem;
+    border: 1px solid #e9ecef;
+    background: white;
+    color: #1a1a1a;
+    border-radius: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.pageBtn:hover:not(:disabled) {
+    background: var(--primary--600);
+    color: #1a1a1a;
+    border-color: var(--primary--600);
+}
+
+.pageBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* 分頁資訊 - 顯示當前頁面和總頁數的資訊文字 */
+.pageInfo {
+    color: var(--grey--secondary);
+    font-size: 0.9rem;
+}
+
+/* ========================================
+   分頁元件樣式 (New Pagination Component Styles)
+   ======================================== */
+
+/* 分頁主容器 - 新的分頁元件主容器 */
+.paginationContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem 0;
+    margin-top: 2rem;
+}
+
+/* 分頁資訊區域 - 顯示分頁資訊的區域 */
+.paginationInfo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.85rem;
+}
+
+/* 分頁資訊文字 - 分頁資訊的文字樣式 */
+.paginationText {
+    color: #686868;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+/* 分頁按鈕容器 - 包含所有分頁按鈕的容器 */
+.paginationButtons {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* 分頁按鈕基礎樣式 - 所有分頁按鈕的基礎樣式 */
+.paginationBtn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: transparent;
+    color: #686868;
+    border-radius: 0;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+}
+
+/* 分頁按鈕懸停效果 - 分頁按鈕的懸停樣式 */
+.paginationBtn:hover:not(:disabled) {
+    background: transparent;
+    color: #e6c068;
+}
+
+/* 分頁按鈕禁用狀態 - 分頁按鈕的禁用樣式 */
+.paginationBtn:disabled {
+    cursor: not-allowed;
+    background: transparent;
+    color: #686868;
+}
+
+/* 分頁按鈕次要樣式 - 非活動頁碼按鈕的樣式 */
+.paginationBtnSecondary {
+    background: transparent;
+    color: #686868;
+    border: none;
+}
+
+.paginationBtnSecondary:hover:not(:disabled) {
+    background: transparent;
+    color: #e6c068;
+}
+
+/* 分頁按鈕活動樣式 - 當前活動頁碼按鈕的樣式 */
+.paginationBtnActive {
+    background: #e6c068 !important;
+    color: white !important;
+    border: none !important;
+    font-weight: 600;
+    width: 40px;
+    height: 40px;
+}
+
+.paginationBtnActive:hover {
+    background: #e6c068 !important; /* 懸停時保持金色背景 */
+    color: white !important; /* 懸停時保持白色文字 */
+}
+
+/* 分頁導航按鈕樣式 - 上一頁/下一頁按鈕的特殊樣式 */
+.paginationBtnNav {
+    width: 40px !important; /* 與其他按鈕相同的寬度 */
+    height: 40px;
+    background: transparent !important; /* 透明底色 */
+    color: #686868 !important;
+}
+
+.paginationBtnNav:hover:not(:disabled) {
+    background: transparent !important; /* 懸停時保持透明底色 */
+    color: #e6c068 !important; /* 懸停時變金色 */
+}
+
+.paginationBtnNav:disabled {
+    cursor: not-allowed;
+    background: transparent !important;
+    color: #5c5c5c !important; /* 與其他按鈕禁用狀態一致 */
+}
+
+/* 分頁按鈕特殊按鈕樣式 - 首頁/末頁按鈕的樣式 */
+.paginationBtnSecondary:first-child,
+.paginationBtnSecondary:last-child {
+    width: 40px;
+    height: 40px;
+    font-weight: 600;
+    color: #686868;
+}
+
+.paginationBtnSecondary:first-child:hover:not(:disabled),
+.paginationBtnSecondary:last-child:hover:not(:disabled) {
+    background: transparent;
+    color: #e6c068; /* 懸停時變金色 */
+}
+
+/* 響應式設計 - 分頁元件的響應式樣式 */
+@media (max-width: 768px) {
+    .paginationContainer {
+        padding: 1rem 0;
+    }
+
+    .paginationButtons {
+        gap: 0.25rem;
+    }
+
+    .paginationBtn {
+        min-width: 36px;
+        height: 36px;
+        font-size: 0.8rem;
+    }
+
+    .paginationBtnSecondary:first-child,
+    .paginationBtnSecondary:last-child {
+        min-width: 44px;
+    }
+
+    .paginationInfo {
+        flex-direction: row;
+        gap: 0.75rem;
+    }
+
+    .paginationText {
+        font-size: 0.8rem;
+    }
+
+    /* 調整 SVG 圖標大小 */
+    .paginationBtn svg {
+        width: 14px;
+        height: 14px;
+    }
+
+    /* 調整導航按鈕大小 */
+    .paginationBtnNav {
+        width: 36px !important;
+        height: 36px;
+    }
+
+    /* 調整活動按鈕大小 */
+    .paginationBtnActive {
+        width: 36px !important;
+        height: 36px;
+    }
+
+    /* 調整首頁末頁按鈕大小 */
+    .paginationBtnSecondary:first-child,
+    .paginationBtnSecondary:last-child {
+        width: 36px;
+        height: 36px;
+    }
+}
+
+@media (max-width: 480px) {
+    .paginationButtons {
+        gap: 0.125rem;
+    }
+
+    .paginationBtn {
+        min-width: 32px;
+        height: 32px;
+        font-size: 0.75rem;
+    }
+
+    .paginationBtnSecondary:first-child,
+    .paginationBtnSecondary:last-child {
+        min-width: 40px;
+    }
+
+    /* 調整 SVG 圖標大小 */
+    .paginationBtn svg {
+        width: 12px;
+        height: 12px;
+    }
+
+    /* 調整導航按鈕大小 */
+    .paginationBtnNav {
+        width: 32px !important;
+        height: 32px;
+    }
+
+    /* 調整活動按鈕大小 */
+    .paginationBtnActive {
+        width: 32px !important;
+        height: 32px;
+    }
+
+    /* 調整首頁末頁按鈕大小 */
+    .paginationBtnSecondary:first-child,
+    .paginationBtnSecondary:last-child {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+/* 載入狀態 - 顯示載入中訊息的樣式 */
+.loading {
+    font-size: 1rem;
+    color: #6b7280;
+    padding: 2rem;
+}
+
+/* 統計卡片網格 - 包含統計數據卡片的網格容器 */
+.statsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* 統計卡片 - 顯示統計數據的卡片樣式 */
+.statCard {
+    background: white;
+    border-radius: 0;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 4px solid var(--primary--600);
+}
+
+.statCard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* 統計圖標 - 統計卡片中的圖標樣式 */
+.statIcon {
+    font-size: 2rem;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg--light);
+    border-radius: 0;
+}
+
+/* 統計內容容器 - 統計卡片中文字內容的容器 */
+.statContent {
+    flex: 1;
+}
+
+/* 統計數值 - 統計卡片中顯示數值的樣式 */
+.statValue {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 0.25rem 0;
+    line-height: 1;
+}
+
+/* 統計標題 - 統計卡片中顯示標題的樣式 */
+.statTitle {
+    color: var(--grey--secondary);
+    font-size: 0.85rem;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* 統計標籤 - 統計卡片中顯示標籤的樣式 */
+.statLabel {
+    color: var(--grey--secondary);
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+/* ========================================
+   個別頁面專用樣式 (Individual Page Styles)
+   ======================================== */
+
+/* 會員管理專用樣式 (User Management Specific) */
+
+/* 用戶資訊容器 - 包含用戶頭像和基本資訊的容器 */
+.userInfo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+/* 用戶頭像 - 用戶的頭像顯示樣式 */
+.userAvatar {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(
+        135deg,
+        var(--primary--400),
+        var(--primary--800)
+    );
+    color: #1a1a1a;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+/* 用戶姓名 - 用戶的姓名顯示樣式 */
+.userName {
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0 0 0.25rem 0;
+}
+
+/* 用戶電子郵件 - 用戶的電子郵件顯示樣式 */
+.userEmail {
+    color: var(--grey--secondary);
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+/* 訂單管理專用樣式 (Order Management Specific) */
+
+/* 訂單資訊容器 - 包含訂單編號和日期的容器 */
+.orderInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+/* 訂單編號 - 訂單的編號顯示樣式 */
+.orderNumber {
+    font-weight: 600;
+    color: #1a1a1a;
+    font-size: 0.875rem;
+}
+
+/* 訂單日期 - 訂單的建立日期顯示樣式 */
+.orderDate {
+    font-size: 0.75rem;
+    color: #6b7280;
+}
+
+/* 客戶資訊容器 - 包含客戶姓名和電子郵件的容器 */
+.customerInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+/* 客戶姓名 - 客戶的姓名顯示樣式 */
+.customerName {
+    font-weight: 500;
+    color: #1a1a1a;
+    font-size: 0.875rem;
+}
+
+/* 客戶電子郵件 - 客戶的電子郵件顯示樣式 */
+.customerEmail {
+    font-size: 0.75rem;
+    color: #6b7280;
+}
+
+/* 付款狀態標籤 - 顯示付款狀態的標籤樣式 */
+.paymentStatus {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    border-radius: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.paymentStatus.pending {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.paymentStatus.paid {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.paymentStatus.failed {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.paymentStatus.refunded {
+    background: #e0e7ff;
+    color: #3730a3;
+}
+
+/* 商品管理專用樣式 */
+
+/* 商品資訊容器 - 包含商品圖片和詳細資訊的容器 */
+.productInfo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-width: 280px;
+}
+
+/* 商品圖片容器 - 商品圖片的顯示容器 */
+.productImage {
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
+    min-height: 60px;
+    border-radius: 0;
+    overflow: hidden;
+    background: var(--bg--light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.productImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 商品詳細資訊容器 - 包含商品名稱和描述的容器 */
+.productDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    min-width: 200px;
+}
+
+/* 商品名稱 - 商品的名稱顯示樣式 */
+.productName {
+    font-weight: 600;
+    color: #1a1a1a;
+    font-size: 0.95rem;
+    line-height: 1.3;
+}
+
+/* 商品描述 - 商品的描述文字顯示樣式 */
+.productDescription {
+    color: var(--grey--secondary);
+    font-size: 0.8rem;
+    line-height: 1.3;
+}
+
+/* 商品資訊欄位 - 確保圖片有足夠空間不被壓縮 */
+.productInfoHeader {
+    min-width: 300px;
+    width: 350px;
+}
+
+.productInfoCell {
+    min-width: 300px;
+    width: 350px;
+    padding: 0.75rem;
+}
+
+/* 分類欄位標題 - 確保分類欄位有足夠寬度 */
+.categoryHeader {
+    min-width: 100px;
+    width: 120px;
+}
+
+/* 分類欄位內容 - 分類欄位的內容容器 */
+.categoryCell {
+    min-width: 100px;
+    width: 120px;
+    padding: 0.75rem;
+}
+
+/* 價格欄位 - 增大價格欄位寬度 */
+.priceHeader {
+    min-width: 120px;
+    width: 140px;
+}
+
+.priceCell {
+    min-width: 120px;
+    width: 140px;
+    padding: 0.75rem;
+}
+
+/* 庫存欄位 - 增大庫存欄位寬度 */
+.stockHeader {
+    min-width: 100px;
+    width: 120px;
+}
+
+.stockCell {
+    min-width: 100px;
+    width: 120px;
+    padding: 0.75rem;
+}
+
+/* 狀態欄位 - 增大狀態欄位寬度 */
+.statusHeader {
+    min-width: 120px;
+    width: 140px;
+}
+
+.statusCell {
+    min-width: 120px;
+    width: 140px;
+    padding: 0.75rem;
+}
+
+/* 銷量欄位 - 增大銷量欄位寬度 */
+.salesHeader {
+    min-width: 100px;
+    width: 120px;
+}
+
+.salesCell {
+    min-width: 100px;
+    width: 120px;
+    padding: 0.75rem;
+}
+
+/* 日期欄位 - 增大日期欄位寬度 */
+.dateHeader {
+    min-width: 140px;
+    width: 160px;
+}
+
+.dateCell {
+    min-width: 140px;
+    width: 160px;
+    padding: 0.75rem;
+}
+
+/* 操作欄位 - 增大操作欄位寬度 */
+.actionsHeader {
+    min-width: 200px;
+    width: 220px;
+}
+
+.actionsCell {
+    min-width: 200px;
+    width: 220px;
+    padding: 0.75rem;
+}
+
+/* 商品分類標籤 - 顯示商品分類的標籤樣式 */
+.category {
+    padding: 0.25rem 0.75rem;
+    border-radius: 0;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    white-space: nowrap;
+    display: inline-block;
+}
+
+/* 庫存狀態標籤 - 顯示庫存狀態的標籤樣式 */
+.stockStatus {
+    padding: 0.25rem 0.75rem;
+    border-radius: 0;
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+    display: inline-block;
+}
+
+.category.rock {
+    background: #ffebee;
+    color: #c62828;
+}
+
+.category.jazz {
+    background: #e8f5e8;
+    color: #2e7d32;
+}
+
+.category.classical {
+    background: #e3f2fd;
+    color: #1565c0;
+}
+
+.category.pop {
+    background: #f3e5f5;
+    color: #7b1fa2;
+}
+
+/* 庫存狀態顏色樣式 */
+.stockStatus.outOfStock {
+    background: #ffebee;
+    color: #c62828;
+}
+
+.stockStatus.lowStock {
+    background: #fff3e0;
+    color: #ef6c00;
+}
+
+.stockStatus.sufficientStock {
+    background: #e8f5e8;
+    color: #2e7d32;
+}
+
+/* 商品價格 - 商品的價格顯示樣式 */
+.price {
+    font-weight: 700;
+    color: var(--primary--800);
+    font-size: 1.1rem;
+}
+
+/* 庫存數量 - 商品的庫存數量顯示樣式 */
+.stock {
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.stock.lowStock {
+    color: #ff9800;
+}
+
+/* 優惠券管理專用樣式 (Coupon Management Specific) */
+
+/* 優惠券資訊容器 - 包含優惠券代碼和名稱的容器 */
+.couponInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+/* 優惠券代碼 - 優惠券的代碼顯示樣式 */
+.couponCode {
+    font-weight: 700;
+    color: var(--primary--800);
+    font-size: 1rem;
+    font-family: 'Courier New', monospace;
+}
+
+/* 優惠券名稱 - 優惠券的名稱顯示樣式 */
+.couponName {
+    color: var(--grey--secondary);
+    font-size: 0.85rem;
+}
+
+/* 折扣類型標籤 - 顯示折扣類型的標籤樣式 */
+.discountType {
+    padding: 0.25rem 0.75rem;
+    border-radius: 0;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.discountType.percentage {
+    background: #e3f2fd;
+    color: #1976d2;
+}
+
+.discountType.fixed {
+    background: #f3e5f5;
+    color: #7b1fa2;
+}
+
+/* 折扣數值 - 折扣的數值顯示樣式 */
+.discountValue {
+    font-weight: 700;
+    color: var(--primary--800);
+    font-size: 1.1rem;
+}
+
+/* 日期範圍 - 優惠券有效期的日期範圍顯示樣式 */
+.dateRange {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    font-size: 0.85rem;
+}
+
+/* 使用資訊容器 - 包含使用次數和使用進度條的容器 */
+.usageInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-width: 120px;
+}
+
+/* 使用次數 - 優惠券的使用次數顯示樣式 */
+.usageCount {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+/* 使用進度條背景 - 優惠券使用進度條的背景樣式 */
+.usageBar {
+    width: 100%;
+    height: 6px;
+    background: #e9ecef;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+/* 使用進度條 - 優惠券使用進度條的進度顯示樣式 */
+.usageProgress {
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        var(--primary--400),
+        var(--primary--800)
+    );
+    transition: width 0.3s ease;
+}
+
+/* 搜尋圖標 - 搜尋框中的搜尋圖標樣式 */
+.searchIcon {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--grey--secondary);
+    font-size: 1.1rem;
+}
+
+/* 模態框樣式 (Modal Styles) */
+
+/* 模態框遮罩層 - 模態框的背景遮罩 */
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 1rem;
+}
+
+/* 模態框容器 - 模態框的主要容器 */
+.modalContainer {
+    background: white;
+    border-radius: 0;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+/* 模態框標題區域 - 模態框的標題部分 */
+.modalHeader {
+    padding: 1.5rem 1.5rem 0 1.5rem;
+    border-bottom: 1px solid #e9ecef;
+}
+
+/* 模態框標題 - 模態框的標題文字 */
+.modalTitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0 0 1rem 0;
+}
+
+/* 模態框內容區域 - 模態框的主要內容部分 */
+.modalBody {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    gap: 1rem;
+}
+
+/* 模態框訊息 - 模態框中的訊息文字 */
+.modalMessage {
+    font-size: 1rem;
+    color: #1a1a1a;
+    line-height: 1.5;
+    margin: 0;
+    text-align: left;
+    width: 100%;
+}
+
+/* 模態框按鈕區域 - 模態框的按鈕部分 */
+.modalFooter {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+}
+
+/* 模態框按鈕 - 模態框中的按鈕樣式 */
+.modalBtn {
+    padding: 0.75rem 1.5rem;
+    border: 1px solid #e9ecef;
+    border-radius: 0;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 80px;
+}
+
+/* 模態框次要按鈕 - 模態框中的次要按鈕樣式 */
+.modalBtnSecondary {
+    background: white;
+    color: #6b7280;
+    border-color: #d1d5db;
+}
+
+.modalBtnSecondary:hover {
+    background: #f9fafb;
+    border-color: #9ca3af;
+}
+
+/* 模態框主要按鈕 - 模態框中的主要按鈕樣式 */
+.modalBtnPrimary {
+    background: var(--primary--600);
+    color: #1a1a1a;
+    border-color: var(--primary--600);
+}
+
+.modalBtnPrimary:hover {
+    background: var(--primary--800);
+    border-color: var(--primary--800);
+}
+
+.modalBtnPrimary.danger {
+    background: #dc2626;
+    color: white;
+    border-color: #dc2626;
+}
+
+.modalBtnPrimary.danger:hover {
+    background: #b91c1c;
+    border-color: #b91c1c;
+}
+
+/* 訊息模態框樣式 (Message Modal Styles) */
+
+/* 訊息模態框容器 - 訊息模態框的特殊樣式 */
+.messageModal {
+    max-width: 400px;
+}
+
+/* 訊息模態框標題區域 - 根據類型顯示不同顏色 */
+.modalHeader.success {
+    background: #15803d;
+    border-bottom-color: #15803d;
+}
+
+.modalHeader.error {
+    background: #dc2626;
+    border-bottom-color: #dc2626;
+}
+
+.modalHeader.warning {
+    background: #d97706;
+    border-bottom-color: #d97706;
+}
+
+.modalHeader.info {
+    background: #2563eb;
+    border-bottom-color: #2563eb;
+}
+
+/* 訊息模態框圖標容器 - 圖標的容器樣式 */
+.modalIconContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0.75rem;
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+}
+
+/* 訊息模態框標題區域 - 調整為水平排列 */
+.modalHeader.success,
+.modalHeader.error,
+.modalHeader.warning,
+.modalHeader.info {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem 1.5rem 1rem 1.5rem;
+    min-height: 60px;
+}
+
+/* 訊息模態框標題 - 調整顏色為白色並移除底部邊距 */
+.modalHeader.success .modalTitle,
+.modalHeader.error .modalTitle,
+.modalHeader.warning .modalTitle,
+.modalHeader.info .modalTitle {
+    color: white;
+    margin: 0;
+    line-height: 1.2;
+    font-size: 1.25rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+
+/* 訊息模態框按鈕樣式 - 根據類型顯示不同顏色 */
+.modalBtnPrimary.success {
+    background: #16a34a;
+    color: white;
+    border-color: #16a34a;
+}
+
+.modalBtnPrimary.success:hover {
+    background: #15803d;
+    border-color: #15803d;
+}
+
+.modalBtnPrimary.error {
+    background: #dc2626;
+    color: white;
+    border-color: #dc2626;
+}
+
+.modalBtnPrimary.error:hover {
+    background: #b91c1c;
+    border-color: #b91c1c;
+}
+
+.modalBtnPrimary.warning {
+    background: #d97706;
+    color: white;
+    border-color: #d97706;
+}
+
+.modalBtnPrimary.warning:hover {
+    background: #b45309;
+    border-color: #b45309;
+}
+
+.modalBtnPrimary.info {
+    background: #2563eb;
+    color: white;
+    border-color: #2563eb;
+}
+
+.modalBtnPrimary.info:hover {
+    background: #1d4ed8;
+    border-color: #1d4ed8;
+}
+
+/* 模態框動畫效果 */
+.modalVisible {
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+
+.modalSlideIn {
+    transform: scale(1);
+    transition: transform 0.2s ease;
+}
+
+.modalContainer {
+    transform: scale(0.9);
+    transition: transform 0.2s ease;
+}
+
+.modalVisible .modalContainer {
+    transform: scale(1);
+}
+
+.form_label_fixed {
+    width: 100px; /* 根據您的需求調整此值 */
+    margin-right: 10px; /* 標籤與輸入欄位之間的選用間距 */
+    flex-shrink: 0; /* 防止標籤在較小螢幕上收縮 */
+}
+.bigCard {
+    padding: 20px;
+    box-shadow: 3px 5px 12px 1px #888;
+}
+.required::after {
+    content: '*';
+    color: var(--danger--600);
+    margin-left: 0.25rem;
+}
+
+/* 響應式設計 - 針對不同螢幕尺寸的樣式調整 */
+@media (max-width: 1200px) {
+    .tableContainer {
+        overflow-x: auto;
+    }
+
+    .dataTable {
+        min-width: 800px;
+    }
+}
+
+@media (max-width: 1400px) {
+    .tableContainer {
+        overflow-x: auto;
+    }
+
+    .dataTable {
+        min-width: 1200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+
+    .filters {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .searchBox {
+        max-width: none;
+        min-width: auto;
+    }
+
+    .filterSelect {
+        min-width: auto;
+    }
+
+    .bulkActions {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: stretch;
+    }
+
+    .bulkButtons {
+        justify-content: center;
+    }
+
+    .tableContainer {
+        margin: 0 1rem;
+    }
+
+    .pagination {
+        margin: 2rem 1rem;
+    }
+
+    .actions {
+        flex-direction: column;
+    }
+
+    .statsGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* 商品管理響應式 - 商品資訊在小螢幕上的樣式調整 */
+    .productInfo {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .productImage {
+        width: 50px;
+        height: 50px;
+    }
+
+    .productDetails {
+        min-width: auto;
+    }
+}

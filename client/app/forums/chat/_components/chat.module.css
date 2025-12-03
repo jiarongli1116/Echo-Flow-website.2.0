@@ -1,0 +1,716 @@
+/* ============ Vars ============ */
+:root {
+    /* 來自 forus.css / globalsMain.css 的色票（盡量沿用既有變數） */
+    --chat-accent: var(--forus-accent, #E6C068);
+    --chat-border: var(--forus-border, #E5E7EB);
+    --chat-gray-1: var(--forus-gray-1, #434343);
+    --chat-gray-2: var(--forus-gray-2, #545454);
+    --chat-black: var(--forus-black, #111);
+
+    /* 區塊高度（對齊 testFin chat.css） */
+    --chat-head-h: 52px;
+    --chat-input-h: 56px;
+
+    /* 其他 */
+    --chat-radius: 10px;
+    --chat-radius-sm: 8px;
+    --chat-shadow: 0 2px 10px rgba(0, 0, 0, .08);
+}
+
+/* ============ Page & Layout ============ */
+.chatPage {
+    display: flex;
+    flex-direction: column;
+}
+
+.chatLayout {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 16px;
+    width: 100%;
+    height: 100%;
+    padding: 8px 12px;
+}
+
+@media (min-width: 992px) {
+    .chatLayout {
+        padding: 12px 16px;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .chatLayout {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ============ Left / Thread List ============ */
+.chatAside {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.chatAsideInner {
+    flex: 1 1 auto;
+    min-height: 0;
+    background: #fff;
+    border: 1px solid var(--chat-border);
+    border-radius: var(--chat-radius) var(--chat-radius) 0 0;
+    box-shadow: var(--chat-shadow);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.chatAsideHead {
+    flex: 0 0 auto;
+    height: 52;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--chat-border);
+    background-color: #E6C068;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.chatAsideTitle {
+    margin: 0;
+    font-size: 16px;
+    color: var(--chat-black);
+    font-weight: 700;
+}
+
+.chatThreadList {
+    flex: 1 1 auto;
+    height: 79vh;
+    overflow: auto;
+    /* padding: 0px 8px; */
+    /* display: grid;
+    gap: 6px; */
+    background: #fff;
+}
+
+.chatThreadListEmpty {
+    padding: 24px 12px;
+    color: var(--chat-gray-2);
+    text-align: center;
+    font-size: 14px;
+}
+
+/* 單列 */
+.chatThreadItem {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    border: 1px solid var(--chat-border);
+    /* border-radius: var(--chat-radius-sm); */
+    padding: 8px;
+    text-align: left;
+    cursor: pointer;
+    transition: background .15s ease, border-color .15s ease, box-shadow .15s ease;
+}
+
+.chatThreadItem:hover {
+    background: #fafafa;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .04);
+}
+
+.chatThreadItem--active {
+    border-color: var(--chat-accent);
+    box-shadow: 0 0 0 2px rgba(230, 192, 104, .25);
+    background: #fffce8;
+}
+
+.chatThreadItemAvatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    object-fit: cover;
+    background: #d9d9d9;
+}
+
+.chatThreadItemMain {
+    min-width: 0;
+    display: grid;
+    gap: 4px;
+}
+
+.chatThreadItemTop {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 8px;
+}
+
+.chatThreadItemTitle {
+    font-size: 15px;
+    color: var(--chat-black);
+    font-weight: 700;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.chatThreadItemTime {
+    font-size: 12px;
+    color: var(--chat-gray-2);
+}
+
+.chatThreadItemBottom {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 8px;
+}
+
+.chatThreadItemLast {
+    font-size: 13px;
+    color: var(--chat-gray-2);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.chatThreadItemBadge {
+    min-width: 20px;
+    height: 20px;
+    padding: 0 6px;
+    border-radius: 999px;
+    background: var(--chat-accent);
+    color: #343434;
+    font-size: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 左欄底部（與輸入列等高） */
+.chatLeftFooter {
+    flex: 0 0 auto;
+    height: var(--chat-input-h);
+    border-top: 1px solid var(--chat-border);
+    background: #E6C068;
+    border-radius: 0 0 var(--chat-radius) var(--chat-radius);
+    /* margin-top: 8px; */
+}
+
+/* ============ Main / Chat Room ============ */
+.chatMain {
+    min-height: 0;
+}
+
+.chatRoom {
+    height: 100%;
+    min-height: 0;
+    background: #fff;
+    border: 1px solid var(--chat-border);
+    border-radius: var(--chat-radius);
+    box-shadow: var(--chat-shadow);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Header（抬頭） */
+.chatHeader {
+    height: var(--chat-head-h);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    padding: 8px 12px;
+    background: var(--chat-accent);
+    border-bottom: 1px solid var(--chat-border);
+}
+
+.chatHeaderLeft {
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    align-items: center;
+    gap: 10px;
+}
+
+.chatHeaderBack {
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    border: 0;
+    border-radius: 6px;
+    background: #ffffff00;
+    color: #000;
+    cursor: pointer;
+}
+
+.chatHeaderAvatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #d9d9d9;
+}
+
+.chatHeaderMeta {
+    min-width: 0;
+}
+
+.chatHeaderTitle {
+    font-size: 14px;
+    font-weight: 700;
+    color: #343434;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.chatHeaderSub {
+    font-size: 12px;
+    color: #555;
+}
+
+.chatHeaderRight {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.chatHeaderMore {
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    border: 0;
+    border-radius: 6px;
+    background: #fff;
+    color: #000;
+    cursor: pointer;
+}
+
+/* Messages（訊息串） */
+.chatMessages {
+    flex: 1 1 auto;
+    height: 79vh;
+    overflow: auto;
+    padding: 8px 10px 8px;
+    /* display: grid;
+    gap: 8px; */
+    background: #fff;
+}
+
+/* 日期分隔 */
+.chatDayDivider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 4px;
+    font-size: 12px;
+    color: var(--chat-gray-2);
+}
+
+.chatDayDivider::before,
+.chatDayDivider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--chat-border);
+}
+
+/* 單則訊息（泡泡） */
+.chatMsg {
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    align-items: end;
+    column-gap: 8px;
+    padding-bottom: 8px;
+}
+
+.chatMsg--self {
+    grid-template-columns: 1fr 32px;
+    justify-items: end;
+}
+
+.chatMsg--system {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    color: var(--chat-gray-2);
+    font-size: 12px;
+}
+
+.chatMsgAvatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 100px;
+    object-fit: cover;
+    background: #d9d9d9;
+}
+
+.chatMsgBody {
+    min-width: 0;
+    display: grid;
+    justify-items: start;
+    gap: 4px;
+}
+
+.chatMsg--self .chatMsgBody {
+    justify-items: end;
+}
+
+.chatMsgBubble {
+    /* max-width: min(70%, 560px); */
+    background: #f0f0f0;
+    border: 1px solid var(--chat-border);
+    border-radius: 24px 24px 24px 5px;
+    padding: 8px 12px;
+    color: var(--chat-gray-1);
+    word-break: break-word;
+    overflow-wrap: anywhere;
+}
+
+.chatMsg--self .chatMsgBubble {
+    background: #fffce8;
+    border-radius: 24px 24px 5px 24px;
+    border-color: var(--chat-accent);
+}
+
+.chatMsgImage {
+    display: block;
+    max-width: 320px;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+    background: #f2f2f2;
+}
+
+.chatMsgMeta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.chatMsgTime {
+    font-size: 12px;
+    color: var(--chat-gray-2);
+}
+
+/* Composer（輸入列） */
+.chatComposer {
+    flex: 0 0 auto;
+    height: var(--chat-input-h);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+    align-items: center;
+    padding: 8px 12px;
+    border-top: 1px solid var(--chat-border);
+    background: #fff;
+}
+
+.chatComposerInput {
+    width: 100%;
+    height: 40px;
+    border: 1px solid var(--chat-border);
+    border-radius: 10px;
+    padding: 0 12px;
+    outline: none;
+}
+
+.chatComposerInput:focus {
+    border-color: var(--chat-accent);
+    box-shadow: 0 0 0 2px rgba(230, 192, 104, .25);
+}
+
+.chatComposerSend {
+    height: 40px;
+    padding: 0 14px;
+    border: 0;
+    border-radius: 100%;
+    background: var(--chat-accent);
+    color: #343434;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* 空狀態 */
+.chatEmptyState {
+    height: 90vh;
+    border: 1px dashed var(--chat-border);
+    border-radius: var(--chat-radius);
+    display: grid;
+    place-items: center;
+    color: var(--chat-gray-2);
+    background: #fff;
+}
+
+/* ========== NewChatModal & UserPicker（新增） ========== */
+
+/* 左欄標題右側的動作區與 icon 按鈕 */
+.chatAsideActions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.chatIconBtn {
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    border: 1px solid var(--chat-accent);
+    border-radius: 8px;
+    background: #E6C068;
+    color: var(--chat-black);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.chatIconBtn:hover {
+    border-color: var(--chat-accent);
+    box-shadow: 0 0 0 2px rgba(230, 192, 104, .18);
+}
+
+/* Modal 外層 */
+.chatModalBackdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .4);
+    display: grid;
+    place-items: center;
+    z-index: 1050;
+}
+
+.chatModal {
+    width: min(720px, 92vw);
+    max-height: 86vh;
+    background: #fff;
+    border: 1px solid var(--chat-border);
+    border-radius: 12px;
+    box-shadow: var(--chat-shadow);
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    overflow: hidden;
+}
+
+.chatModalHead {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    padding: 10px 12px;
+    background: #E6C068;
+    border-bottom: 1px solid var(--chat-border);
+}
+
+.chatModalTitle {
+    font-weight: 700;
+    color: var(--chat-black);
+}
+
+.chatModalClose {
+    width: 28px;
+    height: 28px;
+    border: 0;
+    border-radius: 6px;
+    background: #E6C068;
+    color: #000;
+    cursor: pointer;
+}
+
+.chatModalBody {
+    overflow: auto;
+    padding: 12px;
+    background: #fff;
+}
+
+.chatModalFoot {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 10px 12px;
+    border-top: 1px solid var(--chat-border);
+    background: #fff;
+}
+
+.chatModalBtn {
+    min-width: 88px;
+    height: 36px;
+    padding: 0 12px;
+    border-radius: 10px;
+    border: 1px solid var(--chat-border);
+    background: #fff;
+    color: var(--chat-black);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.chatModalBtn--ghost {
+    background: transparent;
+    color: var(--chat-black);
+}
+
+.chatModalBtn--primary {
+    background: var(--chat-accent);
+    border-color: var(--chat-accent);
+    color: #343434;
+}
+
+.chatModalBtn:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+}
+
+/* UserPicker */
+.chatPicker {
+    display: grid;
+    gap: 12px;
+}
+
+.chatPickerSearch {
+    display: grid;
+    grid-template-columns: 20px 1fr;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid var(--chat-border);
+    border-radius: 10px;
+    padding: 6px 10px;
+    background: #fff;
+}
+
+.chatPickerSearch input {
+    border: 0;
+    outline: none;
+    height: 28px;
+}
+
+.chatPickerSelected {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.chatChip {
+    display: inline-grid;
+    grid-auto-flow: column;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid var(--chat-border);
+    border-radius: 999px;
+    padding: 4px 8px;
+    background: #fffce8;
+    color: var(--chat-black);
+    cursor: pointer;
+}
+
+.chatChip img {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #d9d9d9;
+}
+
+.chatPickerList {
+    max-height: 48vh;
+    overflow: auto;
+    display: grid;
+    gap: 6px;
+    padding-right: 2px;
+    /* 防止捲軸壓文字 */
+}
+
+.chatPickerEmpty {
+    padding: 18px 8px;
+    color: var(--chat-gray-2);
+    text-align: center;
+}
+
+.chatPickerItem {
+    display: grid;
+    grid-template-columns: 18px 36px 1fr;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid var(--chat-border);
+    border-radius: 10px;
+    padding: 6px 10px;
+    background: #fff;
+    cursor: pointer;
+}
+
+.chatPickerItem:hover {
+    border-color: var(--chat-accent);
+    box-shadow: 0 0 0 2px rgba(230, 192, 104, .18);
+}
+
+.chatPickerItemCheck {
+    width: 16px;
+    height: 16px;
+}
+
+.chatPickerItemAvatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 100%;
+    object-fit: cover;
+    background: #d9d9d9;
+}
+
+.chatPickerItemName {
+    font-size: 14px;
+    color: var(--chat-black);
+}
+
+/* ====== 新增：UserPicker 搜尋列下方插槽 ====== */
+.chatPickerBelow {
+    margin: 8px 0 4px;
+}
+
+/* ★ 群組人數提示（顯示一個數字：含自己） */
+.groupMetaRow {
+    font-size: 14px;
+    color: #444;
+    margin: 0 2px 6px;
+}
+
+.groupMetaCount {
+    font-weight: 700;
+    color: #222;
+}
+
+/* ★ 群組名稱輸入框（放在搜尋列下方） */
+.groupTitleInput {
+    width: 100%;
+    font-size: 14px;
+    line-height: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 9px 12px;
+    outline: none;
+    background: #fff;
+}
+
+.groupTitleInput:focus {
+    border-color: #e6c679;
+    box-shadow: 0 0 0 3px rgba(230, 198, 121, 0.2);
+}
+
+/* === 新增：訊息 meta 的暱稱上色 === */
+.chatMsgNick {
+    color: #2075f3;
+    font-weight: 600;
+    /* 讓暱稱更清楚 */
+}
+
+/* 手機顯示返回鍵，桌機隱藏（配合 ChatHeader.onBack） */
+@media (min-width: 992px) {
+    .chatHeaderBack {
+        display: none !important;
+    }
+}
+
+
+@media (max-width: 992px) {
+    .chatAsidep {
+        padding: 0px 12px;
+    }
+}

@@ -1,0 +1,626 @@
+/* Header 組件樣式 */
+.navbar {
+  background-color: #000000;
+  padding: 0 1rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1999;
+  transition: top 0.3s ease-in-out;
+  min-height: 80px;
+  height: 80px; /* 固定高度 */
+  box-sizing: border-box;
+}
+
+.navbarBrand {
+  display: inline-block;
+  vertical-align: text-top;
+}
+
+.navbarBrand img {
+  height: auto;
+  max-height: 40px;
+}
+
+/* 手機版 logo */
+@media (max-width: 991.98px) {
+  .navbarBrand img {
+    content: url('/images/logo2.png');
+    max-height: 30px;
+  }
+}
+
+.searchIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  margin-right: 0.5rem;
+  text-decoration: none;
+  color: white;
+  border: none;
+  background: none;
+}
+
+.searchIcon:hover {
+  color: #fdd168;
+  text-decoration: none;
+}
+
+.customToggler {
+  border: none;
+  padding: 0.25rem 0.5rem;
+  background: transparent;
+}
+
+.customToggler:focus {
+  box-shadow: none;
+}
+
+/* 漢堡選單圖標 */
+.customToggler .navbarTogglerIcon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.customToggler:hover .navbarTogglerIcon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(200, 200, 200, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.navbarNav {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.navLink {
+  color: #ffffff !important;
+  font-family: Inter, sans-serif;
+  font-size: 16px !important;
+  font-weight: 700;
+  letter-spacing: 0.96px;
+  text-transform: uppercase;
+  transition: color 0.1s ease;
+  text-decoration: none !important;
+  background: none !important;
+  border: none !important;
+  padding: 0.5rem;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.navLink:hover {
+  color: #fdd168 !important;
+  text-decoration: none !important;
+}
+
+.navLink:active {
+  color: #fdd168 !important;
+  text-decoration: none !important;
+}
+
+.navLink:focus {
+  color: #ffffff !important;
+  text-decoration: none !important;
+  outline: none;
+}
+
+.navLink svg {
+  fill: #ffffff;
+}
+
+.navLink:hover svg {
+  fill: #fdd168;
+  stroke: #fdd168;
+}
+
+.dropdownMenu {
+  padding-top: 20px;
+  background-color: #000000 !important;
+  border-radius: 0 !important;
+  border: none !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  z-index: 1998;
+  background-image: none !important;
+  background-clip: border-box !important;
+}
+
+.dropdownItem {
+  color: #ffffff !important;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  display: block;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent !important;
+  border: none !important;
+  outline: none !important;
+  font-size: 16px !important;
+}
+
+.dropdownItem:hover {
+  background-color: transparent !important;
+  color: #fdd168 !important;
+  text-decoration: none !important;
+}
+
+.dropdownItem:focus {
+  background-color: transparent !important;
+  color: #ffffff !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.dropdownItem:active {
+  background-color: transparent !important;
+  color: #fdd168 !important;
+}
+
+.dropdownItem.selected {
+  background-color: rgba(253, 209, 104, 0.1) !important;
+  color: #fdd168 !important;
+  font-weight: 600;
+}
+
+.dropdownItem.selected:hover {
+  background-color: rgba(253, 209, 104, 0.15) !important;
+  color: #fdd168 !important;
+}
+
+.dropdownItem:focus-visible {
+  background-color: rgba(253, 209, 104, 0.1) !important;
+  color: #fdd168 !important;
+  outline: 2px solid #fdd168 !important;
+  outline-offset: -2px;
+}
+
+.iconBlock {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.iconBlockDesktop {
+  display: flex;
+  margin-left: 0.5rem;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+/* 導航選單展開/收起樣式 */
+.navbarCollapse {
+  display: none;
+  margin-left: auto;
+  margin-right: 0;
+  flex-shrink: 0;
+}
+
+.navbarCollapse.show {
+  display: block;
+}
+
+.cartWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.cartBadge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background-color: red;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* 動畫效果 */
+  transform: scale(1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.cartBadge.jump {
+  transform: scale(1.5);
+}
+
+/* 響應式設計 */
+@media (min-width: 992px) {
+  .navbarCollapse {
+    display: block;
+  }
+
+  .iconBlockDesktop {
+    display: flex;
+  }
+
+  /* 下拉選單 hover 展開（桌機版） */
+  .dropdown:hover .dropdownMenu {
+    display: block;
+    margin-top: 0;
+  }
+
+  /* 桌機版 user 下拉選單定位 */
+  .iconBlockDesktop .dropdown .dropdownMenu {
+    position: absolute;
+    right: 0;
+    left: auto;
+    margin-top: 0.5rem;
+    min-width: 200px;
+    z-index: 1998;
+    transform: none;
+  }
+
+  /* 桌機版 dropdown 容器定位 */
+  .iconBlockDesktop .dropdown {
+    position: relative;
+  }
+
+  /* 確保下拉選單不會超出容器 */
+  .iconBlockDesktop {
+    position: relative;
+    overflow: visible;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .navbarBrand img {
+    max-height: 30px;
+  }
+
+  /* 手機版導航選單容器 */
+  .navbarCollapse {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #000000;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 1997;
+  }
+
+  .navbarNav {
+    text-align: center;
+    margin: 0;
+    padding: 1rem 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .navbarNav .nav-item {
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .navbarNav .nav-item:last-child {
+    border-bottom: none;
+  }
+
+  .navbarNav .navLink {
+    width: 100%;
+    padding: 1rem;
+    text-align: center;
+    border-radius: 0;
+  }
+
+  /* 手機版導航選單的下拉選單 */
+  .navbarNav .dropdownMenu {
+    padding-top: 0;
+    background-color: #000000 !important;
+    border-radius: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    text-align: center;
+    width: 100%;
+    position: static;
+    margin-top: 0;
+    min-width: auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    background-image: none !important;
+    background-clip: border-box !important;
+    z-index: 1998;
+  }
+
+  /* 手機版使用者下拉選單 */
+  .d-flex.align-items-center .dropdown .dropdownMenu {
+    padding-top: 20px;
+    background-color: #000000 !important;
+    border-radius: 0 !important;
+    border: none !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    right: 0;
+    left: auto;
+    margin-top: 0.5rem;
+    min-width: 200px;
+    background-image: none !important;
+    background-clip: border-box !important;
+    z-index: 1998;
+  }
+
+  /* 手機版 dropdown 容器定位 */
+  .dropdown {
+    position: relative;
+  }
+
+  /* 手機版下拉選單項目 */
+  .dropdownItem {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    background-color: transparent !important;
+    color: #ffffff !important;
+    font-size: 14px !important;
+  }
+
+  .dropdownItem.selected {
+    background-color: rgba(253, 209, 104, 0.1) !important;
+    color: #fdd168 !important;
+    font-weight: 600;
+  }
+
+  .dropdownItem.selected:hover {
+    background-color: rgba(253, 209, 104, 0.15) !important;
+    color: #fdd168 !important;
+  }
+
+  .dropdownItem:last-child {
+    border-bottom: none;
+  }
+}
+
+/* 額外的響應式斷點 */
+@media (max-width: 767.98px) {
+  .navbar {
+    padding: 0 0.5rem;
+  }
+
+  .navbarBrand img {
+    max-height: 28px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .navbar {
+    padding: 0 0.25rem;
+  }
+
+  .navbarBrand img {
+    max-height: 25px;
+  }
+
+  .navLink {
+    font-size: 14px !important;
+    padding: 0.4rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .navbar {
+    padding: 0 2rem;
+  }
+
+  .navbarBrand img {
+    max-height: 45px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .navbar {
+    padding: 0 3rem;
+  }
+
+  .navbarBrand img {
+    max-height: 50px;
+  }
+}
+
+/* 購物車數量標籤樣式 */
+.cartBadge {
+  background-color: #8b0000;
+  color: #ffffff;
+  border-radius: 8px;
+  padding: 0.25rem 0.5rem;
+  font-size: 12px;
+  font-weight: bold;
+  min-width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  z-index: 1996;
+  margin-left: -12px;
+}
+
+/* 使用者頭像樣式 */
+.userAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #454545d6;
+  transition: border-color 0.3s ease;
+}
+
+.userAvatar:hover {
+  border-color: #fdd168;
+}
+
+/* 下拉選單容器定位 */
+.dropdown {
+  position: relative;
+}
+
+/* 全局Bootstrap下拉選單樣式覆蓋 - 與自定義樣式保持一致 */
+.dropdown-menu {
+  background-color: #000000 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+  background-image: none !important;
+  background-clip: border-box !important;
+  z-index: 1998 !important;
+}
+
+/* Bootstrap下拉選單項目樣式 - 與自定義樣式保持一致 */
+.dropdown-item {
+  background-color: transparent !important;
+  color: #ffffff !important;
+  border: none !important;
+  outline: none !important;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.dropdown-item:hover {
+  background-color: transparent !important;
+  color: #fdd168 !important;
+}
+
+.dropdown-item:focus {
+  background-color: transparent !important;
+  color: #ffffff !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.dropdown-item:active {
+  background-color: transparent !important;
+  color: #fdd168 !important;
+}
+
+.dropdown-item.selected {
+  background-color: rgba(253, 209, 104, 0.1) !important;
+  color: #fdd168 !important;
+  font-weight: 600;
+}
+
+.dropdown-item.selected:hover {
+  background-color: rgba(253, 209, 104, 0.15) !important;
+  color: #fdd168 !important;
+}
+
+.dropdown-item:focus-visible {
+  background-color: rgba(253, 209, 104, 0.1) !important;
+  color: #fdd168 !important;
+  outline: 2px solid #fdd168 !important;
+  outline-offset: -2px;
+}
+
+/* 下拉選單箭頭樣式 */
+.dropdown-toggle::after {
+  border-top-color: #ffffff !important;
+}
+
+.dropdown-toggle:hover::after {
+  border-top-color: #fdd168 !important;
+}
+
+/* 防止 flex-grow-1 覆蓋 Header 下拉選單 */
+.flex-grow-1 {
+  flex-grow: 1 !important;
+  z-index: 1500 !important;
+}
+
+/* 手機版圖標區塊樣式 */
+@media (max-width: 991.98px) {
+  .iconBlock {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: auto;
+  }
+
+  .searchIcon {
+    padding: 0.5rem;
+    margin-right: 0.25rem;
+  }
+
+  .navLink {
+    padding: 0.5rem;
+  }
+
+  .userAvatar {
+    width: 28px;
+    height: 28px;
+  }
+
+  .cartBadge {
+    font-size: 10px;
+    padding: 0.2rem 0.4rem;
+    min-width: 16px;
+    height: 16px;
+    margin-left: -8px;
+  }
+}
+
+/* 購物車 Loading 狀態樣式 */
+.cartLoading {
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+  position: relative;
+}
+
+.cartLoading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
+  border: 2px solid #fdd168;
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.cartBadgeLoading {
+  animation: pulse 1.2s ease-in-out infinite;
+  background-color: #fdd168 !important;
+  color: #000000 !important;
+  font-weight: bold;
+  min-width: 20px;
+  text-align: center;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

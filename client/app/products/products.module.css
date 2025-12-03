@@ -1,0 +1,468 @@
+body {
+    background-color: var(--bg--grey) !important;
+}
+
+
+
+
+.link:link,
+.link:visited {
+    color: var( --text-light) !important;
+    text-decoration: none !important;
+}
+
+/* 輪播圖樣式 */
+.carouselInner {
+    width: 100%;
+    height: 540px !important;
+}
+
+.carouselInner img {
+    object-fit: cover !important;
+    height: 540px !important;
+}
+
+.carouselIndicators button {
+    width: 12px !important;
+    height: 12px !important;
+    border-radius: 50% !important;
+    margin: 0 5px !important;
+}
+
+.carouselControlPrev {
+    width: 53px !important;
+    height: 53px !important;
+    left: 10px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+}
+
+.carouselControlNext {
+    width: 53px !important;
+    height: 53px !important;
+    right: 10px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+}
+
+.carouselControlPrev i,
+.carouselControlNext i {
+    font-size: 53px !important;
+    color: var(--bg--dark) !important;
+}
+
+/* 導航樣式  nav*/
+.productnav {
+    color:  #ffffff!important ;
+    font-size: var(--tw--p);
+}
+
+.productsBreadcrumbItem {
+    color:   #ffffff!important ;
+    font-size: var(--tw--p);
+}
+
+.productsBreadcrumbItem::before {
+    color:  #ffffff !important;
+}
+.productnav .breadcrumb-item + .breadcrumb-item::before {
+    color: #ffffff !important;
+}
+
+/* 修正所有 select 下拉箭頭顏色 */
+.productSelect {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23e6c068' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m1 6 7 7 7-7'/%3e%3c/svg%3e") !important;
+}
+
+/* 篩選器樣式 */
+.filter {
+    width: 142px !important;
+}
+
+.filter .productSelect {
+    border-radius: 9999px !important;
+    width: 100%;
+    height: 35px;
+    border: 1px solid var(--primary--400);
+    color: var(--primary--800) !important;
+    background-color: var(--bg--grey) !important;
+}
+
+/* 搜尋篩選區域 */
+.searchfilter {
+    display: flex !important;
+    justify-content: flex-end !important;
+    font-size: var(--tw--p12) !important;
+}
+
+.searchfilter .productSelect {
+    font-size: var(--tw--p12) !important;
+}
+
+/* 搜尋框樣式 */
+.search {
+    border-radius: 9999px;
+    width: 300px;
+    height: 35px;
+    border: 1px solid var(--primary--400);
+    color: var(--primary--800);
+    background-color: var(--bg--grey);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search input {
+    background-color: var(--bg--grey);
+    border: none;
+    width: 150px;
+    color: var(--primary--800);
+    outline: none;
+}
+
+.search input::placeholder {
+    color: var(--primary--800);
+    opacity: 0.7;
+}
+
+.search select {
+    border-radius: 9999px;
+    width: 110px;
+    height: 100%;
+    border: none;
+    color: var(--primary--800);
+    background-color: var(--bg--grey);
+}
+
+.faMagnifyingGlass {
+    color: var(--primary--800);
+}
+
+/* Main 內容區域 */
+.main {
+    min-height: 60vh;
+}
+
+.contentArea {
+    margin-top: 2rem;
+}
+
+.productSection {
+    min-height: fit-content;
+}
+
+
+
+/* 手機版 RWD 樣式 - 768px */
+@media (max-width: 768px) {
+    /* 麵包屑導航 */
+    .breadcrumb {
+        font-size: 14px !important;
+        margin-bottom: 1rem !important;
+    }
+
+    /* 搜尋和篩選區域調整 */
+    .filter select {
+        display: none;
+    }
+
+    /* 搜尋框調整 */
+    .search {
+        width: 299px !important;
+        height: 35px;
+        order: 1;
+    }
+
+    /* 篩選器調整 */
+    .filter {
+        width: 100% !important;
+        order: 2;
+    }
+
+    /* 手機版篩選按鈕 */
+    .mobileFilterBtn {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        background-color: var(--primary--600);
+        color: var( --text-light);
+        border: none;
+        border-radius: 50%;
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        order: 2;
+        flex-shrink: 0;
+        margin-left: 1px;
+        cursor: pointer;
+    }
+
+    /* 隱藏桌面版側邊欄 */
+    .desktopSidebar {
+        display: none !important;
+    }
+
+    /* 商品陳列區域調整 */
+    .contentArea {
+        margin-top: 1rem !important;
+    }
+
+    .productSection {
+        width: 100% !important;
+        margin-left: 0 !important;
+        padding: 0 15px !important;
+    }
+
+    /* === 重要：手機版商品佈局 === */
+    /* 商品行間距調整 */
+    :global(.product-section) .row {
+        margin: 0 -8px !important;
+    }
+
+    /* 覆蓋 Bootstrap 的 col-3，改為兩欄佈局 - 使用更強的選擇器 */
+    :global(.product-section) :global(.col-3) {
+        width: 50% !important;
+        flex: 0 0 50% !important;
+        max-width: 50% !important;
+        padding: 0 8px !important;
+        margin-bottom: 16px !important;
+    }
+
+    /* 備用方案：直接重對商品容器 */
+    .productSection :global(.col-3) {
+        width: 50% !important;
+        flex: 0 0 50% !important;
+        max-width: 50% !important;
+        padding: 0 8px !important;
+        margin-bottom: 16px !important;
+    }
+
+   
+}
+
+/* 桌面版隱藏手機版元素 */
+@media (min-width: 769px) {
+    .mobileFilterBtn {
+        display: none !important;
+    }
+}
+
+@media (max-width: 768px) {
+    body .h1,
+    .container .h1,
+    .header .h1 {
+        font-size: 64px !important;
+    }
+
+    body .h2,
+    .container .h2 {
+        font-size: 48px !important;
+    }
+
+    body .h3,
+    .container .h3 {
+        font-size: 36px !important;
+    }
+
+    body .h4,
+    .container .h4 {
+        font-size: 32px !important;
+    }
+
+    body .h5,
+    .container .h5 {
+        font-size: 28px !important;
+    }
+
+    body .h6,
+    .container .h6 {
+        font-size: 20px !important;
+    }
+
+    body .paragraph,
+    .container .paragraph {
+        font-size: 16px !important;
+    }
+
+    .desktopSidebar {
+        display: none;
+    }
+}
+
+/* 手機版響應式設計 */
+/* 商品卡片 */
+@media (max-width: 768px){
+  .productSection {
+    width: 100% !important;
+    margin-left: 0 !important;
+    padding: 0 15px !important;
+  }
+
+  /* 商品行間距調整 */
+  .productSection .row {
+    margin: 0 -8px !important;
+  }
+
+  /* 商品欄位 - 改為50%寬度實現兩張兩張陳列 */
+  .productSection .col3 {
+    width: 50% !important;
+    flex: 0 0 50% !important;
+    max-width: 50% !important;
+    padding: 0 8px !important;
+    margin-bottom: 16px !important;
+  }
+
+  /* 商品卡片整體調整 - 使用 Grid 佈局來固定高度 */
+  .productCard {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    height: 100%;
+    display: grid !important;
+    grid-template-rows: auto 1fr !important;
+    background-color: #2b2b2b !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    padding: 8px !important;
+  }
+
+  .productCard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  }
+
+  /* 商品圖片區域 */
+  .productImage {
+    width: 100%;
+    height: 120px !important;
+    overflow: hidden;
+    margin-bottom: 8px !important;
+    border-radius: 6px !important;
+  }
+
+  .productImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  /* 商品資訊區域 - 使用 Grid 來固定每個區塊的高度 */
+ .productInfo {
+  display: grid !important;
+  grid-template-rows: auto auto auto 1fr !important; /* 都改為 auto */
+  gap: 4px !important;
+  height: 100% !important;
+}
+
+  /* 專輯標題 - 固定高度 32px */
+ .albumTitle {
+  font-size: 12px !important;
+  font-weight: 600;
+  color: #F6F6F6;
+  line-height: 1.2 !important;
+  word-wrap: break-word;
+  word-break: break-word;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  /* height: 32px !important; */
+  margin-bottom: 4px !important;
+}
+
+  /* 評分區域 */
+  .ratingSection {
+    margin-bottom: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  /* 評分組件在手機版的樣式調整 */
+  .productRating {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+
+  .starsContainer {
+    display: flex;
+    gap: 1px;
+  }
+
+  /* 評分星星大小調整 */
+  .starIcon {
+    width: 10px !important;
+    height: 10px !important;
+  }
+
+  .ratingNumber {
+    font-size: 10px !important;
+    color: #F6F6F6;
+    margin-left: 2px;
+  }
+
+  /* 藝人名稱 - 固定高度 20px */
+  .artistName {
+    font-size: 16px !important;
+    color: #cccccc !important;
+    line-height: 1.2 !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 1 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    height: 20px !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* 價格區域 - 置於底部 */
+  .priceSection {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end !important;
+    margin-top: 0 !important;
+    align-self: end !important;
+  }
+
+  .price {
+    font-size: 14px !important;
+    font-weight: 700;
+    color: #FF4F4F;
+  }
+
+  /* 操作按鈕 */
+  .actionButtons {
+    display: flex;
+    gap: 4px !important;
+  }
+
+  .cartBtn, .heartBtn {
+    width: 24px !important;
+    height: 24px !important;
+    border: none;
+    border-radius: 4px;
+    background: #f8f9fa;
+    color: #666;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .cartBtn svg, .heartBtn svg {
+    width: 12px !important;
+    height: 12px !important;
+  }
+
+  .cartBtn:hover {
+    background: #007bff;
+    color: white;
+  }
+
+  .heartBtn:hover {
+    background: #e74c3c;
+    color: white;
+  }
+}

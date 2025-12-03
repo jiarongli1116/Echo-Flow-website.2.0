@@ -1,0 +1,330 @@
+.thead {
+  align-items: flex-start;
+  background-color: #cfcfcf;
+  display: flex;
+  height: 50px;
+  justify-content: center;
+  padding: 0px 12px;
+  position: relative;
+}
+
+.th {
+  align-items: center;
+  margin-left: 5px;
+  align-self: stretch;
+  display: flex;
+  flex: 1;
+  gap: 5px;
+  min-width: 300px;
+  position: relative;
+}
+.frame{
+      align-items: center;
+  align-self: stretch;
+  display: flex;
+  flex: 1;
+  gap: 5px;
+  min-width: 300px;
+  position: relative;
+}
+
+.text {
+  color: #000000;
+  font-family: "Noto Sans Javanese-Regular", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 28px;
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.componentWrapper {
+  align-items: center;
+  align-self: stretch;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 5px;
+  justify-content: center;
+  max-width: 125px;
+  position: relative;
+}
+
+
+
+
+
+.divWrapper {
+  align-items: center;
+  align-self: stretch;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: center;
+  max-width: 150px;
+  position: relative;
+}
+.favoriteWord{
+  width: 364px;
+}
+.favoriteName{
+  width: 100%;
+    text-align:left;
+    cursor: pointer;
+}
+
+
+
+.selelctall {
+  align-items: center;
+  align-self: stretch;
+  display: flex;
+  flex: 1;
+  flex-grow: 1;
+  gap: 12px;
+  justify-content: center;
+  max-width: 100px;
+  position: relative;
+}
+
+
+
+.tbody {
+  align-items: center;
+  background-color: #ffffff;
+  display: flex;
+  padding: 12px;
+  position: relative;
+  width: 100%;
+  border-bottom: 1px solid #DDDDDD;
+}
+
+.frame {
+  align-items: center;
+  display: flex;
+  flex: 1;
+  flex-grow: 1;
+  gap: 5px;
+  position: relative;
+}
+
+
+
+
+.rectangle {
+  height: 80px;
+  object-fit: cover;
+  position: relative;
+  width: 80px;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+
+
+
+
+.text {
+  color: #000000;
+  font-family: "Noto Sans Javanese-Regular", Helvetica;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 28px;
+  margin-top: -1.00px;
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.textWrapper {
+  color: #00000080;
+  flex: 1;
+  font-family: "Noto Sans Javanese-Regular", Helvetica;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 28px;
+  margin-top: -1.00px;
+  position: relative;
+}
+
+.componentWrapper {
+  align-items: center;
+  align-self: stretch;
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  max-width: 125px;
+  position: relative;
+  width: 125px;
+}
+
+.divWrapper {
+  align-items: center;
+  display: flex;
+  flex: 1;
+  flex-grow: 1;
+  justify-content: center;
+  padding: 0px 12px;
+  position: relative;
+}
+@media (max-width: 768px) {
+  /* 表頭調整 */
+  .thead {
+    height: auto;
+    min-height: 40px;
+    padding: 8px 12px;
+    flex-wrap: wrap;
+  }
+
+  .th {
+    min-width: unset;
+    font-size: 14px;
+    margin-left: 0;
+    gap: 3px;
+    justify-content: center;
+  }
+
+  /* 商品列表項目調整 */
+  .tbody {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px 12px;
+  }
+
+  /* 商品資訊區塊 */
+  .frame {
+    width: 100%;
+    min-width: unset;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  /* 商品圖片調整 */
+  .rectangle {
+    width: 60px;
+    height: 60px;
+    margin-right: 12px;
+    flex-shrink: 0;
+  }
+
+  /* 商品文字區塊 */
+  .favoriteWord {
+    width: 100%;
+    flex: 1;
+  }
+.hideOnMobile{
+  display: none;
+}
+  .favoriteName {
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 4px;
+    word-break: break-word;
+    white-space: normal;
+  }
+
+  .textWrapper {
+    font-size: 13px;
+    line-height: 20px;
+    color: #666;
+  }
+
+  /* 價格和操作區塊 */
+  .componentWrapper {
+    max-width: none;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 65px;
+    padding: 8px 0;
+  }
+
+  .divWrapper {
+    max-width: none;
+    width: auto;
+    flex-direction: row;
+    justify-content: end;
+  }
+
+  /* 文字調整 */
+  .text {
+    font-size: 14px;
+    line-height: 24px;
+    white-space: normal;
+  }
+
+  /* 操作按鈕區域 */
+  .divWrapper > div {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  /* 圖標按鈕調整 */
+  .divWrapper svg {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+
+  .divWrapper svg:hover {
+    transform: scale(1.1);
+  }
+
+  /* 價格文字樣式 */
+  .componentWrapper {
+    font-weight: 500;
+    color: #333;
+  }
+}
+
+/* 更小螢幕 (480px 以下) 的額外調整 */
+@media (max-width: 480px) {
+  .thead {
+    padding: 6px 8px;
+  }
+
+  .tbody {
+    padding: 12px 8px;
+  }
+
+  .rectangle {
+    width: 50px;
+    height: 50px;
+    margin-right: 8px;
+  }
+
+  .favoriteName {
+    font-size: 15px;
+  }
+
+  .textWrapper {
+    font-size: 12px;
+  }
+
+  .componentWrapper {
+    font-size: 14px;
+  }
+
+  .divWrapper svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .frame {
+    gap: 8px;
+  }
+}
+
+
+
+
+

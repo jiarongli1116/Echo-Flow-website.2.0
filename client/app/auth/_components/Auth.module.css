@@ -1,0 +1,1308 @@
+/* 
+  ==========================================
+  Echo&Flow 黑膠唱片電商平台 - 登入相關樣式表
+  ==========================================
+  
+  此樣式表包含：
+  1. 登入頁面樣式
+  2. 註冊頁面樣式
+  3. 密碼相關樣式
+  4. 表單驗證樣式
+  5. 響應式設計
+*/
+
+/* ==========================================
+   1. 登入頁面樣式
+   ========================================== */
+
+.auth-page {
+    min-height: 100vh; /* 使用完整視窗高度 */
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff !important; /* 強制設定為白色 */
+}
+
+.auth-page main {
+    flex: 1;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh; /* 使用完整視窗高度 */
+}
+
+.auth-page .container-fluid {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh; /* 使用完整視窗高度 */
+}
+
+.auth-page .row {
+    margin: 0;
+    min-height: 100vh; /* 使用完整視窗高度 */
+}
+
+.auth-title {
+    color: #000;
+    font-family: 'Anek Malayalam', sans-serif;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 20px;
+    margin-bottom: 2rem;
+}
+
+.forget-password {
+    display: flex;
+    padding: 0 10px;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+}
+
+.forget-password button {
+    color: rgba(230, 192, 104, 1);
+    text-decoration: none;
+    font-family: 'Noto Sans Javanese', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 28px;
+    letter-spacing: 2.4px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.auth-link {
+    color: var(--primary--400);
+    text-decoration: none;
+    font-weight: 700;
+    margin-left: 4px;
+}
+
+.forget-password button:hover,
+.forget-password button:focus,
+.auth-link:hover,
+.auth-link:focus {
+    color: var(--primary--800);
+    font-weight: 800;
+}
+
+.line-text-container {
+    display: flex;
+    flex-direction: column; /* 垂直排列 */
+    align-items: center; /* 水平置中 */
+    gap: 8px; /* 線與文字間距 */
+    padding: 10px 0;
+    width: 100%;
+}
+
+.divider-line {
+    width: 100%; /* 寬度可自行調整 */
+    max-width: 380px; /* 最大寬度 */
+    height: 1px; /* 細線高度 */
+    background-color: #ddd;
+}
+
+.register-text {
+    color: var(--primary--400);
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* ==========================================
+   2. 註冊頁面樣式
+   ========================================== */
+
+/* 註冊表單容器樣式已移除 */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 註冊按鈕懸停效果 */
+.btn:not(.btn-outline-secondary):hover {
+    background: var(--primary--800) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(230, 192, 104, 0.3);
+}
+
+/* 分隔線樣式 */
+.divider-line {
+    height: 1px;
+    background-color: #e0e0e0;
+    width: 100%;
+}
+
+/* 移除重複的 line-text-container 定義，避免衝突 */
+
+.login-text {
+    color: var(--primary--400);
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.login-link {
+    color: var(--primary--600);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.875rem;
+    transition: color 0.3s ease;
+}
+
+.login-link:hover {
+    color: var(--primary--800);
+    text-decoration: underline;
+}
+
+/* ==========================================
+   3. 密碼相關樣式
+   ========================================== */
+
+/* 密碼顯示/隱藏按鈕替代樣式 */
+.password-toggle {
+    position: absolute;
+    right: 12px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    color: #6c757d;
+    cursor: pointer;
+    padding: 4px;
+    font-size: 1rem;
+    z-index: 10;
+}
+
+.password-toggle:hover {
+    color: var(--primary--600);
+}
+
+/* ==========================================
+   4. 響應式設計
+   ========================================== */
+
+@media (max-width: 768px) {
+    .login-form,
+    .register-form {
+        width: 100% !important;
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+
+    /* 覆蓋 w-50 類別，讓表單在手機版佔滿寬度 */
+    .auth-page .w-50,
+    .auth-page div.w-50,
+    .col-md-6 .w-50,
+    .auth-page .col-md-6 .w-50,
+    .auth-page .col-md-6 div.w-50,
+    .auth-page .col-md-6:last-child .w-50,
+    .auth-page .col-md-6:last-child div.w-50 {
+        width: 100% !important;
+    }
+
+    .carousel-item img {
+        height: 50vh; /* 使用 50% 視窗高度 */
+        display: block;
+        width: 100%;
+    }
+
+    .col-md-6 {
+        padding: 2rem 1rem !important;
+    }
+
+    .auth-title {
+        font-size: 20px;
+        letter-spacing: 15px;
+    }
+
+    .form-control {
+        padding: 0.9rem 1.1rem !important;
+        font-size: 0.95rem !important;
+        min-height: 46px !important;
+    }
+
+    .auth-form .form-control {
+        padding: 0.9rem 1.1rem !important;
+        font-size: 0.95rem !important;
+        min-height: 46px !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .login-form,
+    .register-form {
+        padding: 1rem;
+        margin: 0.5rem;
+    }
+
+    .auth-title {
+        font-size: 18px;
+        letter-spacing: 12px;
+    }
+
+    .btn {
+        font-size: 14px !important;
+    }
+
+    .form-control {
+        padding: 1rem 1.2rem !important;
+        font-size: 1rem !important;
+        min-height: 48px !important;
+    }
+
+    .auth-form .form-control {
+        padding: 1rem 1.2rem !important;
+        font-size: 1rem !important;
+        min-height: 48px !important;
+    }
+
+    .forget-password a {
+        font-size: 12px;
+        letter-spacing: 1.8px;
+    }
+}
+
+/* 390px 寬度優化 - 針對小尺寸手機 */
+@media (max-width: 390px) {
+    .login-form,
+    .register-form {
+        padding: 0.8rem;
+        margin: 0.3rem;
+    }
+
+    /* 確保小尺寸手機也使用全寬度 */
+    .auth-page .w-50,
+    .auth-page div.w-50,
+    .col-md-6 .w-50,
+    .auth-page .col-md-6 .w-50,
+    .auth-page .col-md-6 div.w-50,
+    .auth-page .col-md-6:last-child .w-50,
+    .auth-page .col-md-6:last-child div.w-50 {
+        width: 100% !important;
+    }
+
+    .auth-title {
+        font-size: 16px;
+        letter-spacing: 10px;
+        margin-bottom: 1.5rem;
+    }
+
+    .btn {
+        font-size: 13px !important;
+        padding: 0.7rem 1rem !important;
+    }
+
+    .form-control {
+        padding: 0.9rem 1rem !important;
+        font-size: 0.95rem !important;
+        min-height: 44px !important;
+    }
+
+    .auth-form .form-control {
+        padding: 0.9rem 1rem !important;
+        font-size: 0.95rem !important;
+        min-height: 44px !important;
+    }
+
+    .auth-form {
+        max-width: 100%;
+        margin: 0;
+    }
+
+    .forget-password a {
+        font-size: 11px;
+        letter-spacing: 1.5px;
+    }
+
+    .forget-password {
+        padding: 0 5px;
+    }
+
+    .line-text-container {
+        padding: 8px 0;
+    }
+
+    .register-text {
+        font-size: 0.9rem;
+    }
+
+    /* 輪播圖調整 */
+    .auth-carousel {
+        height: 35vh !important;
+        min-height: 200px !important;
+    }
+
+    .auth-page .col-md-6:first-child {
+        height: 35vh !important;
+        min-height: 200px !important;
+    }
+
+    .auth-page .col-md-6:last-child {
+        min-height: 65vh !important;
+        padding: 1rem 0.8rem !important;
+    }
+
+    .auth-carousel-indicators {
+        bottom: 6px;
+        right: 6px;
+        gap: 3px;
+    }
+
+    .auth-carousel-indicator {
+        width: 20px;
+        height: 3px;
+    }
+}
+
+/* ==========================================
+   5. 動畫效果
+   ========================================== */
+
+/* 輸入框聚焦動畫 */
+.form-control {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form-control:focus {
+    transform: translateY(-2px);
+}
+
+/* 按鈕點擊動畫 */
+.btn {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+/* ==========================================
+   6. 認證頁面輪播圖樣式
+   ========================================== */
+
+/* 認證頁面輪播圖容器樣式 */
+.auth-page .carousel {
+    height: 100vh; /* 使用完整視窗高度 */
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* 認證頁面輪播圖指示器樣式 */
+.auth-page .carousel-indicators [data-bs-target] {
+    width: 40px; /* 長度 */
+    height: 8px; /* 高度 */
+    border-radius: 0;
+    background-color: #ddd; /* 未選中時的顏色 */
+    margin: 0 6px; /* 左右間距 */
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+/* 認證頁面特定輪播圖指示器位置 */
+#heroCarousel .carousel-indicators,
+#registerCarousel .carousel-indicators {
+    right: 0;
+    left: auto;
+    bottom: 1rem;
+    width: auto;
+    justify-content: flex-end;
+    padding-left: 0;
+    margin-right: 20px;
+    z-index: 15;
+}
+
+/* 認證頁面輪播圖片樣式 */
+.auth-page .carousel-item img {
+    height: 100vh; /* 使用完整視窗高度 */
+    object-fit: cover;
+    display: block;
+    width: 100%;
+}
+
+/* 針對 Next.js Image 組件的特殊處理 */
+.auth-page .carousel-item .d-block {
+    height: 100vh; /* 使用完整視窗高度 */
+    object-fit: cover;
+    display: block;
+    width: 100%;
+}
+
+/* 輪播圖項目樣式 */
+.auth-page .carousel-item {
+    height: 100vh; /* 使用完整視窗高度 */
+    overflow: hidden;
+}
+
+/* 認證頁面輪播指示器顏色樣式 */
+.auth-page .carousel-indicators [data-bs-target] {
+    background-color: var(--primary--600);
+    opacity: 0.5;
+}
+
+/* ==========================================
+   7. 載入狀態
+   ========================================== */
+
+.loading-spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+    margin-right: 8px;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* 載入中按鈕狀態 */
+.btn.loading {
+    position: relative;
+    color: transparent !important;
+}
+
+.btn.loading::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 50%;
+    left: 50%;
+    margin-left: -8px;
+    margin-top: -8px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+}
+
+/* 專門用於彈跳視窗標題的樣式 */
+.modal-title-black {
+    color: #000 !important;
+    font-family: 'Anek Malayalam', sans-serif;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 20px;
+}
+
+/* ==========================================
+   8. 表單樣式
+   ========================================== */
+
+/* 表單容器樣式 */
+.auth-form {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/* 登入容器樣式 */
+.login-container {
+    width: 50%;
+}
+
+/* 註冊容器樣式 */
+.register-container {
+    width: 50%;
+}
+
+@media (max-width: 768px) {
+    .login-container,
+    .register-container {
+        width: 100% !important;
+    }
+}
+
+/* 表單輸入框樣式 */
+.auth-form .form-control {
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background-color: #fff;
+}
+
+.auth-form .form-control:focus {
+    border-color: var(--primary--600);
+    box-shadow: 0 0 0 0.2rem rgba(230, 192, 104, 0.25);
+    outline: none;
+}
+
+.auth-form .form-control::placeholder {
+    color: #6c757d;
+    opacity: 0.7;
+}
+
+/* 表單標籤樣式 */
+.auth-form .form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #333;
+    font-size: 0.875rem;
+}
+
+/* 錯誤訊息樣式 */
+.auth-form .is-invalid {
+    border-color: var(--danger--600) !important;
+}
+
+.auth-form .invalid-feedback {
+    color: var(--danger--600);
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+/* 輸入框錯誤樣式 */
+.input-error {
+    border-color: #dc3545 !important;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
+}
+
+.input-error:focus {
+    border-color: #dc3545 !important;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
+}
+
+/* 錯誤訊息樣式 */
+.error-message {
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    font-weight: 500;
+}
+
+/* 錯誤提示框樣式 */
+.error-alert {
+    border: 1px solid #f5c6cb;
+    background-color: #f8d7da;
+    color: #721c24;
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+}
+
+/* 成功提示框樣式 */
+.success-alert {
+    border: 1px solid #c3e6cb;
+    background-color: #d4edda;
+    color: #155724;
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+}
+
+/* 信息提示框樣式 */
+.info-alert {
+    border: 1px solid #bee5eb;
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+}
+
+/* ==========================================
+   9. 按鈕樣式
+   ========================================== */
+
+/* 主要按鈕樣式 */
+.auth-form .btn {
+    border-radius: 6px;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+/* 登入/註冊按鈕 */
+.auth-form .btn-block {
+    background-color: #000 !important;
+    color: white !important;
+    width: 100%;
+    border: 2px solid #000 !important;
+}
+
+.auth-form .btn-block:hover,
+.auth-form .btn-block:focus {
+    background-color: var(--primary--600) !important;
+    color: black !important;
+    border-color: var(--primary--600) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.auth-form .btn-block:disabled {
+    background-color: #6c757d !important;
+    border-color: #6c757d !important;
+    color: white !important;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Google 登入按鈕 */
+.auth-form .btn-google {
+    background-color: #fff;
+    color: #333;
+    border: 2px solid #e9ecef;
+}
+
+.auth-form .btn-google:hover {
+    background-color: #f8f9fa;
+    border-color: #dee2e6;
+}
+
+/* Outline 按鈕樣式 */
+.auth-form .btn-outline-secondary {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border: 2px solid #000000 !important;
+}
+
+.auth-form .btn-outline-secondary:hover {
+    background-color: #f8f9fa !important;
+    color: #000000 !important;
+    border-color: #000000 !important;
+}
+
+.auth-form .btn-outline-secondary:disabled {
+    background-color: #f8f9fa !important;
+    color: #6c757d !important;
+    border-color: #6c757d !important;
+    cursor: not-allowed;
+}
+
+/* ==========================================
+   10. 輪播圖控制按鈕樣式
+   ========================================== */
+
+/* 輪播圖左右箭頭按鈕 */
+.auth-page .carousel-control-prev,
+.auth-page .carousel-control-next {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border: none;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all 0.3s ease;
+}
+
+.auth-page .carousel-control-prev {
+    left: 20px;
+}
+
+.auth-page .carousel-control-next {
+    right: 20px;
+}
+
+.auth-page .carousel-control-prev:hover,
+.auth-page .carousel-control-next:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* 輪播圖箭頭圖示 */
+.auth-page .carousel-control-prev-icon,
+.auth-page .carousel-control-next-icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* ==========================================
+   11. 響應式輪播圖樣式
+   ========================================== */
+
+@media (max-width: 768px) {
+    /* 手機版輪播圖高度調整 */
+    .auth-page .carousel,
+    .auth-page .carousel-item,
+    .auth-page .carousel-item img,
+    .auth-page .carousel-item .d-block {
+        height: 50vh;
+    }
+
+    /* 手機版輪播圖控制按鈕調整 */
+    .auth-page .carousel-control-prev,
+    .auth-page .carousel-control-next {
+        width: 40px;
+        height: 40px;
+    }
+
+    .auth-page .carousel-control-prev {
+        left: 10px;
+    }
+
+    .auth-page .carousel-control-next {
+        right: 10px;
+    }
+
+    /* 手機版指示器調整 */
+    .auth-page .carousel-indicators {
+        bottom: 0.5rem;
+        margin-right: 10px;
+    }
+
+    .auth-page .carousel-indicators [data-bs-target] {
+        width: 30px;
+        height: 6px;
+        margin: 0 4px;
+    }
+}
+
+/* ==========================================
+   12. 無障礙支援
+   ========================================== */
+
+/* 焦點樣式 */
+.auth-form .form-control:focus,
+.auth-form .btn:focus,
+.auth-page .carousel-control-prev:focus,
+.auth-page .carousel-control-next:focus {
+    outline: 2px solid var(--primary--600);
+    outline-offset: 2px;
+}
+
+/* 高對比度支援 */
+@media (prefers-contrast: high) {
+    .auth-page .carousel-indicators [data-bs-target] {
+        border: 2px solid #000;
+    }
+
+    .auth-page .carousel-indicators .active {
+        border: 2px solid #000;
+    }
+}
+
+/* ==========================================
+   13. AuthCarousel 組件樣式
+   ========================================== */
+
+/* 輪播圖容器樣式 */
+.auth-carousel {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100vh;
+    min-height: 400px; /* 設定最小高度 */
+    max-height: 100vh; /* 設定最大高度 */
+}
+
+/* 輪播圖指示器樣式 */
+.auth-carousel-indicators {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    gap: 8px;
+    z-index: 15;
+}
+
+.auth-carousel-indicator {
+    width: 40px;
+    height: 8px;
+    background-color: #666; /* 未選中為灰色 */
+    border: none;
+    border-radius: 0; /* 移除圓角 */
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.auth-carousel-indicator.active {
+    background-color: #f0f0f0; /* 選中為淺白色 */
+}
+
+.auth-carousel-indicator:hover {
+    background-color: #bbb;
+}
+
+/* 輪播圖圖片容器樣式 */
+.auth-carousel-images {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.auth-carousel-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.auth-carousel-image.hidden {
+    display: none;
+}
+
+/* 輪播圖控制按鈕樣式 */
+.auth-carousel-btn {
+    display: none; /* 隱藏按鈕 */
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    .auth-carousel {
+        height: 50vh;
+        min-height: 300px; /* 手機版最小高度 */
+    }
+
+    .auth-carousel-btn {
+        width: 50px;
+        height: 35px;
+        font-size: 12px;
+    }
+
+    .auth-carousel-btn.prev {
+        left: 15px;
+    }
+
+    .auth-carousel-btn.next {
+        right: 15px;
+    }
+
+    .auth-carousel-indicators {
+        bottom: 15px;
+        right: 15px;
+    }
+
+    .auth-carousel-indicator {
+        width: 35px;
+        height: 6px;
+    }
+}
+
+@media (max-height: 600px) {
+    .auth-carousel {
+        height: 100vh;
+        min-height: 250px; /* 低高度畫面時的最小高度 */
+    }
+}
+
+@media (max-height: 400px) {
+    .auth-carousel {
+        height: 100vh;
+        min-height: 200px; /* 極低高度畫面時的最小高度 */
+    }
+}
+
+/* ==========================================
+   14. 特定輪播圖樣式
+   ========================================== */
+
+/* registerCarousel 特定樣式 */
+#registerCarousel.auth-carousel {
+    height: 100vh;
+    min-height: 400px;
+    max-height: 100vh;
+}
+
+/* heroCarousel 特定樣式 */
+#heroCarousel.auth-carousel {
+    height: 100vh;
+    min-height: 400px;
+    max-height: 100vh;
+}
+
+/* 確保在認證頁面中輪播圖容器有正確的高度 */
+.auth-page .col-md-6:first-child {
+    height: 100vh;
+    min-height: 400px;
+}
+
+.auth-page .col-md-6:first-child .auth-carousel {
+    height: 100%;
+    min-height: inherit;
+}
+
+/* ==========================================
+   15. 輪播區塊佈局保護
+   ========================================== */
+
+/* 基礎佈局保護 */
+.auth-carousel {
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 100vh !important; /* 強制固定高度 */
+    min-height: 400px !important; /* 強制最小高度 */
+    max-height: 100vh !important; /* 強制最大高度 */
+    will-change: auto; /* 防止瀏覽器優化導致的變化 */
+}
+
+/* 圖片容器佈局保護 */
+.auth-carousel-images {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    will-change: auto;
+}
+
+.auth-carousel-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    will-change: auto;
+}
+
+/* 指示器佈局保護 */
+.auth-carousel-indicators {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    gap: 8px;
+    z-index: 15;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.auth-carousel-indicator {
+    flex-shrink: 0;
+    width: 40px;
+    height: 8px;
+    background-color: #666;
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* ==========================================
+   16. 完整響應式設計
+   ========================================== */
+
+/* 大螢幕 (1200px+) */
+@media (min-width: 1200px) {
+    .auth-carousel {
+        height: 100vh;
+        min-height: 500px;
+    }
+
+    .auth-page .col-md-6:first-child {
+        height: 100vh;
+        min-height: 500px;
+    }
+}
+
+/* 中等螢幕 (992px - 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .auth-carousel {
+        height: 100vh;
+        min-height: 450px;
+    }
+
+    .auth-page .col-md-6:first-child {
+        height: 100vh;
+        min-height: 450px;
+    }
+}
+
+/* 平板 (768px - 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+    .auth-carousel {
+        height: 100vh;
+        min-height: 400px;
+    }
+
+    .auth-page .col-md-6:first-child {
+        height: 100vh;
+        min-height: 400px;
+    }
+
+    .auth-carousel-indicators {
+        bottom: 15px;
+        right: 15px;
+    }
+
+    .auth-carousel-indicator {
+        width: 35px;
+        height: 6px;
+    }
+}
+
+/* 手機 (576px - 767px) */
+@media (min-width: 576px) and (max-width: 767px) {
+    .auth-carousel {
+        height: 50vh;
+        min-height: 300px;
+    }
+
+    .auth-page .col-md-6:first-child {
+        height: 50vh;
+        min-height: 300px;
+    }
+
+    .auth-carousel-indicators {
+        bottom: 10px;
+        right: 10px;
+        gap: 6px;
+    }
+
+    .auth-carousel-indicator {
+        width: 30px;
+        height: 5px;
+    }
+}
+
+/* 小手機 (≤575px) */
+@media (max-width: 575px) {
+    .auth-carousel {
+        height: 40vh;
+        min-height: 250px;
+    }
+
+    .auth-page .col-md-6:first-child {
+        height: 40vh;
+        min-height: 250px;
+    }
+
+    .auth-carousel-indicators {
+        bottom: 8px;
+        right: 8px;
+        gap: 4px;
+    }
+
+    .auth-carousel-indicator {
+        width: 25px;
+        height: 4px;
+    }
+}
+
+/* 高度響應式設計 */
+@media (max-height: 800px) {
+    .auth-carousel {
+        height: 100vh;
+        min-height: 350px;
+    }
+
+    .auth-page .col-md-6:first-child {
+        height: 100vh;
+        min-height: 350px;
+    }
+}
+
+/* 橫向模式保護 */
+@media (orientation: landscape) and (max-height: 500px) {
+    .auth-carousel {
+        height: 100vh;
+        min-height: 180px;
+    }
+
+    .auth-page .col-md-6:first-child {
+        height: 100vh;
+        min-height: 180px;
+    }
+
+    .auth-carousel-indicators {
+        bottom: 5px;
+        right: 5px;
+    }
+
+    .auth-carousel-indicator {
+        width: 20px;
+        height: 3px;
+    }
+}
+
+/* ==========================================
+   17. 高度穩定性保護
+   ========================================== */
+
+/* 強制穩定高度 */
+.auth-carousel {
+    height: 100vh !important;
+    min-height: 400px !important;
+    max-height: 100vh !important;
+    height: calc(100vh - 0px) !important; /* 使用 calc 確保精確計算 */
+}
+
+/* 防止父容器影響高度 */
+.auth-page .col-md-6:first-child {
+    height: 100vh !important;
+    min-height: 400px !important;
+    max-height: 100vh !important;
+    overflow: hidden;
+}
+
+/* 確保輪播圖容器高度穩定 */
+.auth-page .col-md-6:first-child .auth-carousel {
+    height: 100% !important;
+    min-height: inherit !important;
+    max-height: inherit !important;
+}
+
+/* 防止圖片載入影響佈局 */
+.auth-carousel-image img {
+    height: 100% !important;
+    width: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+}
+
+/* 響應式高度穩定性 */
+@media (max-width: 768px) {
+    .auth-carousel {
+        height: 50vh !important;
+        min-height: 300px !important;
+    }
+
+    .auth-page .col-md-6:first-child {
+        height: 50vh !important;
+        min-height: 300px !important;
+    }
+}
+
+@media (max-width: 575px) {
+    .auth-carousel {
+        height: 40vh !important;
+        min-height: 250px !important;
+    }
+
+    .auth-page .col-md-6:first-child {
+        height: 40vh !important;
+        min-height: 250px !important;
+    }
+}
+
+/* ==========================================
+   18. 頁面佈局協調性修復
+   ========================================== */
+
+/* 認證頁面整體佈局修復 */
+.auth-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+}
+
+.auth-page main {
+    flex: 1;
+    margin: 0;
+    padding: 0;
+}
+
+.auth-page .container-fluid {
+    margin: 0;
+    padding: 0;
+    flex: 1;
+}
+
+.auth-page .row {
+    margin: 0;
+    flex: 1;
+    min-height: 100vh;
+}
+
+/* 輪播圖區域佈局修復 */
+.auth-page .col-md-6:first-child {
+    height: 100vh !important;
+    min-height: 400px !important;
+    max-height: 100vh !important;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-page .col-md-6:first-child .auth-carousel {
+    flex: 1;
+    height: 100% !important;
+    min-height: inherit !important;
+    max-height: inherit !important;
+}
+
+/* 表單區域佈局修復 */
+.auth-page .col-md-6:last-child {
+    height: 100vh !important;
+    min-height: 400px !important;
+    max-height: 100vh !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 響應式佈局協調性 */
+@media (max-width: 768px) {
+    .auth-page .row {
+        min-height: auto;
+    }
+
+    .auth-page .col-md-6:first-child {
+        height: 50vh !important;
+        min-height: 300px !important;
+    }
+
+    .auth-page .col-md-6:last-child {
+        height: auto !important;
+        min-height: 50vh !important;
+        padding: 2rem 1rem !important;
+    }
+}
+
+@media (max-width: 575px) {
+    .auth-page .col-md-6:first-child {
+        height: 40vh !important;
+        min-height: 250px !important;
+    }
+
+    .auth-page .col-md-6:last-child {
+        min-height: 60vh !important;
+        padding: 1.5rem 1rem !important;
+    }
+}
+
+/* 防止頁面滾動 */
+.auth-page {
+    overflow-x: hidden;
+}
+
+.auth-page main {
+    overflow: hidden;
+}
+
+/* 確保 footer 正確定位 */
+.auth-page + footer,
+.auth-page ~ footer {
+    margin-top: 0;
+}

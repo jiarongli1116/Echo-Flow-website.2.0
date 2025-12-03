@@ -1,0 +1,1793 @@
+/* 用戶面板容器 */
+.userContainer {
+    background-color: var(--bg--light);
+    padding: 2rem 0;
+}
+
+/* 左側導航欄 */
+.sidebar {
+    background-color: #ffffff;
+    padding: 2rem;
+    box-shadow: var(--shadow-md);
+    height: fit-content;
+}
+
+.sidebarTitle {
+    font-size: var(--tw---h5);
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+}
+
+.menuSection {
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.menuSection:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.menuSectionTitle {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.menuList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menuItem {
+    margin-bottom: 0.1rem;
+}
+
+.menuLink {
+    display: flex;
+    align-items: center;
+    padding: 0.7rem 1rem;
+    color: #000000;
+    text-decoration: none;
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+    font-size: var(--tw--p);
+    font-weight: 400;
+}
+
+.menuLink:hover {
+    color: var(--primary--600);
+    transform: translateX(5px);
+}
+
+.menuItem.active .menuLink {
+    color: var(--primary--600);
+    font-weight: 600;
+    position: relative;
+}
+
+.menuItem.active .menuLink::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 1.5em;
+    background-color: var(--primary--600);
+}
+
+/* 移除 active 和 focus 狀態的左側指示條，避免視覺混亂 */
+.menuLink:active,
+.menuLink:focus {
+    color: var(--primary--600);
+    outline: none;
+}
+
+/* 右側主要內容 */
+.mainContent {
+    padding-left: 2rem;
+    background-color: #ffffff;
+    padding: 2rem;
+    box-shadow: var(--shadow-md);
+    min-height: 100%;
+}
+
+.pageTitle {
+    font-size: var(--tw---h3);
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.pageHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.pageHeader .pageTitle {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.headerButton {
+    flex-shrink: 0;
+}
+
+/* 用戶信息卡片 */
+.userInfoCard {
+    background-color: #ffffff;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow-md);
+    display: flex;
+    gap: 2rem;
+}
+
+.userAvatarSection {
+    text-align: center;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.avatarSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    flex-shrink: 0;
+    width: 200px;
+}
+
+.avatarContainer {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.userAvatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.membershipBadge {
+    position: static;
+    transform: none;
+    background: linear-gradient(135deg, var(--primary--400), var(--primary--600));
+    color: var(--text-light);
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    box-shadow: var(--shadow-sm);
+    min-width: 60px;
+    justify-content: center;
+}
+
+.crownIcon {
+    color: var(--primary--200);
+    font-size: 0.75rem;
+}
+
+.userName {
+    font-size: var(--tw---h5);
+    font-weight: 600;
+    color: #000000;
+    margin: 0;
+}
+
+.userDetails {
+    flex: 1;
+}
+
+.membershipInfo {
+    margin-bottom: 2rem;
+}
+
+.membershipTitle {
+    font-size: var(--tw---h6);
+    font-weight: 600;
+    color: #000000;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.membershipPeriod {
+    color: #000000;
+    margin: 0;
+    font-size: var(--tw--p);
+}
+
+.membershipProgress {
+    margin-bottom: 1rem;
+}
+
+.progressLabels {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+}
+
+.progressLabel {
+    font-size: var(--tw--p12);
+    color: #000000;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.progressBar {
+    width: 100%;
+    height: 8px;
+    background-color: var(--bg--light);
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+}
+
+.progressFill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary--400), var(--primary--600));
+    border-radius: var(--radius-sm);
+    transition: width var(--transition-normal);
+}
+
+.progressText {
+    color: #000000;
+    margin: 0;
+    font-size: var(--tw--p);
+    margin-top: 2rem;
+    font-weight: 500;
+}
+
+/* 統計數據卡片 */
+.statsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.statCard {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-md);
+    text-align: center;
+    transition: transform var(--transition-normal);
+}
+
+.statCard:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.statTitle {
+    font-size: var(--tw--p);
+    font-weight: 600;
+    color: #000000;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.statContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.statValue {
+    font-size: var(--tw---h4);
+    font-weight: 600;
+    color: var(--primary--600);
+}
+
+.statUnit {
+    font-size: var(--tw--p);
+    color: #000000;
+    font-weight: 500;
+}
+
+.statDescription {
+    font-size: var(--tw--p12);
+    color: #000000;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    .userContainer {
+        padding: 1rem 0;
+    }
+
+    .sidebar {
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .mainContent {
+        padding: 1.5rem;
+    }
+
+    .userInfoCard {
+        padding: 1.5rem;
+    }
+
+    .userDetails {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .statsGrid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+    }
+
+    .pageTitle {
+        font-size: var(--tw---h4);
+    }
+
+    .userName {
+        font-size: var(--tw---h4);
+    }
+
+    .statValue {
+        font-size: var(--tw---h4);
+    }
+}
+
+/* 移除 Bootstrap card 的圓角 */
+.card {
+    border-radius: 0 !important;
+}
+
+.card-body {
+    border-radius: 0 !important;
+}
+
+.mainContent .card,
+.mainContent .card-body,
+.userContainer .card,
+.userContainer .card-body {
+    border-radius: 0 !important;
+}
+
+div.card,
+div.card-body {
+    border-radius: 0 !important;
+}
+
+/* 基本資料修改頁面樣式 */
+.updateForm {
+    background-color: #ffffff;
+    padding: 2rem;
+    box-shadow: var(--shadow-md);
+    display: flex;
+    gap: 3rem;
+}
+
+.changeAvatarBtn {
+    background-color: #000000;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: var(--tw--p);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color var(--transition-normal);
+    border-radius: 0;
+}
+
+.changeAvatarBtn:hover {
+    background-color: #e6c068;
+}
+
+.formSection {
+    flex: 1;
+    min-width: 0;
+}
+
+.formGroup {
+    margin-bottom: 1.5rem;
+}
+
+.radioGroup {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.radioOption {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.radioInput {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #d1d5db;
+    border-radius: 50%;
+    background-color: white;
+    cursor: pointer;
+    position: relative;
+    margin: 0;
+}
+
+.radioInput:checked {
+    border-color: #e6c068;
+    background-color: white;
+}
+
+.radioInput:checked::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #e6c068;
+}
+
+.dateGroup {
+    display: flex;
+    gap: 1rem;
+}
+
+.buttonGroup {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2rem;
+}
+
+.btnSave {
+    background-color: #000000;
+    color: white;
+    border: none;
+    padding: 0.75rem 2rem;
+    font-size: var(--tw--p);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color var(--transition-normal);
+    border-radius: 0;
+}
+
+.btnSave:hover {
+    background-color: #e6c068;
+}
+
+.btnCancel {
+    background-color: #6b7280;
+    color: white;
+    border: none;
+    padding: 0.75rem 2rem;
+    font-size: var(--tw--p);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color var(--transition-normal);
+    margin-left: 10px;
+    border-radius: 0;
+}
+
+.btnCancel:hover {
+    background-color: #4b5563;
+}
+
+.btnReset {
+    background-color: #ef4444;
+    color: white;
+    border: none;
+    padding: 0.75rem 2rem;
+    font-size: var(--tw--p);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color var(--transition-normal);
+    margin-left: 10px;
+    border-radius: 0;
+}
+
+.btnReset:hover {
+    background-color: #dc2626;
+}
+
+.btnSave:disabled,
+.btnCancel:disabled,
+.btnReset:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* 地址管理頁面樣式 */
+.addressHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.addAddressBtn {
+    background-color: #000000;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: var(--tw--p);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color var(--transition-normal);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 0;
+}
+
+.addAddressBtn:hover {
+    background-color: #e6c068;
+}
+
+.plusIcon {
+    width: 16px;
+    height: 16px;
+    fill: white;
+}
+
+.addressCard {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow-md);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.addressInfo {
+    flex: 1;
+    margin-right: 2rem;
+}
+
+.recipientInfo,
+.phoneInfo,
+.addressInfo .address {
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+}
+
+.recipientLabel,
+.phoneLabel,
+.addressLabel {
+    font-weight: 600;
+    color: #000000;
+    margin-right: 1.5rem;
+    min-width: 80px;
+    text-align: right;
+}
+
+.defaultTag {
+    background-color: #e6c068;
+    color: #000000;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    display: inline-block;
+    margin-left: 1rem;
+}
+
+.addressActions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex-shrink: 0;
+}
+
+.actionBtn {
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #d1d5db;
+    padding: 0.5rem 1rem;
+    font-size: var(--tw--p);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    white-space: nowrap;
+    min-width: 80px;
+    border-radius: 0;
+}
+
+.actionBtn:hover {
+    background-color: #f9fafb;
+    border-color: #9ca3af;
+}
+
+.actionBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* 表單輸入框樣式 */
+.form-control {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    background-color: #fff;
+    color: var(--grey--primary);
+}
+
+.form-control:focus {
+    border-color: var(--primary--600);
+    box-shadow: 0 0 0 0.2rem rgba(230, 192, 104, 0.25);
+    outline: none;
+}
+
+.form-control::placeholder {
+    color: #6c757d;
+    opacity: 0.7;
+    font-size: 14px;
+}
+
+/* 表單標籤 */
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    font-size: 0.875rem;
+}
+
+/* 修改密碼頁面樣式 */
+.passwordForm {
+    background-color: #ffffff;
+    padding: 2rem;
+    box-shadow: var(--shadow-md);
+}
+
+.passwordFormGroup {
+    margin-bottom: 2rem;
+}
+
+.passwordFormGroup:last-child {
+    margin-bottom: 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.passwordLabel {
+    display: block;
+    font-weight: 600;
+    color: #000000;
+    margin-bottom: 0.75rem;
+    font-size: var(--tw--p);
+}
+
+.passwordInput {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    background-color: #fff;
+    color: var(--grey--primary);
+}
+
+.passwordInput:focus {
+    border-color: var(--primary--600);
+    box-shadow: 0 0 0 0.2rem rgba(230, 192, 104, 0.25);
+    outline: none;
+}
+
+.passwordInput::placeholder {
+    color: #6c757d;
+    opacity: 0.7;
+    font-size: 14px;
+}
+
+.passwordInputWrapper {
+    position: relative;
+}
+
+.passwordFormButton {
+    background-color: #000000;
+    color: white;
+    border: none;
+    padding: 0.75rem 2rem;
+    font-size: var(--tw--p);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color var(--transition-normal);
+    margin-left: auto;
+    border-radius: 0;
+}
+
+.passwordFormButton:hover {
+    background-color: #e6c068;
+}
+
+/* 密碼顯示/隱藏按鈕樣式 */
+.password-toggle {
+    position: absolute;
+    right: 12px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    color: #6c757d;
+    cursor: pointer;
+    padding: 4px;
+    font-size: 1rem;
+    z-index: 10;
+}
+
+.password-toggle:hover {
+    color: var(--primary--600);
+}
+
+/* 紅利點數記錄頁面樣式 */
+.pointsContainer {
+    background-color: #ffffff;
+    padding: 2rem;
+    box-shadow: var(--shadow-md);
+}
+
+.pointsSummary {
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+    margin-bottom: 2rem;
+}
+
+.pointsSummaryItem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.pointsSummaryLabel {
+    font-size: var(--tw--p);
+    color: #6c757d;
+    font-weight: 500;
+}
+
+.pointsSummaryLabelExpiring {
+    font-size: var(--tw--p);
+    color: #dc2626;
+    font-weight: 500;
+}
+
+.pointsSummaryValue {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #000000;
+}
+
+.pointsSummaryValueExpiring {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #dc2626;
+}
+
+.pointsTableContainer {
+    overflow-x: auto;
+}
+
+.pointsTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--tw--p);
+}
+
+.pointsTable th {
+    background-color: #e5e7eb;
+    padding: 1rem;
+    text-align: center;
+    font-weight: 600;
+    color: #000000;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.pointsTable td {
+    padding: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+    color: #374151;
+    text-align: center;
+}
+
+.pointsTable tbody tr:hover {
+    background-color: #f9fafb;
+}
+
+.pointsTable tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* 手機板響應式設計 */
+@media (max-width: 768px) {
+    /* 用戶面板容器 */
+    .userContainer {
+        padding: 1rem 0;
+    }
+
+    /* 左側導航欄 */
+    .sidebar {
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .sidebarTitle {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+
+    .menuSectionTitle {
+        font-size: 1rem;
+    }
+
+    .menuLink {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.9rem;
+    }
+
+    /* 手機版側邊欄折疊功能 */
+    .menuSectionHeader {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        cursor: pointer;
+        padding: 0.5rem 0;
+    }
+
+    .menuSectionHeader:hover {
+        background-color: #f9fafb;
+    }
+
+    .menuList {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+
+    .menuList.expanded {
+        max-height: 300px;
+    }
+
+    /* 用戶信息卡片 */
+    .userInfoCard {
+        padding: 1rem;
+    }
+
+    .userAvatarSection {
+        flex-direction: column;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    .avatarContainer {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 0.75rem;
+    }
+
+    .membershipBadge {
+        font-size: 0.8rem;
+        padding: 0.25rem 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .userName {
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .userDetails {
+        margin-left: 0;
+        margin-top: 0;
+    }
+
+    .membershipInfo {
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+
+    .membershipTitle {
+        font-size: 1rem;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.25rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .membershipPeriod {
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+    }
+
+    .membershipProgress {
+        margin-top: 0;
+    }
+
+    .progressLabels {
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+        align-items: center;
+    }
+
+    .progressLabel {
+        font-size: 0.8rem;
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+    }
+
+    .progressBar {
+        margin-bottom: 0.75rem;
+    }
+
+    .progressText {
+        font-size: 0.9rem;
+        text-align: center;
+        margin-top: 1rem;
+    }
+
+    /* 統計數據卡片 */
+    .statsGrid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+
+    .statCard {
+        padding: 1rem;
+    }
+
+    .statTitle {
+        font-size: 0.9rem;
+    }
+
+    .statValue {
+        font-size: 1.5rem;
+    }
+
+    .statUnit {
+        font-size: 0.8rem;
+    }
+
+    /* 基本資料修改表單 */
+    .updateForm {
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .avatarSection {
+        flex-direction: column;
+        text-align: center;
+        margin-bottom: 0;
+        order: 1;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+    }
+
+    .formSection {
+        order: 2;
+        width: 100%;
+    }
+
+    .avatarContainer {
+        width: 120px;
+        height: 120px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .changeAvatarBtn {
+        width: 100%;
+        max-width: 200px;
+    }
+
+    .formGroup {
+        margin-bottom: 1.5rem;
+    }
+
+    .dateGroup {
+        flex-direction: row;
+        gap: 0.5rem;
+        justify-content: space-between;
+    }
+
+    .dateGroup select {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .buttonGroup {
+        padding: 1rem;
+        order: 3;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .btnSave {
+        width: 100%;
+    }
+
+    .btnCancel,
+    .btnReset {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 0.5rem;
+    }
+
+    /* 修改密碼表單 */
+    .passwordForm {
+        padding: 1rem;
+    }
+
+    .passwordFormGroup {
+        margin-bottom: 1.5rem;
+    }
+
+    .passwordFormButton {
+        width: 100%;
+    }
+
+    /* 地址管理 */
+    .addressCard {
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .addressInfo {
+        margin-bottom: 1rem;
+    }
+
+    .recipientInfo,
+    .phoneInfo,
+    .address {
+        flex-direction: column;
+        gap: 0.25rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .addressActions {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .actionBtn {
+        width: 100%;
+    }
+
+    .addAddressBtn {
+        width: 100%;
+        max-width: 200px;
+    }
+
+    /* 紅利點數記錄 */
+    .pointsContainer {
+        padding: 1rem;
+    }
+
+    .pointsSummary {
+        flex-direction: column;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .pointsSummaryItem {
+        justify-content: space-between;
+    }
+
+    .pointsTableContainer {
+        overflow-x: auto;
+    }
+
+    .pointsTable {
+        font-size: 0.8rem;
+        min-width: 600px;
+    }
+
+    .pointsTable th,
+    .pointsTable td {
+        padding: 0.75rem 0.5rem;
+    }
+
+    /* 通用表單樣式 */
+    .form-control {
+        font-size: 16px; /* 防止iOS縮放 */
+    }
+
+    /* 按鈕樣式 */
+    .passwordFormButton,
+    .btnSave,
+    .actionBtn,
+    .addAddressBtn,
+    .changeAvatarBtn {
+        min-height: 44px; /* 觸控友好 */
+    }
+}
+
+/* 390px 螢幕適配 */
+@media (max-width: 390px) {
+    .updateForm {
+        padding: 0.5rem;
+        gap: 1rem;
+    }
+
+    .avatarSection {
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .avatarContainer {
+        width: 120px;
+        height: 120px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .changeAvatarBtn {
+        width: 100%;
+        max-width: 150px;
+        padding: 0.4rem 0.8rem;
+        font-size: 0.875rem;
+    }
+
+    .formSection {
+        width: 100%;
+    }
+
+    .formGroup {
+        margin-bottom: 1rem;
+    }
+
+    .dateGroup {
+        flex-direction: row;
+        gap: 0.4rem;
+        justify-content: space-between;
+    }
+
+    .dateGroup select {
+        flex: 1;
+        min-width: 0;
+        font-size: 0.875rem;
+    }
+
+    .buttonGroup {
+        padding: 0.5rem;
+        gap: 0.5rem;
+    }
+
+    .btnSave,
+    .btnCancel,
+    .btnReset {
+        width: 100%;
+        padding: 0.6rem 1rem;
+        font-size: 0.875rem;
+    }
+
+    /* 地址管理手機版樣式 */
+    .addressCard {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 1rem;
+        gap: 1rem;
+        position: relative;
+    }
+
+    .addressInfo {
+        margin-right: 0;
+        margin-bottom: 0;
+        order: 1;
+    }
+
+    .addressActions {
+        order: 2;
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+    }
+
+    .actionBtn {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+        min-height: 44px;
+    }
+
+    .recipientInfo,
+    .phoneInfo {
+        flex-direction: row;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .addressInfo .address {
+        flex-direction: row !important;
+        align-items: flex-start !important;
+        gap: 0.5rem;
+        margin-bottom: 0.75rem;
+        padding-left: 0;
+        flex-wrap: wrap;
+    }
+
+    /* 複合選擇器 */
+    .addressInfo .address span:not(.addressLabel):not(.defaultTag) {
+        text-align: left;
+        flex: 1;
+        margin-left: 0;
+    }
+
+    .recipientLabel,
+    .phoneLabel {
+        text-align: right;
+        min-width: 60px;
+        margin-right: 0;
+        font-size: 0.85rem;
+        color: #000000;
+        font-weight: 700;
+        flex-shrink: 0;
+    }
+
+    .addressInfo .addressLabel {
+        text-align: right !important;
+        min-width: 60px !important;
+        margin-right: 0 !important;
+        margin-left: 0 !important;
+        padding-left: 0 !important;
+        font-size: 0.85rem;
+        color: #000000;
+        font-weight: 700;
+        flex-shrink: 0;
+    }
+
+    .defaultTag {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        margin: 0;
+        z-index: 10;
+    }
+
+    .addAddressBtn {
+        width: 100%;
+        max-width: none;
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+        min-height: 44px;
+    }
+
+    /* 模態框手機版樣式 */
+    .modalOverlay {
+        padding: 0.5rem;
+    }
+
+    .modalContent {
+        padding: 1.5rem;
+        max-height: 95vh;
+    }
+
+    .modalTitle {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+    }
+
+    .addressForm {
+        gap: 1rem;
+    }
+
+    .formGroup {
+        margin-bottom: 0.75rem;
+    }
+
+    .formInput,
+    .formTextarea,
+    .formSelect {
+        font-size: 16px; /* 防止iOS縮放 */
+        padding: 0.75rem;
+    }
+
+    .formActions {
+        flex-direction: column;
+        gap: 0.75rem;
+        margin-top: 1.5rem;
+    }
+
+    .cancelBtn,
+    .submitBtn {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+        min-height: 44px;
+    }
+}
+
+/* 手機版專用樣式 */
+.mobilePageTitle {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.mobilePageTitle h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #000000;
+    margin: 0;
+}
+
+.mobileUserInfoCard {
+    background-color: #ffffff;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+}
+
+.mobileAvatarSection {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.mobileAvatarContainer {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.mobileNameAndTitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 1rem;
+    gap: 1rem;
+}
+
+.mobileMembershipInfo {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.mobileProgressSection {
+    text-align: center;
+}
+
+.mobileUserAvatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.mobileUserName {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #000000;
+    text-align: center;
+    margin: 0;
+}
+
+.mobileMembershipPeriod {
+    color: #000000;
+    font-size: 1rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: 500;
+}
+
+.mobileMembershipTitle {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #000000;
+    text-align: center;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+}
+
+.mobileMembershipTitle i {
+    color: #e6c068;
+    font-size: 1.1rem;
+}
+
+.mobileProgressLabels {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    align-items: center;
+}
+
+.mobileProgressLabel {
+    font-size: 0.75rem;
+    color: #000000;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-weight: 500;
+    flex-direction: column;
+    text-align: center;
+}
+
+.mobileProgressBar {
+    width: 100%;
+    height: 12px;
+    background-color: #f3f4f6;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.mobileProgressFill {
+    height: 100%;
+    background: linear-gradient(90deg, #e6c068, #d4af37);
+    border-radius: 6px;
+    transition: width 0.3s ease;
+    box-shadow: 0 2px 4px rgba(230, 192, 104, 0.3);
+}
+
+.mobileProgressText {
+    color: #000000;
+    font-size: 1rem;
+    text-align: left;
+    font-weight: 500;
+    margin-bottom: 2.5rem;
+    line-height: 1.5;
+}
+
+.mobileStatsGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.mobileStatCard {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border-radius: 0;
+    transition: transform 0.2s ease;
+}
+
+.mobileStatCard:hover {
+    transform: translateY(-2px);
+}
+
+.mobileStatTitle {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #000000;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.mobileStatContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.mobileStatValue {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #e6c068;
+}
+
+.mobileStatUnit {
+    font-size: 0.8rem;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+/* ==========================================
+   地址管理模態框和表單樣式
+   ========================================== */
+
+/* 模態框遮罩 */
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 1rem;
+}
+
+/* 模態框內容 */
+.modalContent {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modalTitle {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #000000;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+/* 地址表單樣式 */
+.addressForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* 地址表單響應式設計 */
+@media (max-width: 768px) {
+    .addressForm {
+        gap: 1rem;
+    }
+
+    .formGroup {
+        margin-bottom: 1rem;
+    }
+
+    .formInput,
+    .formTextarea {
+        font-size: 16px;
+    }
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.formLabel {
+    font-weight: 600;
+    color: #000000;
+    font-size: 0.9rem;
+}
+
+.formInput,
+.formTextarea,
+.formSelect {
+    padding: 0.75rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.2s ease;
+    background-color: #ffffff;
+}
+
+.formInput:focus,
+.formTextarea:focus,
+.formSelect:focus {
+    outline: none;
+    border-color: #e6c068;
+    box-shadow: 0 0 0 3px rgba(230, 192, 104, 0.1);
+}
+
+.formInput:disabled,
+.formTextarea:disabled,
+.formSelect:disabled {
+    background-color: #f9fafb;
+    cursor: not-allowed;
+}
+
+.formSelect {
+    cursor: pointer;
+}
+
+.formSelect option {
+    padding: 0.5rem;
+}
+
+.formTextarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.checkboxLabel {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #000000;
+}
+
+.checkboxLabel input[type='checkbox'] {
+    width: 18px;
+    height: 18px;
+    accent-color: #e6c068;
+}
+
+.formActions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    margin-top: 1rem;
+}
+
+.cancelBtn {
+    background-color: #6b7280;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    border-radius: 4px;
+}
+
+.cancelBtn:hover:not(:disabled) {
+    background-color: #4b5563;
+}
+
+.cancelBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.submitBtn {
+    background-color: #000000;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    border-radius: 4px;
+}
+
+.submitBtn:hover:not(:disabled) {
+    background-color: #e6c068;
+    color: #000000;
+}
+
+.submitBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* 密碼輸入錯誤樣式 */
+.inputError {
+    border-color: #ef4444 !important;
+    box-shadow: 0 0 0 0.2rem rgba(239, 68, 68, 0.25) !important;
+}
+
+/* 錯誤訊息樣式 */
+.errorMessage {
+    color: #ef4444;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    background-color: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 4px;
+    border-left: 4px solid #ef4444;
+}
+
+/* 成功訊息樣式 */
+.successMessage {
+    color: #16a34a;
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+    padding: 0.75rem;
+    background-color: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: 4px;
+    border-left: 4px solid #16a34a;
+}
+
+/* 密碼強度指示器樣式 */
+.passwordStrength {
+    margin-left: 0.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.strengthBar {
+    width: 100%;
+    height: 4px;
+    background-color: #e5e7eb;
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.strengthFill {
+    height: 100%;
+    transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.strengthText {
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+/* 按鈕禁用狀態 */
+.passwordFormButton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background-color: #6b7280;
+}
+
+.passwordFormButton:disabled:hover {
+    background-color: #6b7280;
+}

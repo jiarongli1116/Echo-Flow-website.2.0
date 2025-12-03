@@ -1,0 +1,302 @@
+/* Modal Overlay */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: var(--spacing-lg);
+  animation: fadeIn var(--transition-normal);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Modal Content */
+.modalContent {
+  background: white;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  max-width: 600px;
+  width: 100%;
+  max-height: 80vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  animation: slideIn var(--transition-normal);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Modal Header */
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-lg) var(--spacing-xl);
+  border-bottom: 1px solid #e4e4e7;
+  background-color: var(--bg--light);
+}
+
+.modalTitle {
+  font-size: var(--tw--p);
+  font-weight: 600;
+  color: var(--bg--block);
+  margin: 0;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.addressCenterLink {
+  color: var(--primary--800);
+  text-decoration: none;
+  font-size: var(--tw--p12);
+  font-weight: 500;
+  transition: color var(--transition-fast);
+}
+
+.addressCenterLink:hover {
+  color: var(--primary--600);
+  text-decoration: underline;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 20px;
+  color: #6b7280;
+  cursor: pointer;
+  padding: var(--spacing-xs);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.closeButton:hover {
+  background-color: #f3f4f6;
+  color: #374151;
+}
+
+/* Modal Body */
+.modalBody {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0;
+}
+
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px var(--spacing-xl);
+  gap: var(--spacing-md);
+}
+
+.loadingSpinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid #f3f4f6;
+  border-top: 3px solid var(--primary--600);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px var(--spacing-xl);
+  gap: var(--spacing-md);
+  text-align: center;
+}
+
+.emptyState p {
+  color: #6b7280;
+  margin: 0;
+  font-size: var(--tw--p);
+}
+
+.goToAddressesBtn {
+  background-color: var(--primary--600);
+  color: white;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color var(--transition-fast);
+}
+
+.goToAddressesBtn:hover {
+  background-color: var(--primary--800);
+}
+
+/* Address List */
+.addressList {
+  padding: var(--spacing-md) 0;
+}
+
+.addressItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-md) var(--spacing-xl);
+  border-bottom: 1px dashed #e4e4e7;
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.addressItem:last-child {
+  border-bottom: none;
+}
+
+.addressItem:hover {
+  background-color: #f9fafb;
+}
+
+.addressItem.selected {
+  background-color: #fef3c7;
+  border-color: var(--primary--400);
+}
+
+.addressInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.addressHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+.addressName {
+  font-size: var(--tw--p);
+  font-weight: 600;
+  color: var(--primary--800);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.defaultBadge {
+  background-color: var(--primary--200);
+  color: var(--primary--800);
+  padding: 2px var(--spacing-xs);
+  border-radius: var(--radius-sm);
+  font-size: var(--tw--p12);
+  font-weight: 500;
+}
+
+.addressPhone {
+  font-size: var(--tw--p12);
+  color: var(--text-muted);
+}
+
+.addressDetails {
+  font-size: 14px;
+  color: var(--text-dark);
+  line-height: 1.4;
+  margin: var(--spacing-xs) 0;
+}
+
+.addressTags {
+  display: flex;
+  gap: var(--spacing-xs);
+  flex-wrap: wrap;
+}
+
+.tag {
+  background-color: #f3f4f6;
+  color: #6b7280;
+  padding: 2px var(--spacing-xs);
+  border-radius: var(--radius-sm);
+  font-size: var(--tw--p12);
+  font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .modalOverlay {
+    padding: var(--spacing-sm);
+  }
+
+  .modalContent {
+    max-height: 90vh;
+  }
+
+  .modalHeader {
+    padding: var(--spacing-md) var(--spacing-lg);
+  }
+
+  .modalTitle {
+    font-size: var(--tw--p);
+  }
+
+  .addressItem {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+  }
+}
+
+/* 小螢幕優化 */
+@media (max-width: 480px) {
+  .modalOverlay {
+    padding: var(--spacing-xs);
+  }
+
+  .modalContent {
+    border-radius: var(--radius-md);
+  }
+
+  .modalHeader {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+
+  .modalBody {
+    padding: 0;
+  }
+
+  .addressItem {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+}

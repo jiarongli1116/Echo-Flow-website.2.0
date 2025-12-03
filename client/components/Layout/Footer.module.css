@@ -1,0 +1,148 @@
+/* Footer 組件樣式 */
+.footer {
+  background-color: var(--bg--dark);
+  color: white;
+  padding: 2rem 0;
+  margin-top: auto;
+  position: relative; /* 確保定位正確 */
+  z-index: 50; /* 降低 z-index，避免與 header 衝突 */
+}
+
+.footerContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footerSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footerTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.footerLink {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  transition: color 0.3s;
+  font-size: 0.875rem;
+}
+
+.footerLink:hover {
+  color: var(--primary--400);
+  text-decoration: none;
+}
+
+.footerSocial {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.footerSocialIcon {
+  color: white;
+  transition: color 0.3s;
+  font-size: 1.25rem;
+}
+
+.footerSocialIcon:hover {
+  color: var(--primary--400);
+}
+
+.footerCopyright {
+  text-align: center;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.875rem;
+}
+
+/* 響應式設計 */
+@media (max-width: 767.98px) {
+  .footerContent {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .footerSection {
+    align-items: center;
+  }
+  
+  .footerSocial {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .footer {
+    padding: 1.5rem 0;
+  }
+  
+  .footerContent {
+    gap: 0.75rem;
+  }
+  
+  .footerTitle {
+    font-size: 1rem;
+  }
+  
+  .footerLink {
+    font-size: 0.8rem;
+  }
+  
+  .footerSocial {
+    gap: 0.75rem;
+  }
+  
+  .footerSocialIcon {
+    font-size: 1.1rem;
+  }
+  
+  .footerCopyright {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .footer {
+    padding: 1.75rem 0;
+  }
+  
+  .footerContent {
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .footer {
+    padding: 2rem 0;
+  }
+}
+
+@media (min-width: 1200px) {
+  .footer {
+    padding: 2.5rem 0;
+  }
+  
+  .footerContent {
+    gap: 2rem;
+  }
+  
+  .footerTitle {
+    font-size: 1.25rem;
+  }
+  
+  .footerLink {
+    font-size: 0.9rem;
+  }
+}

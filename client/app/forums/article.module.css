@@ -1,0 +1,556 @@
+/* ============ Article (middle column only) ============ */
+.articleCard {
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
+  padding: 16px 20px;
+}
+
+/* Head */
+.articleHead {
+  display: grid;
+  grid-template-columns: 32px 1fr 24px;
+  grid-template-rows: auto auto;
+  align-items: center;
+  column-gap: 12px;
+  row-gap: 8px;
+}
+
+.backBtn {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #000;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #000;
+}
+
+.backBtn:hover {
+  background: rgba(0, 0, 0, .04);
+}
+
+.articleHead .backBtn {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+/* ★ 右上三點按鈕（grid 第3欄第1列） */
+.moreBtn {
+  grid-column: 3;
+  grid-row: 1;
+  justify-self: end;
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 0;
+  border-radius: 6px;
+  padding: 0;
+  line-height: 1;
+  color: #000;
+  cursor: pointer;
+}
+
+.moreBtn::-webkit-details-marker {
+  display: none;
+}
+
+.moreBtn:hover {
+  background: rgba(0, 0, 0, .04);
+}
+
+.moreBtn:active {
+  background: rgba(0, 0, 0, .08);
+}
+
+.moreBtn:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+/* 下拉容器，負責定位選單 */
+.moreWrap {
+  grid-column: 3;
+  grid-row: 1;
+  justify-self: end;
+  position: relative;
+}
+
+/* 選單卡片 */
+.moreMenu {
+  position: absolute;
+  top: 28px;
+  right: 0;
+  min-width: 148px;
+  background: #fff;
+  border: 1px solid var(--forus-border);
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .12);
+  padding: 6px;
+  display: none;
+  z-index: 5;
+}
+
+.moreWrap[open] .moreMenu {
+  display: block;
+}
+
+.moreMenuItem {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: transparent;
+  border: 0;
+  color: #000;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.moreMenu .moreMenuItem+.moreMenuItem {
+  margin-top: 8px;
+}
+
+/* --- 下拉選單色系：編輯=黃底灰字；刪除=紅底白字 --- */
+.btnWarn {
+  background: #e6c068;
+  color: #000;
+  border: 1px solid #e6c068;
+  text-decoration:none;
+}
+
+.btnWarn:hover {
+  background: #dbad43;
+}
+
+.btnDanger {
+  background: #e03131;
+  color: #fff;
+  border: 1px solid #e03131;
+}
+
+.btnDanger:hover {
+  background: #c92a2a;
+}
+
+.titleWrap {
+  grid-column: 1 / 4;
+  grid-row: 2;
+  height: 75px;
+}
+
+.articleTitle {
+  font-size: 26px;
+  font-weight: 700;
+  margin: 0 0 4px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.articleMeta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #000;
+}
+
+.metaAvatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: inline-block;
+}
+
+.metaName{
+  color: #000;
+  text-decoration: none;
+}
+
+.metaName:hover,
+.metaName:focus-visible {
+  text-decoration: underline;
+}
+
+.sep {
+  color: #858585;
+}
+
+/* Body text */
+.articleText {
+  margin: 12px 0;
+  color: #000;
+  line-height: 28px;
+  /* ← 你既有設定 */
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.articleText p {
+  margin: 0 0 10px;
+}
+
+/* ★★ 讓「空段落」在內文頁有可見高度（保留你輸入的空行） ★★ */
+.articleText p:empty {
+  min-height: 25.6px;
+  /* 與上方 line-height 對齊 */
+}
+
+/* Hero */
+.articleHero {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.articleHero img {
+  width: 100%;
+  aspect-ratio: 16 / 9; /* 容器維持比例 */
+  display: block;
+  object-fit: contain;
+  padding-bottom: 5px;
+}
+
+/* Actions */
+.articleActions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #000;
+  background: transparent;
+  border: 0;
+  padding: 4px 6px;
+}
+
+/* separators */
+.articleSep {
+  border: 0;
+  border-top: 1px solid var(--forus-border);
+  margin: 16px 0;
+}
+
+/* More section */
+.moreTitle {
+  color: var(--forus-gray-2);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #333;
+  padding: 8px 0;
+}
+
+.moreGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 16px;
+  row-gap: 12px;
+  margin-top: 12px;
+}
+
+.miniCard {
+  background: #fff;
+  border: 1px solid var(--forus-border);
+  border-radius: 6px;
+  padding: 10px 12px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.miniTitle {
+  font-weight: 600;
+  margin-bottom: 6px;
+  /* ★ 防止破圖 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; /* 單行截斷 */
+}
+
+.miniTags {
+  display: flex;
+  gap: 8px;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 8px;
+  background: #fff;
+  border: 1px solid var(--forus-border);
+  font-size: 14px;
+  border-radius: 999px;
+}
+
+.pillGray {
+  background: #e2e2e2;
+  border-color: #e2e2e2;
+}
+
+/* Comments */
+.comments {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+}
+
+.commentsHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #333;
+  padding: 8px 0;
+  margin: 0;
+}
+
+.commentsHead h6 {
+  font-size: 14px;
+  margin: 0;
+  color: rgb(84, 84, 84);
+}
+
+.comment {
+  display: grid;
+  grid-template-columns: 40px 1fr auto;
+  gap: 12px;
+  padding: 14px 6px;
+  border-bottom: 1px solid var(--forus-border);
+  color: #434343;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #d9d9d9;
+}
+
+.cBody {
+  min-width: 0;
+}
+
+.cMeta {
+  font-size: 14px;
+  margin-bottom: 4px;
+  color: #000;
+}
+
+.cUser{
+  color: #000;
+  text-decoration: none;
+}
+
+.cUser:hover,
+.cUser:focus-visible {
+  text-decoration: underline;
+}
+
+
+.cText {
+  margin: 0 0 6px;
+  color: #000;
+  line-height: 28px;
+}
+
+.cActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #545454;
+}
+
+.cTime {
+  color: #858585;
+}
+
+.cBtn {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  color: #545454;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Replies */
+.replies {
+  margin: 12px 0 4px 0;
+  padding-left: 46px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.replyItem {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  gap: 10px;
+}
+
+.replyItem .avatar {
+  width: 32px;
+  height: 32px;
+}
+
+/* Reply bar */
+.replyBar {
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 56px;
+  border-top: 1px solid #bebebe;
+  background: #fff;
+  padding: 0 16px;
+  color: #858585;
+}
+
+.replyBar .avatar {
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.placeholder {
+  margin-left: 8px;
+  background: transparent;
+  opacity: 1;
+  color: #858585;
+  min-height: 0;
+  display: inline;
+}
+
+/* RWD */
+@media (max-width: 991.98px) {
+  .articleTitle {
+    font-size: 22px;
+  }
+
+  .moreGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.noPadLeft {
+  padding-left: 0 !important;
+}
+
+.replyInput {
+  flex: 1 1 auto;
+  height: 36px;
+  border: 1px solid var(--forus-border);
+  border-radius: 999px;
+  padding: 0 12px;
+  outline: none;
+  background: #fff;
+  color: #000;
+}
+
+.replyInput::placeholder {
+  color: #858585;
+}
+
+.sendBtn {
+  border: 0;
+  background: transparent;
+  height: 36px;
+  width: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sendBtn:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+/* 手機不撐破版 */
+.articleCard .cBody {
+  min-width: 0;
+}
+
+.articleCard .cText {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* 輸入列防撐破（可選） */
+.replyBar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.replyBar .replyInput {
+  min-width: 0;
+  flex: 1;
+}
+
+.replyBar .replyMeta {
+  margin-left: 6px;
+  opacity: .6;
+}
+
+/* floor label pill */
+.floorTag {
+  margin-left: 8px;
+  padding: 0 6px;
+  border: 1px solid #e5e5e5;
+  border-radius: 6px;
+  font-size: 12px;
+  color: #1570ef;
+  background: #fafafa;
+}
+
+.replyMeta {
+  font-size: 13px;
+  color: #666;
+  margin: 2px 0 6px;
+}
+
+/* 展開/收合 子留言 */
+.viewMoreBtn {
+  margin-top: 6px;
+  padding: 4px 10px;
+  border: 1px solid var(--forus-border);
+  background: #fff;
+  color: #545454;
+  border-radius: 999px;
+  font-size: 13px;
+}
+
+.viewMoreBtn:hover {
+  background: #f6f6f6;
+}
+
+/* 「回覆 Bx-y」藍字 */
+.floorLink {
+  color: #1570ef;
+  font-weight: 600;
+}

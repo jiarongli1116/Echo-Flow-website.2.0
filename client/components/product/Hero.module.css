@@ -1,0 +1,78 @@
+/* 輪播圖樣式 */
+.carouselInner {
+    width: 100%;
+    height: 540px !important;
+}
+
+.carouselInner img {
+    object-fit: cover !important;
+    height: 540px !important;
+}
+
+.carouselIndicators button {
+    width: 12px !important;
+    height: 12px !important;
+    border-radius: 50% !important;
+    margin: 0 5px !important;
+}
+
+.carouselControlPrev {
+    width: 53px !important;
+    height: 53px !important;
+    left: 10px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+}
+
+.carouselControlNext {
+    width: 53px !important;
+    height: 53px !important;
+    right: 10px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+}
+
+.faCircleChevronLeft,
+.faCircleChevronRight {
+    font-size: 53px !important;
+    color: var(--bg--dark) !important;
+}
+
+@media (max-width: 768px) {
+    /* 輪播圖調整 - 保持 Bootstrap 原生結構 */
+    .carouselInner {
+        height: 200px !important;  /* 調整適合手機的高度 */
+    }
+
+    .carouselInner img {
+        height: 200px !important; width: 100%;
+        object-fit: cover !important;
+        object-position: center;
+       
+    }
+
+    /* 隱藏左右控制按鈕（保留觸控滑動） */
+    .carouselControlPrev,
+    .carouselControlNext {
+        display: none !important;
+    }
+
+    /* 調整指示器位置和樣式 */
+    .carouselIndicators {
+        bottom: 10px !important;
+        /* 視覺上完全隱藏 */
+        opacity: 0.3;
+        /* 防止用戶點擊 */
+        /* pointer-events: none;
+        /* 確保不佔用可點擊空間 */
+        /* height: 0;
+        overflow: hidden; */ 
+        margin-bottom: -10px;
+    }
+
+    /* 啟用觸控滑動 */
+      .carousel {
+        /* touch-action: pan-y pinch-zoom; */ /* 註釋掉這行 */
+        touch-action: manipulation; /* 改成這個 */
+    }
+}

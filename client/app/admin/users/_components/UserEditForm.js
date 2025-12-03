@@ -1,0 +1,187 @@
+'use client'
+
+import { FormField, TextInput, SelectInput } from './FormField'
+import styles from './UserEdit.module.css'
+
+export const UserEditForm = ({ 
+  formData, 
+  validationErrors, 
+  onInputChange 
+}) => {
+  // 生成選項
+  const years = Array.from({ length: 75 }, (_, i) => ({
+    value: 1950 + i,
+    label: 1950 + i
+  }))
+  
+  const months = Array.from({ length: 12 }, (_, i) => ({
+    value: String(i + 1).padStart(2, '0'),
+    label: String(i + 1).padStart(2, '0')
+  }))
+  
+  const days = Array.from({ length: 31 }, (_, i) => ({
+    value: String(i + 1).padStart(2, '0'),
+    label: String(i + 1).padStart(2, '0')
+  }))
+
+  const genderOptions = [
+    { value: '男', label: '男性' },
+    { value: '女', label: '女性' },
+    { value: '其他', label: '其他' }
+  ]
+
+  const levelOptions = [
+    { value: 'bronze', label: '銅牌會員' },
+    { value: 'silver', label: '銀牌會員' },
+    { value: 'gold', label: '金牌會員' },
+    { value: 'platinum', label: '白金會員' },
+    { value: 'diamond', label: '鑽石會員' }
+  ]
+
+  const statusOptions = [
+    { value: 'active', label: '啟用' },
+    { value: 'inactive', label: '停用' }
+  ]
+
+  return (
+    <div className={styles.formSection}>
+      {/* 姓名 */}
+      <FormField 
+        label="姓名" 
+        required 
+        error={validationErrors.name}
+      >
+        <TextInput
+          value={formData.name}
+          onChange={(e) => onInputChange('name', e.target.value)}
+          placeholder="請輸入姓名"
+        />
+      </FormField>
+
+      {/* 暱稱 */}
+      <FormField 
+        label="暱稱" 
+        error={validationErrors.nickname}
+        description="(選填，最多20個字元)"
+      >
+        <TextInput
+          value={formData.nickname}
+          onChange={(e) => onInputChange('nickname', e.target.value)}
+          placeholder="請輸入暱稱"
+          maxLength={20}
+        />
+      </FormField>
+
+      {/* 手機號碼 */}
+      <FormField 
+        label="手機號碼" 
+        required 
+        error={validationErrors.phone}
+      >
+        <TextInput
+          type="tel"
+          value={formData.phone}
+          onChange={(e) => onInputChange('phone', e.target.value)}
+          placeholder="09xx-xxxxxx"
+        />
+      </FormField>
+
+      {/* 聯絡信箱 */}
+      <FormField 
+        label="聯絡信箱" 
+        error={validationErrors.email}
+      >
+        <TextInput
+          type="email"
+          value={formData.email}
+          onChange={(e) => onInputChange('email', e.target.value)}
+          placeholder="example@email.com"
+        />
+      </FormField>
+
+      {/* 性別 */}
+      <FormField label="性別">
+        <div className={styles.radioGroup}>
+          {genderOptions.map(option => (
+            <label key={option.value} className={styles.radioOption}>
+              <input
+                type="radio"
+                name="gender"
+                value={option.value}
+                checked={formData.gender === option.value}
+                onChange={(e) => onInputChange('gender', e.target.value)}
+                className={styles.radioInput}
+              />
+              {option.label}
+            </label>
+          ))}
+        </div>
+      </FormField>
+
+      {/* 生日 */}
+      <FormField 
+        label="生日" 
+        error={validationErrors.birthday}
+      >
+        <div className={styles.dateGroup}>
+          <SelectInput
+            value={formData.birthYear}
+            onChange={(e) => onInputChange('birthYear', e.target.value)}
+            options={years}
+            placeholder="年"
+          />
+          <SelectInput
+            value={formData.birthMonth}
+            onChange={(e) => onInputChange('birthMonth', e.target.value)}
+            options={months}
+            placeholder="月"
+          />
+          <SelectInput
+            value={formData.birthDay}
+            onChange={(e) => onInputChange('birthDay', e.target.value)}
+            options={days}
+            placeholder="日"
+          />
+        </div>
+      </FormField>
+
+      {/* 會員等級 */}
+      <FormField 
+        label="會員等級" 
+        description="(此欄位不可修改)"
+      >
+        <TextInput
+          value={formData.level}
+          disabled={true}
+          placeholder="會員等級"
+        />
+      </FormField>
+
+      {/* 紅利點數 */}
+      <FormField 
+        label="紅利點數" 
+        description="(此欄位不可修改)"
+      >
+        <TextInput
+          type="number"
+          value={formData.points}
+          disabled={true}
+          placeholder="0"
+        />
+      </FormField>
+
+      {/* 狀態 */}
+      <FormField 
+        label="狀態" 
+        required
+      >
+        <SelectInput
+          value={formData.status}
+          onChange={(e) => onInputChange('status', e.target.value)}
+          options={statusOptions}
+          placeholder="請選擇狀態"
+        />
+      </FormField>
+    </div>
+  )
+}

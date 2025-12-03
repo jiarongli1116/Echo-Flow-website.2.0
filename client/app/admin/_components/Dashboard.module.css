@@ -1,0 +1,256 @@
+/* 儀表板樣式 */
+.dashboard {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.dashboardHeader {
+    margin-bottom: 2rem;
+}
+
+.dashboardTitle {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 0.5rem 0;
+}
+
+.dashboardSubtitle {
+    color: var(--grey--secondary);
+    font-size: 1rem;
+    margin: 0;
+}
+
+/* 統計卡片網格 */
+.statsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.statCard {
+    background: white;
+    border-radius: 0;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 4px solid;
+}
+
+.statCard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.statCard.primary {
+    border-left-color: var(--primary--600);
+}
+
+.statCard.success {
+    border-left-color: #28a745;
+}
+
+.statCard.warning {
+    border-left-color: #ffc107;
+}
+
+.statCard.info {
+    border-left-color: #17a2b8;
+}
+
+.statIcon {
+    font-size: 2.5rem;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg--light);
+    border-radius: 0;
+}
+
+.statContent {
+    flex: 1;
+}
+
+.statValue {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0 0 0.25rem 0;
+    line-height: 1;
+}
+
+.statTitle {
+    color: var(--grey--secondary);
+    font-size: 0.9rem;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* 最近活動 */
+.recentActivity {
+    background: white;
+    border-radius: 0;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sectionHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.sectionTitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0;
+}
+
+.viewAllBtn {
+    background: none;
+    border: none;
+    color: var(--primary--600);
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: 0;
+    transition: background-color 0.3s ease;
+}
+
+.viewAllBtn:hover {
+    background-color: rgba(230, 192, 104, 0.1);
+}
+
+.activityList {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.activityItem {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--bg--light);
+    border-radius: 0;
+    transition: background-color 0.3s ease;
+}
+
+.activityItem:hover {
+    background-color: #f8f9fa;
+}
+
+.activityIcon {
+    font-size: 1.5rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border-radius: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.activityContent {
+    flex: 1;
+}
+
+.activityMessage {
+    font-weight: 500;
+    color: #1a1a1a;
+    margin: 0 0 0.25rem 0;
+    font-size: 0.95rem;
+}
+
+.activityUser {
+    color: var(--grey--secondary);
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+.activityTime {
+    color: var(--grey--secondary);
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+/* 快速操作 */
+.quickActions {
+    background: white;
+    border-radius: 0;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.actionGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.actionBtn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.5rem 1rem;
+    background: var(--bg--light);
+    border: 2px solid transparent;
+    border-radius: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: #1a1a1a;
+}
+
+.actionBtn:hover {
+    background: white;
+    border-color: var(--primary--600);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.actionIcon {
+    font-size: 2rem;
+}
+
+.actionLabel {
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    .statsGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .actionGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .dashboardTitle {
+        font-size: 1.5rem;
+    }
+
+    .statCard {
+        padding: 1rem;
+    }
+
+    .statValue {
+        font-size: 1.5rem;
+    }
+}

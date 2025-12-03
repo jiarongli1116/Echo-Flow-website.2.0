@@ -1,0 +1,68 @@
+:root {
+    /* Color styles */
+    --danger--200: rgba(248, 170, 170, 1);
+    --danger--600: rgba(224, 54, 54, 1);
+    --danger--800: rgba(135, 27, 27, 1);
+    --primary--200: rgba(255, 231, 174, 1);
+    --primary--400: rgba(253, 209, 108, 1);
+    --primary--600: rgba(230, 192, 104, 1);
+    --primary--800: rgba(179, 138, 41, 1);
+    --primary--900: rgba(135, 103, 27, 1);
+    --grey--secondary: rgba(84, 84, 84, 1);
+    --grey--primary: rgba(67, 67, 67, 1);
+    --bg--light: rgba(246, 246, 246, 1);
+    --bg--grey: rgba(43, 43, 43, 1);
+    --bg--dark: rgba(26, 26, 26, 1);
+      --text-light: #ffffff; /* 加入這行 */
+    --white: #FFFFFF;
+
+    /* Text-size styles */
+    --tw---h1: 64px;
+    --tw---h2: 48px;
+    --tw---h3: 36px;
+    --tw---h4: 32px;
+    --tw---h5: 28px;
+    --tw---h6: 24px;
+   --tw--p: 16px;
+   --tw--p12: 12px;
+    --en---h1: 61px;
+    --en---h2: 49px;
+    --en--p: 16px;
+    --en---h6: 20px;
+    --en---h5: 25px;
+    --en---h4: 31px;
+    --en---h3: 39px;
+}
+
+.body {
+    background-color: var(--bg--grey) !important;
+}
+
+
+/* 導航樣式  nav*/
+
+
+
+
+.productnav {
+    color:  #ffffff!important ;
+    font-size: var(--tw--p);
+}
+
+.productsBreadcrumbItem {
+    color:   #ffffff!important ;
+    font-size: var(--tw--p);
+}
+
+.productsBreadcrumbItem::before {
+    color:  #ffffff !important;
+}
+.productnav .breadcrumb-item + .breadcrumb-item::before {
+    color: #ffffff !important;
+}
+
+.link:link,
+.link:visited {
+    color: var( --text-light) !important;
+    text-decoration: none !important;
+}

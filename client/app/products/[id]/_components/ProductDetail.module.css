@@ -1,0 +1,384 @@
+.productIdLayout {
+  display: flex;
+  align-items: center;
+  gap: 100px;
+}
+
+.productIdImage {
+  height: 641px;
+  width: 641px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  object-fit: cover;
+}
+
+.productIdInfo {
+  width: 555px;
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+}
+
+.productIdTitle {
+  color: #f6f6f6;
+  font-size: 32px;
+}
+
+.productIdSubtitle {
+  color: #f6f6f6;
+  font-size:24px;
+}
+
+.productIdPriceSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 204px;
+  font-size: 24px !important;
+}
+
+.bookmarkIcon {
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.bookmarkIcon path {
+  stroke: #E6C068;
+  stroke-width: 2.04645;
+  transition: fill 0.3s ease;
+}
+
+.bookmarkIcon:hover path {
+  fill: #E6C068; /* hover 時填滿相同顏色 */
+}
+
+.productIdPrice {
+  color: #ff4e4e;
+  margin: 0;
+  
+    font-size: 20px;
+}
+
+.productIdRatingSection {
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+  
+
+}
+
+.stars .starIcon {
+  width: 20px !important;
+  height: 21px !important;
+}
+
+
+
+.reviewCount {
+  color: #ffffff;
+  font-family: "Hahmlet-Regular", Helvetica;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+
+
+
+.specLabel,
+.stockLabel {
+  color: #ffffffbf;
+  font-family: "Hahmlet-Light", Helvetica;
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 0.60px;
+  line-height: 28.8px;
+}
+
+.specOption {
+  background-color: #ffffff;
+  border: 1px solid #ffffff8c;
+  border-radius: 10px;
+  padding: 11px 21px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  color: #202124;
+  font-family: "Hahmlet-Light", Helvetica;
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 1.00px;
+  text-align: center;
+  width: fit-content;
+}
+
+.stockOptions {
+  display: flex;
+  gap: 5px;
+}
+
+.stockOption {
+  border: 1px solid #ffffff8c;
+  border-radius: 10px;
+  padding: 11px 21px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  font-family: "Hahmlet-Light", Helvetica;
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 1.00px;
+  text-align: center;
+}
+
+
+
+.inventoryInfo {
+  color: #ffffff;
+  font-family: "Hahmlet-Bold", Helvetica;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.60px;
+  line-height: 28.8px;
+  margin: 0;
+}
+
+.inventoryCount {
+  color: #F66B3D;
+  font-family: "Hahmlet-Light", Helvetica;
+  font-weight: 300;
+  letter-spacing: 0.10px;
+}
+
+.quantityLabel {
+  color: #ffffffbf;
+  font-size: 14px;
+}
+
+.quantityInput {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ffffff14;
+  border-radius: 64px;
+  height: 35px;
+  width: 140px;
+  padding: 1px;
+}
+
+.quantityBtn {
+  width: 35px;
+  height: 33px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.quantityDisplay {
+  flex: 1;
+  text-align: center;
+  color: #ffffffbf;
+  font-family: "Arial-Narrow", Helvetica;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.addToCartBtn {
+  background-color: #3d3d40;
+  border: 1px solid #ffffff;
+  border-radius: 50px;
+  box-shadow: 0px 0px 0px 1px #3d3d40;
+  color: #ffffff;
+  font-family: "Hahmlet-Light", Helvetica;
+  font-size: 15px;
+  font-weight: 300;
+  letter-spacing: 1.00px;
+  line-height: 18px;
+  text-align: center;
+  padding: 13px;
+  width: 450px;
+  min-height: 40px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.addToCartBtn:disabled {
+  background-color: #666666 !important;  /* 灰色背景 */
+  border: 1px solid #999999 !important;  /* 灰色邊框 */
+  color: #cccccc !important;              /* 淺灰色文字 */
+  cursor: not-allowed !important;         /* 禁用游標 */             /* 完全禁用點擊 */
+  opacity: 0.6;                          /* 透明度 */
+  box-shadow: none !important;           /* 移除陰影 */
+}
+.addToCartBtn:hover,
+.addToCartBtn:focus {
+  background-color: #202022;
+  border: 1px solid #9c9999;
+}
+
+
+/* 手機版樣式 - 768px 以下 */
+@media (max-width: 768px) {
+  .productIdLayout {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: stretch;
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+  }
+
+  .productIdImage {
+    height: 329px !important;
+    min-height: 329px !important;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .productIdInfo {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .productIdTitle {
+    font-size: 20px!important;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  .productIdSubtitle {
+    font-size: 14px!important;
+    font-weight: 400;
+    line-height: 1.4;
+    opacity: 0.8;
+  }
+
+  .productIdPriceSection {
+    width: 100%;
+    justify-content: flex-start !important;
+    margin-bottom: 3px;
+  }
+
+  .productIdPrice {
+    font-size: 18px;
+    font-weight: 600;
+    margin-right: 10px;
+    margin-right: 10px;
+  }
+
+  
+
+  .productIdRatingSection {
+    gap: 8px;
+  }
+
+  .stars {
+    gap: 2px;
+  }
+
+  .productIdRatingSection :global(svg) {
+    width: 15px !important;
+    height: 15px !important;
+  }
+
+  .reviewCount {
+    font-size: 14px;
+    opacity: 0.8;
+  }
+
+  .specLabel,
+  .stockLabel {
+    font-size: 14px;
+    font-weight: 400;
+    margin: 8px 0 4px 0;
+  }
+
+  .specOption {
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 12px;
+    font-weight: 400;
+    width: calc(50% - 8px);
+  }
+
+  .stockOptions {
+    gap: 8px;
+  }
+
+  .stockOption {
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 12px;
+    font-weight: 400;
+    flex: 1;
+    text-align: center;
+  }
+
+  .inventoryInfo {
+    font-size: 14px;
+    font-weight: 400;
+    margin: 8px 0;
+  }
+
+  .inventoryCount {
+    font-weight: 400;
+  }
+
+  .quantityLabel {
+    font-size: 14px;
+    font-weight: 400;
+    margin: 8px 0 4px 0;
+  }
+
+  .quantityInput {
+    border-radius: 32px;
+    height: 40px;
+    width: 120px;
+    padding: 2px;
+  }
+
+  .quantityBtn {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+    border-radius: 50%;
+  }
+
+  .quantityBtn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .quantityDisplay {
+    color: #ffffff;
+    font-size: 14px;
+  }
+
+  .addToCartBtn {
+    border-radius: 24px;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 12px 24px;
+    width: 100%;
+    min-height: 44px;
+    margin-top: 8px;
+    transition: all 0.2s ease;
+  }
+
+  .addToCartBtn:hover {
+    background-color: #4a4a4d;
+    transform: translateY(-1px);
+  }
+}
